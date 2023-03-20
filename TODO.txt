@@ -11,3 +11,8 @@
     - if unreliable : entire data marked as false and excluded from all further queries
 - performance of algorithms must be measurable (duration of execution of algorithm measured in ms)
 
+----- general stuff
+- console based user interface (available only on the server itself)
+- access of CSV files locally on server
+- no direct access to data set by user but they can access data through functionalities provided by app
+- we can use ATMO index for application
