@@ -1,0 +1,180 @@
+<mxfile host="app.diagrams.net" modified="2023-05-04T18:39:23.564Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15" etag="1-RJ4ijqJC62FO7w2jDl" version="21.2.8">
+  <diagram name="Page-1" id="U1p5k2ou6aDQazZYMd7k">
+    <mxGraphModel dx="780" dy="799" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GppKYo8j6UHfjYzBci3K-55" value="System" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="290" y="370" width="100" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-56" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="GppKYo8j6UHfjYzBci3K-55">
+          <mxGeometry x="45" y="80" width="10" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-57" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;1:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;ObsImpLvlImprov(String AirCleanId, double radius)" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" target="GppKYo8j6UHfjYzBci3K-56">
+          <mxGeometry x="-0.0009" relative="1" as="geometry">
+            <mxPoint x="59.5" y="460" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="170" y="460" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-58" value="int : diffATMO" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;" edge="1" parent="1" source="GppKYo8j6UHfjYzBci3K-56">
+          <mxGeometry x="-0.0026" relative="1" as="geometry">
+            <mxPoint x="60" y="780" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="780" />
+              <mxPoint x="300" y="790" />
+              <mxPoint x="370" y="720" />
+              <mxPoint x="280" y="680" />
+              <mxPoint x="320" y="660" />
+              <mxPoint x="180" y="620" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-59" value="DataBase" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="700" y="370" width="100" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-81" value="user interface" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="380" width="20" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-82" value="" style="endArrow=none;dashed=1;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="55" y="811" as="sourcePoint" />
+            <mxPoint x="55" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-109" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="745" y="470" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-110" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="745" y="540" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-111" value="" style="endArrow=block;html=1;rounded=0;endFill=1;" edge="1" parent="1" target="GppKYo8j6UHfjYzBci3K-109">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="345" y="470" as="sourcePoint" />
+            <mxPoint x="585" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="625" y="470" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-112" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;2:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;getSensorsAround(Coordinates anAC.coord, double area)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-111">
+          <mxGeometry x="-0.4123" y="2" relative="1" as="geometry">
+            <mxPoint x="73" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-113" value="" style="endArrow=open;html=1;rounded=0;endFill=0;dashed=1;" edge="1" parent="1" source="GppKYo8j6UHfjYzBci3K-109">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="445" y="555" as="sourcePoint" />
+            <mxPoint x="345" y="510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="505" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-114" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;3:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;listSensors: Vector&amp;lt;Sensor&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-113">
+          <mxGeometry x="0.2794" y="1" relative="1" as="geometry">
+            <mxPoint x="37" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-115" value="" style="endArrow=block;html=1;rounded=0;endFill=1;" edge="1" parent="1" target="GppKYo8j6UHfjYzBci3K-110">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="345" y="540" as="sourcePoint" />
+            <mxPoint x="650" y="539.9999999999999" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-116" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;4:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;getMeasuresAtMoment(Vector&amp;lt;Sensor&amp;gt; listSensors, Date anAC.DateStart)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-115">
+          <mxGeometry x="-0.4123" y="2" relative="1" as="geometry">
+            <mxPoint x="78" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-117" value="" style="endArrow=open;html=1;rounded=0;endFill=0;dashed=1;" edge="1" parent="1" source="GppKYo8j6UHfjYzBci3K-110">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="580" as="sourcePoint" />
+            <mxPoint x="345" y="580" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="505" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-118" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;5:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;measBefore: Vector&amp;lt;Measure&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-117">
+          <mxGeometry x="0.2794" y="1" relative="1" as="geometry">
+            <mxPoint x="37" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-119" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="677" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-120" value="" style="endArrow=block;html=1;rounded=0;exitX=0.967;exitY=0.083;exitDx=0;exitDy=0;entryX=1.111;entryY=0.858;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;endFill=1;" edge="1" parent="1" source="GppKYo8j6UHfjYzBci3K-119" target="GppKYo8j6UHfjYzBci3K-119">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="691" as="sourcePoint" />
+            <mxPoint x="400" y="721" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="370" y="680" />
+              <mxPoint x="370" y="711" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-121" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;8:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;int: computeATMOIdx(Vector&amp;lt;Measure&amp;gt; measBefore)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-120">
+          <mxGeometry x="0.0185" y="2" relative="1" as="geometry">
+            <mxPoint x="148" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-122" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+          <mxGeometry x="745" y="620" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-123" value="" style="endArrow=block;html=1;rounded=0;endFill=1;" edge="1" parent="1" target="GppKYo8j6UHfjYzBci3K-122">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="345" y="620" as="sourcePoint" />
+            <mxPoint x="650" y="619.9999999999999" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-124" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;6:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;getMeasuresAtMoment(Vector&amp;lt;Sensor&amp;gt; listSensors, Date anAC.DateStop)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-123">
+          <mxGeometry x="-0.4123" y="2" relative="1" as="geometry">
+            <mxPoint x="78" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-125" value="" style="endArrow=open;html=1;rounded=0;endFill=0;dashed=1;" edge="1" parent="1" source="GppKYo8j6UHfjYzBci3K-122">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="660" as="sourcePoint" />
+            <mxPoint x="345" y="660" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="505" y="660" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-126" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;7:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;measAfter: Vector&amp;lt;Measure&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-125">
+          <mxGeometry x="0.2794" y="1" relative="1" as="geometry">
+            <mxPoint x="37" y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-127" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="730" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-128" value="" style="endArrow=block;html=1;rounded=0;exitX=0.967;exitY=0.083;exitDx=0;exitDy=0;entryX=1.111;entryY=0.858;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;endFill=1;" edge="1" parent="1" source="GppKYo8j6UHfjYzBci3K-127" target="GppKYo8j6UHfjYzBci3K-127">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="744" as="sourcePoint" />
+            <mxPoint x="400" y="774" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="370" y="733" />
+              <mxPoint x="370" y="764" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GppKYo8j6UHfjYzBci3K-129" value="&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#009900&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;9:&lt;/b&gt;&lt;/font&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#99ff99&quot;&gt;&amp;nbsp;&lt;/font&gt;int: computeATMOIdx(Vector&amp;lt;Measure&amp;gt; measAfter)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GppKYo8j6UHfjYzBci3K-128">
+          <mxGeometry x="0.0185" y="2" relative="1" as="geometry">
+            <mxPoint x="148" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
