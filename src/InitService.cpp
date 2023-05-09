@@ -17,13 +17,6 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
-InitService::InitService ( const InitService & aInitService )
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <InitService>" << endl;
-#endif
-} //----- Fin de InitService (constructeur de copie)
-
 
 InitService::InitService ( )
 {
