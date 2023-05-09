@@ -48,8 +48,7 @@ public:
   //----------------------------------------------------------------Setters
 
 //------------------------------------------------- Surchge d'opérateurs
-    Sensor& operator = ( const Sensor & aSensor );
-     
+
 
 //-------------------------------------------- Constructeurs - destructeur
  Sensor ( const Sensor & aSensor );
