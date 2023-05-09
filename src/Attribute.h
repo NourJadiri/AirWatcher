@@ -42,6 +42,11 @@ public:
     virtual ~Attribute ( );
 
 
+
+    //----------------------------------------------------- Attributs protégés
+    string type;
+    string unit;
+    string description;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Attribute>
