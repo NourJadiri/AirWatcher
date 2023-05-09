@@ -37,6 +37,8 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
+    Coordinates();
+
     Coordinates(double longInput, double latInput);
 
     Coordinates (const Coordinates & coord);

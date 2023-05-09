@@ -21,6 +21,11 @@ double Coordinates::Distance(Coordinates point) {
 
 //-------------------------------------------- Constructeurs - destructeur
 
+Coordinates::Coordinates() {
+    longitude=0;
+    latitude=0;
+}
+
 Coordinates::Coordinates (double longInput, double latInput)
 {
     longitude = longInput;
