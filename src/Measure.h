@@ -41,7 +41,11 @@ public:
 
     virtual ~Measure ( );
 
-
+    //----------------------------------------------------- Attributs protégés
+    string sensorId;
+    time_t dateMeas;
+    string attributeType;
+    double value;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Measure>
