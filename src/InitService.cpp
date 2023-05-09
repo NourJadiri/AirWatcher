@@ -2,7 +2,7 @@
 // Created by adrid on 09/05/2023.
 //
 
-//---------- Réalisation de la classe <Admin> (fichier Admin.cpp) ------------
+//---------- Réalisation de la classe <InitService> (fichier InitService.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -11,33 +11,32 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "Admin.h"
-#include "User.h"
+#include "InitService.h"
 
 
 //----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
-Admin::Admin ( const Admin & anAdmin )
+InitService::InitService ( const InitService & aInitService )
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Admin>" << endl;
+    cout << "Appel au constructeur de copie de <InitService>" << endl;
 #endif
-} //----- Fin de Admin (constructeur de copie)
+} //----- Fin de InitService (constructeur de copie)
 
 
-Admin::Admin ( )
+InitService::InitService ( )
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Admin>" << endl;
+    cout << "Appel au constructeur de <InitService>" << endl;
 #endif
-} //----- Fin de Admin (constructeur par defaut)
+} //----- Fin de InitService (constructeur par defaut)
 
 
-Admin::~Admin( )
+InitService::~InitService( )
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <Admin>" << endl;
+    cout << "Appel au destructeur de <InitService>" << endl;
 #endif
-}//------- Fin de ~Admin() (destructeur)
+}//------- Fin de ~InitService() (destructeur)
 
