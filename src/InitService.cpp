@@ -16,6 +16,11 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+void InitSensors()
+{
+
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 
 InitService::InitService ( )

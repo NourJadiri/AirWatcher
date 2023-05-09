@@ -33,6 +33,8 @@ class InitService
 public:
 //----------------------------------------------------- Méthodes publiques
 
+    void InitSensors();
+
 
 //-------------------------------------------- Constructeurs - destructeur
 
