@@ -32,7 +32,21 @@ class Measure
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    string & getSensorId();
 
+    void setSensorId(string anId);
+
+    time_t & getDateMeas();
+
+    void setDateMeas(time_t aDate);
+
+    string & getAttributeType();
+
+    void setAttributeType(string aType);
+
+    double & getValue();
+
+    void setValue(double aValue);
 
 //-------------------------------------------- Constructeurs - destructeur
 
