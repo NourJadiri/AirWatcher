@@ -1,16 +1,16 @@
 /*************************************************************************
-                           Coordinates  -  description
+                           Attribute  -  description
                              -------------------
     début                : 09/05/2023
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <Coordinates> (fichier Coordinates.h) ----------------
-#if ! defined ( COORDINATES_H )
-#define COORDINATES_H
+//---------- Interface de la classe <Attribute> (fichier Attribute.h) ----------------
+#if ! defined ( ATTRIBUTE_H )
+#define ATTRIBUTE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
+#include <string.h>
 #include <map>
 using namespace std;
 
@@ -20,13 +20,13 @@ using namespace std;
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Coordinates>
+// Rôle de la classe <Attribute>
 //
 //
 //
 //------------------------------------------------------------------------
 
-class Coordinates
+class Attribute
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,14 +36,14 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Coordinates ( );
+    Attribute ( );
 
 
-    virtual ~Coordinates ( );
+    virtual ~Attribute ( );
 
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Coordinates>
+//-------------------------------- Autres définitions dépendantes de <Attribute>
 
-#endif // COORDINATES_H
+#endif // ATTRIBUTE_H
