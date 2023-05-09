@@ -33,14 +33,16 @@ class User
 public:
 //----------------------------------------------------- Méthodes publiques
 
-
 //-------------------------------------------- Constructeurs - destructeur
 
-    User ( );
-
+    User(string idInput, string passwordInput);
 
     virtual ~User ( );
 
+//------------------------------------------------------------------ PRIVE
+private:
+    string id;
+    string password;
 
 };
 

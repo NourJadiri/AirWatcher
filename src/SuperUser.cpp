@@ -22,13 +22,6 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
-SuperUser::SuperUser ( const SuperUser & aSuperUser )
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <SuperUser>" << endl;
-#endif
-} //----- Fin de SuperUser (constructeur de copie)
-
 
 SuperUser::SuperUser ( )
 {

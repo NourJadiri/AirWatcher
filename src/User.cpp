@@ -21,27 +21,11 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
-User::User ( const User & aUser )
+
+User::User(string idInput, string passwordInput)
 {
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <User>" << endl;
-#endif
-} //----- Fin de User (constructeur de copie)
-
-
-User::User ( )
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <User>" << endl;
-#endif
-} //----- Fin de User
-
-
-
-User::User(string id, string password,)
-{
-  password = password;
-  id = id;
+  password = passwordInput;
+  id = idInput;
 
 #ifdef MAP
     cout << "Appel au constructeur de <User>" << endl;
