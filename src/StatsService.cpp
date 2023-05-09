@@ -25,7 +25,7 @@ StatsService::StatsService ( )
 #endif
 } //----- Fin de StatsService
 
-SuperUser::~StatsService ( )
+StatsService::~StatsService ( )
 {
 #ifdef MAP
     cout << "Appel au destructeur de <StatsService>" << endl;

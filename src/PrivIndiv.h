@@ -14,6 +14,9 @@
 #include <map>
 using namespace std;
 
+//------------------------------------------------------ Include personnel
+#include "Sensor.h"
+
 
 //------------------------------------------------------------- Constantes
 
@@ -33,13 +36,13 @@ class PrivIndiv
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Vector<Sensor> & getProvidedSensors();
+    vector<Sensor> & getProvidedSensors();
 
-    void setProvidedSensors(Vector<Sensor> provSens);
+    void setProvidedSensors(vector<Sensor> provSens);
 
     int & getPoints();
 
-    void setPoints();
+    void setPoints(int aPoint);
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -54,7 +57,7 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    Vector<Sensor> providedSensors;
+    vector<Sensor> providedSensors;
     int points;
 
 };

@@ -6,7 +6,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <StatsService> (fichier StatsService.h) ----------------
-#if ! defined ( STATS_H )
+#if ! defined ( STATSSERVICE_H )
 #define STATSSERVICE_H
 
 //--------------------------------------------------- Interfaces utilisées

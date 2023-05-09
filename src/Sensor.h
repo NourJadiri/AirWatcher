@@ -27,6 +27,9 @@
 #include "Coordinates.h"
 using namespace std;
 
+//------------------------------------------------------ Include personnel
+#include "Coordinates.h"
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Sensor>
 //------------------------------------------------------------------------
@@ -55,21 +58,22 @@ public:
   Sensor ( );
   // Mode d'emploi (constructeur par défaut): 
 
-  Sensor::Sensor(string id, Coordinates coord, bool reliable)
+  Sensor(string id, Coordinates coord, bool reliable);
   // Mode d'emploi (Constructeur):
   // Construit un capteur en attribuant à ses paramètres la valeur des paramètres en entrée. 
 
   virtual ~Sensor ( );
   //Destructeur de la class sensor. 
 
-
 //------------------------------------------------------------------ PRIVE
 
-private:
+protected:
 
-string idd;
-Coordinates coord;
-bool reliable;
+    //----------------------------------------------------- Attributs protégés
+    string id;
+    Coordinates coord = Coordinates(.0, .0);
+    bool reliable;
+
 };
 
 

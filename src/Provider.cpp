@@ -16,33 +16,25 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-Vector<AirCleaner> & Provider::getProvidedAC(){
+vector<AirCleaner> & Provider::getProvidedAC(){
     return this->providedAC;
 }
 
-void Provider::setProvidedAC(Vector<AirCleaner> provAC){
+void Provider::setProvidedAC(vector<AirCleaner> provAC){
     this->providedAC = provAC;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Provider::Provider ( )
-{
-#ifdef MAP
-    cout << "Appel au constructeur par defaut de <Provider>" << endl;
-#endif
-} //----- Fin de Provider (constructeur par defaut)
 
-
-Provider::Provider(String id, Vector<AirCleaner> airCleaners)
+Provider::Provider(vector<AirCleaner> airCleaners)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Provider>" << endl;
 #endif
-    this->id = id;
     providedAC = airCleaners;
 }//----- Fin de Provider (constructeur)
 
-Sensor :: ~Provider()
+Provider::~Provider()
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Provider>" << endl;

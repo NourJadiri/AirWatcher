@@ -14,6 +14,9 @@
 #include <map>
 using namespace std;
 
+//------------------------------------------------------ Include personnel
+#include "AirCleaner.h"
+
 
 //------------------------------------------------------------- Constantes
 
@@ -32,14 +35,13 @@ class Provider
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    Vector<AirCleaner> & getProvidedAC();
+    vector<AirCleaner> & getProvidedAC();
 
-    void setProvidedAC(Vector<AirCleaner> provAC);
+    void setProvidedAC(vector<AirCleaner> provAC);
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Provider ( );
-
+    Provider ( vector<AirCleaner> airCleaners );
 
     virtual ~Provider ( );
 
@@ -48,7 +50,7 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    Vector<AirCleaner> providedAC;
+    vector<AirCleaner> providedAC;
 
 };
 

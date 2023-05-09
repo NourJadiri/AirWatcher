@@ -18,7 +18,7 @@ using namespace std;
 Sensor::Sensor ( const Sensor & aSensor )
 {
   id = aSensor.id;
-  coordinates= aSensor.coord;
+  coord = aSensor.coord;
   reliable= aSensor.reliable;
 
 #ifdef MAP
@@ -27,18 +27,10 @@ Sensor::Sensor ( const Sensor & aSensor )
 } //----- Fin de Sensor (constructeur de copie)
 
 
-Sensor::Sensor ( )
+Sensor::Sensor(string aId, Coordinates someCoord, bool reliable)
 {
-#ifdef MAP
-    cout << "Appel au constructeur par defaut de <Sensor>" << endl;
-#endif
-} //----- Fin de Sensor(constructeur par defaut)
-
-
-Sensor::Sensor(string id, Coordinates coord, bool reliable)
-{
-  this->id = id;
-  coordinates = coord;
+  this->id = aId;
+  coord = someCoord;
   reliable = reliable;
 
 #ifdef MAP

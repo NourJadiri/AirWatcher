@@ -14,11 +14,11 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-Vector<Sensor> & PrivIndiv::getProvidedSensors(){
+vector<Sensor> & PrivIndiv::getProvidedSensors(){
     return this->providedSensors;
 }
 
-void PrivIndiv::setProvidedSensors(Vector<Sensor> provSens){
+void PrivIndiv::setProvidedSensors(vector<Sensor> provSens){
     this->providedSensors = provSens;
 }
 
