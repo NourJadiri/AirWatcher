@@ -1,6 +1,3 @@
-//
-// Created by adrid on 09/05/2023.
-//
 
 //---------- Réalisation de la classe <SuperUser> (fichier SuperUser.cpp) ------------
 

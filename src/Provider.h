@@ -32,7 +32,9 @@ class Provider
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    Vector<AirCleaner> & getProvidedAC();
 
+    void setProvidedAC(Vector<AirCleaner> provAC);
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -41,6 +43,12 @@ public:
 
     virtual ~Provider ( );
 
+//------------------------------------------------------------------ PRIVE
+
+protected:
+
+    //----------------------------------------------------- Attributs protégés
+    Vector<AirCleaner> providedAC;
 
 };
 

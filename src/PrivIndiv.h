@@ -29,10 +29,17 @@ using namespace std;
 class PrivIndiv
 {
 //----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    Vector<Sensor> & getProvidedSensors();
 
+    void setProvidedSensors(Vector<Sensor> provSens);
+
+    int & getPoints();
+
+    void setPoints();
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -41,6 +48,14 @@ public:
 
     virtual ~PrivIndiv ( );
 
+
+//------------------------------------------------------------------ PRIVE
+
+protected:
+
+    //----------------------------------------------------- Attributs protégés
+    Vector<Sensor> providedSensors;
+    int points;
 
 };
 

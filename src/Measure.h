@@ -55,6 +55,10 @@ public:
 
     virtual ~Measure ( );
 
+//------------------------------------------------------------------ PRIVE
+
+protected:
+
     //----------------------------------------------------- Attributs protégés
     string sensorId;
     time_t dateMeas;

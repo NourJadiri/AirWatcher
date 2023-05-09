@@ -1,5 +1,3 @@
-//
-// Created by adrid on 09/05/2023.
 
 //---------- Réalisation de la classe <Sensor> (fichier Sensor.cpp) ------------
 
@@ -15,19 +13,6 @@ using namespace std;
 #include "Sensor.h"
 
 //----------------------------------------------------- Méthodes publiques
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-
-Sensor & Sensor::operator = ( const Sensor & aSensor )
-{
-  id = aSensor.id;
-  coordinates = aSensor.coord;
-  reliable = aSensor.reliable;
-
-  return *this;
-}//----- Fin de operator =
-//id coord reliable
 
 //-------------------------------------------- Constructeurs - destructeur
 Sensor::Sensor ( const Sensor & aSensor )
@@ -52,7 +37,7 @@ Sensor::Sensor ( )
 
 Sensor::Sensor(string id, Coordinates coord, bool reliable)
 {
-  id = id;
+  this->id = id;
   coordinates = coord;
   reliable = reliable;
 
