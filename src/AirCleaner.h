@@ -10,8 +10,10 @@
 #define AIRCLEANER_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
+#include <string.h>
 #include <map>
+#include <ctime>
+#include "Coordinates.h"
 using namespace std;
 
 
@@ -33,16 +35,38 @@ class AirCleaner
 public:
 //----------------------------------------------------- Méthodes publiques
 
+    string & getAirCleanerID();
+
+    void setAirCleanerID(string anID);
+
+    Coordinates & getCoord();
+
+    void setCoord(Coordinates coord);
+
+    time_t & getDateStart();
+
+    void setDateStart(const time_t aStart);
+
+    time_t & getDateStop();
+
+    void setDateStop(const time_t aStop);
+
+    AirCleaner & operator = ( const AirCleaner &anAirCleaner );
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    AirCleaner ( );
-
+    AirCleaner (string idInput, Coordinates coordInput, time_t dateStartInput, time_t dateStopInput);
 
     virtual ~AirCleaner ( );
 
-
+//------------------------------------------------------------------ PRIVE
+private:
+    string id;
+    Coordinates coord;
+    time_t dateStart;
+    time_t dateStop;
 };
+
 
 //-------------------------------- Autres définitions dépendantes de <AirCleaner>
 

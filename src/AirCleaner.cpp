@@ -19,81 +19,59 @@ using namespace std;
 
 //Getters et Setters
 
-  string AirCleaner::getAirCleanerID(){
-    return airCleanerID;
+  string & AirCleaner::getAirCleanerID(){
+      return id;
   }
 
-  void AirCleaner::setAirCleanerID(string anID ){
-    aircleanerID = anID;
+  void AirCleaner::setAirCleanerID(string anID){
+      id = anID;
   }
 
-  float AirCleaner::getCoord(){
-    return coordinates;
+  Coordinates & AirCleaner::getCoord(){
+      return coord;
   }
 
-  void AirCleaner::setCoord(Coordinates coord){
-    coordinates = coord;
+  void AirCleaner::setCoord(Coordinates coordinates){
+      coord = coordinates;
   }
 
-
-  string AirCleaner::getStart(){
-    return start;
+  time_t & AirCleaner::getDateStart(){
+      return dateStart;
   }
 
-  void AirCleaner::setStart(const Date aStart){
-    start = aStart;
+  void AirCleaner::setDateStart(const time_t aStart){
+      dateStart = aStart;
   }
 
-  string AirCleaner::getStop(){
-    return stop;
+  time_t & AirCleaner::getDateStop(){
+    return dateStop;
   }
 
-  void AirCleaner::setStop(const Date aStop){
-    stop = aStop;
+  void AirCleaner::setDateStop(const time_t aStop){
+      dateStop = aStop;
   }
 
 
 //------------------------------------------------- Surcharge d'opérateurs
 AirCleaner & AirCleaner::operator = ( const AirCleaner &anAirCleaner )
 {
-  AircleanerID = anAirCleaner.AircleanerID;
-  coordinates = anAirCleaner.coordinates;
-  start = anAirCleaner.start;
-  stop = anAirCleaner.stop;
+  id = anAirCleaner.id;
+  coord = anAirCleaner.coord;
+  dateStart = anAirCleaner.dateStart;
+  dateStop = anAirCleaner.dateStop;
 
 return *this;
 } //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur
-AirCleaner::AirCleaner(const Cleaner & anAirCleaner )
+
+AirCleaner :: AirCleaner ( string idInput, Coordinates coordInput, time_t dateStartInput, time_t dateStopInput)
 {
-   AircleanerID = anAirCleaner.AircleanerID;
-  coordinates = anAirCleaner.coordinates;
-  start = anAirCleaner.start;
-  stop = anAirCleaner.stop;
-
-
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <AirCleaner>" << endl;
-#endif
-} //----- Fin de AirCleaner (constructeur de copie)
-
-
-AirCleaner::AirCleaner( )
-{
-  #ifdef MAP
-      cout << "Appel au constructeur par défaut <AirCleaner>" << endl;
-  #endif
-} //----- Fin de AirCleaner(constructeur par défaut)
-
-
-AirCleaner :: AirCleaner ( string id, Coordinates coord, Date dateStart, Date dateStop)
-{
-  airCleanerID = id;
-  coordinates = coord;
-  start = dateStart;
-  stop= dateStop;
+  id = idInput;
+  coord = coordInput;
+  dateStart = dateStartInput;
+  dateStop= dateStopInput;
 
   #ifdef MAP
       cout << "Appel au constructeur de <AirCleaner>" << endl;
