@@ -24,7 +24,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
-#include <Coordinates.h>
+#include "Coordinates.h"
 using namespace std;
 
 //------------------------------------------------------------------------
