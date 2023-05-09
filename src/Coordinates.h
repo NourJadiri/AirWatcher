@@ -43,8 +43,8 @@ public:
 
 //------------------------------------------------------------------ PRIVE
 private:
-    double long;
-    double lat;
+    double longitude;
+    double latitude;
 
 };
 

@@ -5,6 +5,8 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <stdio.h>
+#include <math.h>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -13,15 +15,16 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void InitSensors()
-{
-
+double Coordinates::Distance(Coordinates point) {
+    return (sqrt((point.latitude-this->latitude)*(point.latitude-this->latitude)+(point.longitude-this->longitude)*(point.longitude-this->longitude)));
 }
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Coordinates::Coordinates ( )
+Coordinates::Coordinates (double longInput, double latInput)
 {
+    longitude = longInput;
+    latitude = latInput;
 #ifdef MAP
     cout << "Appel au constructeur de <Coordinates>" << endl;
 #endif
