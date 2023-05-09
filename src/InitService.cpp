@@ -1,5 +1,5 @@
 /*************************************************************************
-                           IHM  -  lancement du programme
+                           InitService  -  lancement du programme
                              -------------------
     début                : 09/05/2023
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
@@ -28,16 +28,10 @@ void InitSensors()
 
 InitService::InitService ( )
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <InitService>" << endl;
-#endif
 } //----- Fin de InitService (constructeur par defaut)
 
 
 InitService::~InitService( )
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <InitService>" << endl;
-#endif
 }//------- Fin de ~InitService() (destructeur)
 

@@ -28,17 +28,11 @@ void Provider::setProvidedAC(vector<AirCleaner> provAC){
 
 Provider::Provider(vector<AirCleaner> airCleaners)
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <Provider>" << endl;
-#endif
     providedAC = airCleaners;
 }//----- Fin de Provider (constructeur)
 
 Provider::~Provider()
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <Provider>" << endl;
-#endif
 } //------- Fin de ~Provider (destructeur)
 
 

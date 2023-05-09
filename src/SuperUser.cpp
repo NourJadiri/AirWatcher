@@ -22,15 +22,9 @@ using namespace std;
 
 SuperUser::SuperUser ( )
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <SuperUser>" << endl;
-#endif
 } //----- Fin de SuperUser
 
 SuperUser::~SuperUser ( )
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <SuperUser>" << endl;
-#endif
 } //----- Fin de SuperUser
 

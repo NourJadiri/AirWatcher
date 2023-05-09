@@ -33,7 +33,7 @@ class Coordinates
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    double Distance(Coordinates point);
+    double Distance(const Coordinates& point);
 
 //-------------------------------------------- Constructeurs - destructeur
 

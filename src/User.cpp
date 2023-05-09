@@ -26,18 +26,11 @@ User::User(string idInput, string passwordInput)
 {
   password = passwordInput;
   id = idInput;
-
-#ifdef MAP
-    cout << "Appel au constructeur de <User>" << endl;
-#endif
 } //----- Fin de User
 
 
 User::  ~User ( )
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <User>" << endl;
-#endif
 } //----- Fin de ~User
 
 

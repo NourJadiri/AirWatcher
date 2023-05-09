@@ -53,16 +53,10 @@ using namespace std;
 
 Measure::Measure ( )
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <Measure>" << endl;
-#endif
 } //----- Fin de Measure (constructeur par defaut)
 
 
 Measure::~Measure( )
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <Measure>" << endl;
-#endif
 }//------- Fin de ~Measure() (destructeur)
 

@@ -7,7 +7,6 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <iostream>
 #include "Coordinates.h"
 using namespace std;
 
@@ -53,37 +52,18 @@ using namespace std;
   }
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-AirCleaner & AirCleaner::operator = ( const AirCleaner &anAirCleaner )
-{
-  id = anAirCleaner.id;
-  coord = anAirCleaner.coord;
-  dateStart = anAirCleaner.dateStart;
-  dateStop = anAirCleaner.dateStop;
-
-return *this;
-} //----- Fin de operator =
-
-
 //-------------------------------------------- Constructeurs - destructeur
 
-AirCleaner :: AirCleaner ( string idInput, Coordinates coordInput, time_t dateStartInput, time_t dateStopInput)
+AirCleaner :: AirCleaner ( string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput)
 {
   id = idInput;
   coord = coordInput;
   dateStart = dateStartInput;
   dateStop= dateStopInput;
-
-  #ifdef MAP
-      cout << "Appel au constructeur de <AirCleaner>" << endl;
-  #endif
 } //----- Fin de AirCleaner
 
 AirCleaner::~AirCleaner()
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <AirCleaner>" << endl;
-#endif
 } //----- Fin de ~AirCleaner
 
 

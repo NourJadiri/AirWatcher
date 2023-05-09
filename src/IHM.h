@@ -1,49 +1,30 @@
 /*************************************************************************
-                           IHM  -  description
+                           IHM  -  lancement du programme
                              -------------------
     début                : 09/05/2023
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <IHM> (fichier IHM.h) ----------------
+//---------- Interface du module <IHM> (fichier IHM.h) -------------------
 #if ! defined ( IHM_H )
 #define IHM_H
 
-//--------------------------------------------------- Interfaces utilisées
-#include <string>
-#include <map>
-using namespace std;
-
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
 //------------------------------------------------------------------------
-// Rôle de la classe <IHM>
-//
-//
-//
+// Rôle du module <IHM>
+// Ce module permet le lancement du programme par le système lors de
+// l'exécution, à travers l'appel à une procédure test
 //------------------------------------------------------------------------
 
-class IHM
-{
-//----------------------------------------------------------------- PUBLIC
+///////////////////////////////////////////////////////////////////  PRIVE
+//------------------------------------------------------ Fonctions privées
+static void test ( );
+// Mode d'emploi :
+// Procédure de test appelée par la fonction Main
+// Permet de mieux tracer les destructeurs à la fin de l'éxécution de
+// l'application
 
-public:
-//----------------------------------------------------- Méthodes publiques
-
-
-//-------------------------------------------- Constructeurs - destructeur
-
-    IHM ( );
-
-
-    virtual ~IHM ( );
-
-
-};
-
-//-------------------------------- Autres définitions dépendantes de <IHM>
+int main ( );
+// Mode d'emploi :
+// Appelle la procédure test
 
 #endif // IHM_H

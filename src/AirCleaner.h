@@ -10,7 +10,7 @@
 #define AIRCLEANER_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string.h>
+#include <cstring>
 #include <map>
 #include "Coordinates.h"
 #include <ctime>
@@ -55,7 +55,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    AirCleaner (string idInput, Coordinates coordInput, time_t dateStartInput, time_t dateStopInput);
+    AirCleaner (string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput);
 
     virtual ~AirCleaner ( );
 

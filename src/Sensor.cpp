@@ -20,10 +20,6 @@ Sensor::Sensor ( const Sensor & aSensor )
   id = aSensor.id;
   coord = aSensor.coord;
   reliable= aSensor.reliable;
-
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Sensor>" << endl;
-#endif
 } //----- Fin de Sensor (constructeur de copie)
 
 
@@ -32,10 +28,6 @@ Sensor::Sensor(string aId, Coordinates someCoord, bool reliable)
   this->id = aId;
   coord = someCoord;
   reliable = reliable;
-
-#ifdef MAP
-    cout << "Appel au constructeur de <Sensor>" << endl;
-#endif
 }//----- Fin de Sensor(constructeur)
 
 Sensor :: ~Sensor()

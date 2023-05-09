@@ -33,17 +33,11 @@ void PrivIndiv::setPoints(int aPoint){
 //-------------------------------------------- Constructeurs - destructeur
 PrivIndiv::PrivIndiv ( vector<Sensor> provSens )
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <PrivIndiv>" << endl;
-#endif
     this->providedSensors = provSens;
 } //----- Fin de PrivIndiv (constructeur par defaut)
 
 
 PrivIndiv::~PrivIndiv( )
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <PrivIndiv>" << endl;
-#endif
 }//------- Fin de ~PrivIndiv() (destructeur)
 
