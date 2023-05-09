@@ -13,8 +13,12 @@
 #include <string.h>
 #include <map>
 #include <ctime>
-#include "Coordinates.h"
 using namespace std;
+
+typedef struct Coordinates {
+    double long;
+    double lat;
+} Coordinates;
 
 
 //------------------------------------------------------------- Constantes
