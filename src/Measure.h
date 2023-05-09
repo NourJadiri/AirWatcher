@@ -1,16 +1,16 @@
 /*************************************************************************
-                           Coordinates  -  description
+                           Measure  -  description
                              -------------------
     début                : 09/05/2023
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <Coordinates> (fichier Coordinates.h) ----------------
-#if ! defined ( COORDINATES_H )
-#define COORDINATES_H
+//---------- Interface de la classe <Measure> (fichier Measure.h) ----------------
+#if ! defined ( MEASURE_H )
+#define MEASURE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
+#include <string.h>
 #include <map>
 using namespace std;
 
@@ -20,13 +20,13 @@ using namespace std;
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Coordinates>
+// Rôle de la classe <Measure>
 //
 //
 //
 //------------------------------------------------------------------------
 
-class Coordinates
+class Measure
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,14 +36,18 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Coordinates ( );
+    Measure ( );
 
 
-    virtual ~Coordinates ( );
+    virtual ~Measure ( );
 
-
+    //----------------------------------------------------- Attributs protégés
+    string sensorId;
+    time_t dateMeas;
+    string attributeType;
+    double value;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Coordinates>
+//-------------------------------- Autres définitions dépendantes de <Measure>
 
-#endif // COORDINATES_H
+#endif // MEASURE_H
