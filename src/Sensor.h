@@ -5,17 +5,6 @@
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//
-// Created by adrid on 09/05/2023.
-//
-
-#include <stdlib.h>
-#include <stdio.h>
-#ifndef AIRWATCHER_SENSOR_H
-#define AIRWATCHER_SENSOR_H
-
-
-#endif AIRWATCHER_SENSOR_H
 
 //---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
 #if ! defined ( SENSOR_H)

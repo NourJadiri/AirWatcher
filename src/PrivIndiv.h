@@ -47,7 +47,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    PrivIndiv ( );
+    PrivIndiv ( vector<Sensor> provSens );
 
 
     virtual ~PrivIndiv ( );
