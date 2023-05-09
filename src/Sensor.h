@@ -31,10 +31,19 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
 
-  //-----------------------------------------------------------------Getters
-    
+//-----------------------------------------------------------------Getters et Setters
 
-  //----------------------------------------------------------------Setters
+    const string &getId() const;
+
+    void setId(const string &id);
+
+    const Coordinates &getCoord() const;
+
+    void setCoord(const Coordinates &coord);
+
+    bool isReliable() const;
+
+    void setReliable(bool reliable);
 
 //------------------------------------------------- Surchge d'opérateurs
 
@@ -51,7 +60,7 @@ public:
   // Construit un capteur en attribuant à ses paramètres la valeur des paramètres en entrée. 
 
   virtual ~Sensor ( );
-  //Destructeur de la class sensor. 
+    //Destructeur de la class sensor.
 
 //------------------------------------------------------------------ PRIVE
 

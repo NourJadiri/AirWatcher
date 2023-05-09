@@ -22,6 +22,29 @@ Sensor::Sensor ( const Sensor & aSensor )
   reliable= aSensor.reliable;
 } //----- Fin de Sensor (constructeur de copie)
 
+const string &Sensor::getId() const {
+    return id;
+}
+
+void Sensor::setId(const string &id) {
+    Sensor::id = id;
+}
+
+const Coordinates &Sensor::getCoord() const {
+    return coord;
+}
+
+void Sensor::setCoord(const Coordinates &coord) {
+    Sensor::coord = coord;
+}
+
+bool Sensor::isReliable() const {
+    return reliable;
+}
+
+void Sensor::setReliable(bool reliable) {
+    Sensor::reliable = reliable;
+}
 
 Sensor::Sensor(string aId, Coordinates someCoord, bool reliable)
 {

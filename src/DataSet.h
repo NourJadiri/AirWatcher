@@ -12,6 +12,9 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
+#include <vector>
+#include "Sensor.h"
+#include "Measure.h"
 using namespace std;
 
 
@@ -38,9 +41,12 @@ public:
 
     DataSet ( );
 
-
     virtual ~DataSet ( );
 
+//------------------------------------------------------------------ PRIVE
+private:
+    vector<Sensor> sensorsList;
+    vector<Measure> measureList;
 
 };
 
