@@ -1,17 +1,49 @@
+/*************************************************************************
+                           Provider  -  description
+                             -------------------
+    début                : 09/05/2023
+    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
+//---------- Interface de la classe <Provider> (fichier Provider.h) ----------------
+#if ! defined ( PROVIDER_H )
+#define PROVIDER_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
+
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <Provider>
 //
-// Created by adrid on 09/05/2023.
 //
+//
+//------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <stdio.h>
+class Provider
+{
+//----------------------------------------------------------------- PUBLIC
 
-#ifndef AIRWATCHER_PROVIDER_H
-#define AIRWATCHER_PROVIDER_H
+public:
+//----------------------------------------------------- Méthodes publiques
 
 
-class Provider {
+//-------------------------------------------- Constructeurs - destructeur
+
+    Provider ( );
+
+
+    virtual ~Provider ( );
+
 
 };
 
+//-------------------------------- Autres définitions dépendantes de <Provider>
 
-#endif //AIRWATCHER_PROVIDER_H
+#endif // PROVIDER_H

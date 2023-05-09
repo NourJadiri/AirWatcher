@@ -1,17 +1,49 @@
+/*************************************************************************
+                           AirCleaner  -  description
+                             -------------------
+    début                : 09/05/2023
+    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
+//---------- Interface de la classe <AirCleaner> (fichier AirCleaner.h) ----------------
+#if ! defined ( AIRCLEANER_H )
+#define AIRCLEANER_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
+
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <AirCleaner>
 //
-// Created by adrid on 09/05/2023.
 //
+//
+//------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <stdio.h>
+class AirCleaner
+{
+//----------------------------------------------------------------- PUBLIC
 
-#ifndef AIRWATCHER_AIRCLEANER_H
-#define AIRWATCHER_AIRCLEANER_H
+public:
+//----------------------------------------------------- Méthodes publiques
 
 
-class AirCleaner {
+//-------------------------------------------- Constructeurs - destructeur
+
+    AirCleaner ( );
+
+
+    virtual ~AirCleaner ( );
+
 
 };
 
+//-------------------------------- Autres définitions dépendantes de <AirCleaner>
 
-#endif //AIRWATCHER_AIRCLEANER_H
+#endif // AIRCLEANER_H

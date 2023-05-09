@@ -1,17 +1,49 @@
+/*************************************************************************
+                           PrivIndiv  -  description
+                             -------------------
+    début                : 09/05/2023
+    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
+//---------- Interface de la classe <PrivIndiv> (fichier PrivIndiv.h) ----------------
+#if ! defined ( PRIVINDIV_H )
+#define PRIVINDIV_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
+
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <PrivIndiv>
 //
-// Created by adrid on 09/05/2023.
 //
+//
+//------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <stdio.h>
+class PrivIndiv
+{
+//----------------------------------------------------------------- PUBLIC
 
-#ifndef AIRWATCHER_PRIVINDIV_H
-#define AIRWATCHER_PRIVINDIV_H
+public:
+//----------------------------------------------------- Méthodes publiques
 
 
-class PrivIndiv {
+//-------------------------------------------- Constructeurs - destructeur
+
+    PrivIndiv ( );
+
+
+    virtual ~PrivIndiv ( );
+
 
 };
 
+//-------------------------------- Autres définitions dépendantes de <PrivIndiv>
 
-#endif //AIRWATCHER_PRIVINDIV_H
+#endif // PRIVINDIV_H

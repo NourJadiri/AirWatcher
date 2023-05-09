@@ -1,17 +1,49 @@
+/*************************************************************************
+                           Coordinates  -  description
+                             -------------------
+    début                : 09/05/2023
+    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
+//---------- Interface de la classe <Coordinates> (fichier Coordinates.h) ----------------
+#if ! defined ( COORDINATES_H )
+#define COORDINATES_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
+
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <Coordinates>
 //
-// Created by adrid on 09/05/2023.
 //
+//
+//------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <stdio.h>
+class Coordinates
+{
+//----------------------------------------------------------------- PUBLIC
 
-#ifndef AIRWATCHER_COORDINATES_H
-#define AIRWATCHER_COORDINATES_H
+public:
+//----------------------------------------------------- Méthodes publiques
 
 
-class Coordinates {
+//-------------------------------------------- Constructeurs - destructeur
+
+    Coordinates ( );
+
+
+    virtual ~Coordinates ( );
+
 
 };
 
+//-------------------------------- Autres définitions dépendantes de <IHM>
 
-#endif //AIRWATCHER_COORDINATES_H
+#endif // COORDINATES_H

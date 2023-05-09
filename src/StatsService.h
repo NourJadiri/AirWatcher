@@ -5,9 +5,9 @@
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <InitService> (fichier InitService.h) ----------------
+//---------- Interface de la classe <StatsService> (fichier StatsService.h) ----------------
 #if ! defined ( STATS_H )
-#define STATS_H
+#define STATSSERVICE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
@@ -20,13 +20,13 @@ using namespace std;
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <InitService>
+// Rôle de la classe <StatsService>
 //
 //
 //
 //------------------------------------------------------------------------
 
-class InitService
+class StatsService
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,14 +36,14 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    InitService ( );
+    StatsService ( );
 
 
-    virtual ~InitService ( );
+    virtual ~StatsService ( );
 
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <InitService>
+//-------------------------------- Autres définitions dépendantes de <StatsService>
 
-#endif // STATS_H
+#endif // STATSSERVICE_H

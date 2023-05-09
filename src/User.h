@@ -1,17 +1,49 @@
+/*************************************************************************
+                           User  -  description
+                             -------------------
+    début                : 09/05/2023
+    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
+//---------- Interface de la classe <User> (fichier User.h) ----------------
+#if ! defined ( USER_H )
+#define USER_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
+
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <User>
 //
-// Created by adrid on 09/05/2023.
 //
+//
+//------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <stdio.h>
+class User
+{
+//----------------------------------------------------------------- PUBLIC
 
-#ifndef AIRWATCHER_USER_H
-#define AIRWATCHER_USER_H
+public:
+//----------------------------------------------------- Méthodes publiques
 
 
-class User {
+//-------------------------------------------- Constructeurs - destructeur
+
+    User ( );
+
+
+    virtual ~User ( );
+
 
 };
 
+//-------------------------------- Autres définitions dépendantes de <User>
 
-#endif //AIRWATCHER_USER_H
+#endif // USER_H

@@ -1,17 +1,49 @@
+/*************************************************************************
+                           IHM  -  description
+                             -------------------
+    début                : 09/05/2023
+    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
+//---------- Interface de la classe <IHM> (fichier IHM.h) ----------------
+#if ! defined ( IHM_H )
+#define IHM_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
+
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <IHM>
 //
-// Created by adrid on 09/05/2023.
 //
+//
+//------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <stdio.h>
+class IHM
+{
+//----------------------------------------------------------------- PUBLIC
 
-#ifndef AIRWATCHER_IHM_H
-#define AIRWATCHER_IHM_H
+public:
+//----------------------------------------------------- Méthodes publiques
 
 
-class IHM {
+//-------------------------------------------- Constructeurs - destructeur
+
+    IHM ( );
+
+
+    virtual ~IHM ( );
+
 
 };
 
+//-------------------------------- Autres définitions dépendantes de <IHM>
 
-#endif //AIRWATCHER_IHM_H
+#endif // IHM_H

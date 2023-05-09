@@ -1,17 +1,49 @@
+/*************************************************************************
+                           SuperUser  -  description
+                             -------------------
+    début                : 09/05/2023
+    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
+//---------- Interface de la classe <SuperUser> (fichier SuperUser.h) ----------------
+#if ! defined ( SUPERUSER_H )
+#define SUPERUSER_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
+
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <SuperUser>
 //
-// Created by adrid on 09/05/2023.
 //
+//
+//------------------------------------------------------------------------
 
-#include <stdlib.h>
-#include <stdio.h>
+class SuperUser
+{
+//----------------------------------------------------------------- PUBLIC
 
-#ifndef AIRWATCHER_SUPERUSER_H
-#define AIRWATCHER_SUPERUSER_H
+public:
+//----------------------------------------------------- Méthodes publiques
 
 
-class SuperUser {
+//-------------------------------------------- Constructeurs - destructeur
+
+    SuperUser ( );
+
+
+    virtual ~SuperUser ( );
+
 
 };
 
+//-------------------------------- Autres définitions dépendantes de <SuperUser>
 
-#endif //AIRWATCHER_SUPERUSER_H
+#endif // SUPERUSER_H
