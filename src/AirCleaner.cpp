@@ -8,6 +8,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include "Coordinates.h"
 using namespace std;
 
 //------------------------------------------------------ Include personnel

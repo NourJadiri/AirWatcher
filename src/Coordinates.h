@@ -39,6 +39,8 @@ public:
 
     Coordinates(double longInput, double latInput);
 
+    Coordinates (const Coordinates & coord);
+
     virtual ~Coordinates ( );
 
 //------------------------------------------------------------------ PRIVE

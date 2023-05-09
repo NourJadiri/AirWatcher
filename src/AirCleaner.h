@@ -12,13 +12,9 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string.h>
 #include <map>
+#include "Coordinates.h"
 #include <ctime>
 using namespace std;
-
-typedef struct Coordinates {
-    double long;
-    double lat;
-} Coordinates;
 
 
 //------------------------------------------------------------- Constantes

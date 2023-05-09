@@ -30,6 +30,17 @@ Coordinates::Coordinates (double longInput, double latInput)
 #endif
 } //----- Fin de Coordinates (constructeur par defaut)
 
+Coordinates::Coordinates ( const Coordinates & coord )
+{
+    longitude = coord.longitude;
+    latitude= coord.latitude;
+
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Sensor>" << endl;
+#endif
+} //----- Fin de Sensor (constructeur de copie)
+
+
 
 Coordinates::~Coordinates( )
 {
