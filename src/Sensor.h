@@ -53,7 +53,7 @@ public:
   // Mode d'emploi (constructeur de copie) :
 
   Sensor ( );
-  // Mode d'emploi (constructeur par défaut): 
+  // Mode d'emploi (constructeur par défaut):
 
   Sensor(string id, Coordinates coord, bool reliable);
   // Mode d'emploi (Constructeur):

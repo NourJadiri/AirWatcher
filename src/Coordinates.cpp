@@ -13,7 +13,7 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-double Coordinates::Distance(const Coordinates& point) {
+double Coordinates::Distance(const Coordinates& point) const {
     return (sqrt((point.latitude-this->latitude)*(point.latitude-this->latitude)+(point.longitude-this->longitude)*(point.longitude-this->longitude)));
 }
 
@@ -38,5 +38,22 @@ Coordinates::Coordinates ( const Coordinates & coord )
 
 Coordinates::~Coordinates( )
 {
-}//------- Fin de ~Coordinates() (destructeur)
+}
+
+double Coordinates::getLongitude() const {
+    return longitude;
+}
+
+void Coordinates::setLongitude(double longitude) {
+    Coordinates::longitude = longitude;
+}
+
+double Coordinates::getLatitude() const {
+    return latitude;
+}
+
+void Coordinates::setLatitude(double latitude) {
+    Coordinates::latitude = latitude;
+}
+//------- Fin de ~Coordinates() (destructeur)
 

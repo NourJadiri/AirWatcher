@@ -51,8 +51,6 @@ public:
 
     void setDateStop(const time_t aStop);
 
-    AirCleaner & operator = ( const AirCleaner &anAirCleaner );
-
 //-------------------------------------------- Constructeurs - destructeur
 
     AirCleaner (string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput);

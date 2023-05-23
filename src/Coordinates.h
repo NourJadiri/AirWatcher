@@ -33,7 +33,15 @@ class Coordinates
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    double Distance(const Coordinates& point);
+    double Distance(const Coordinates& point) const;
+
+    double getLongitude() const;
+
+    void setLongitude(double longitude);
+
+    double getLatitude() const;
+
+    void setLatitude(double latitude);
 
 //-------------------------------------------- Constructeurs - destructeur
 

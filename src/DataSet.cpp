@@ -16,11 +16,8 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-DataSet::DataSet(string aId, Coordinates someCoord, bool reliable)
+DataSet::DataSet()
 {
-    this->id = aId;
-    coord = someCoord;
-    reliable = reliable;
 
 #ifdef MAP
     cout << "Appel au constructeur de <DataSet>" << endl;
