@@ -28,5 +28,6 @@ int main ( )
 // Appel à la procédure de test
 {
     test ( );
+    cout << "Hello world" << endl;
     return 0;
 } //----- Fin de main
