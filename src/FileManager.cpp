@@ -1,11 +1,11 @@
 /*************************************************************************
-                           InitService  -  lancement du programme
+                           FileManager  -  lancement du programme
                              -------------------
     début                : 09/05/2023
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Réalisation de la classe <InitService> (fichier InitService.cpp) ------------
+//---------- Réalisation de la classe <FileManager> (fichier FileManager.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -16,14 +16,14 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "InitService.h"
+#include "FileManager.h"
 #include "Sensor.h"
 #include "Coordinates.h"
 
 
 //----------------------------------------------------- Méthodes publiques
 
-void InitService::InitSensors()
+void FileManager::InitSensors()
 {
     // Chemin vers le fichier CSV contenant les données des capteurs
     std::string filePath = "../src/data/sensors.csv";
@@ -83,12 +83,12 @@ void InitService::InitSensors()
 
 //-------------------------------------------- Constructeurs - destructeur
 
-InitService::InitService ( )
+FileManager::FileManager ( )
 {
-} //----- Fin de InitService (constructeur par defaut)
+} //----- Fin de FileManager (constructeur par defaut)
 
 
-InitService::~InitService( )
+FileManager::~FileManager( )
 {
-}//------- Fin de ~InitService() (destructeur)
+}//------- Fin de FileManager() (destructeur)
 

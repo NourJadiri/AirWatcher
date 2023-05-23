@@ -5,7 +5,7 @@
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <InitService> (fichier InitService.h) ----------------
+//---------- Interface de la classe <FileManager> (fichier FileManager.h) ----------------
 #if ! defined ( INTERFACE_H )
 #define INTERFACE_H
 

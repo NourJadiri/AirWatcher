@@ -1,11 +1,11 @@
 /*************************************************************************
-                           InitService  -  description
+                           FileManager  -  description
                              -------------------
     début                : 09/05/2023
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <InitService> (fichier InitService.h) ----------------
+//---------- Interface de la classe <FileManager> (fichier FileManager.h) ----------------
 #if ! defined ( INITSERVICE_H )
 #define INITSERVICE_H
 
@@ -20,13 +20,13 @@ using namespace std;
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <InitService>
+// Rôle de la classe <FileManager>
 //
 //
 //
 //------------------------------------------------------------------------
 
-class InitService
+class FileManager
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -38,15 +38,15 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    InitService ( );
+    FileManager ( );
 
 
-    virtual ~InitService ( );
+    virtual ~FileManager ( );
 
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <InitService>
+//-------------------------------- Autres définitions dépendantes de <FileManager>
 
 #endif // INITSERVICE_H
 
