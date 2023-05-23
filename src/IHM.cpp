@@ -14,6 +14,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "IHM.h"
+#include "InitService.h"
 
 ///////////////////////////////////////////////////////////////////  PRIVE
 //------------------------------------------------------ Fonctions privées
@@ -29,5 +30,7 @@ int main ( )
 {
     test ( );
     cout << "Hello world" << endl;
+    InitService * init = new InitService();
+    init->InitSensors();
     return 0;
 } //----- Fin de main

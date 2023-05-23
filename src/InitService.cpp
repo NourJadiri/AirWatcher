@@ -26,7 +26,7 @@ using namespace std;
 void InitService::InitSensors()
 {
     // Chemin vers le fichier CSV contenant les données des capteurs
-    std::string filePath = "data/sensors.csv";
+    std::string filePath = "../src/data/sensors.csv";
 
     // Ouverture du fichier CSV en lecture
     std::ifstream file(filePath);
