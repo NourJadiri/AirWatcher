@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-23T12:47:38.640Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="pfbT60hzt5lWztu8Y8bw" version="21.2.9" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-23T12:54:18.020Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="JeXTCa06c-UJyOg52tCp" version="21.2.9" type="github">
   <diagram name="Page-1" id="Vz2Wcvp0gmtx6I2Lt9n_">
-    <mxGraphModel dx="3187" dy="2587" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2607" dy="2267" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -655,16 +655,22 @@
           <mxGeometry x="10" y="299" width="220" height="30" as="geometry" />
         </mxCell>
         <mxCell id="gk7VsiWPiI99spmP87R4-48" value="FileManager" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="2280" y="840" width="292" height="200" as="geometry" />
+          <mxGeometry x="2280" y="840" width="320" height="200" as="geometry" />
         </mxCell>
         <mxCell id="lFe04iEfEHljoj5emuic-1" value="+ parseSensorList(ifstream if) : vector&amp;lt;Sensor&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="gk7VsiWPiI99spmP87R4-48">
-          <mxGeometry y="27" width="280" height="30" as="geometry" />
+          <mxGeometry x="-2" y="27" width="280" height="30" as="geometry" />
         </mxCell>
         <mxCell id="lFe04iEfEHljoj5emuic-2" value="+ parseMeasureList(ifstream if) : vector&amp;lt;Measure&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="gk7VsiWPiI99spmP87R4-48">
           <mxGeometry x="2" y="57" width="290" height="30" as="geometry" />
         </mxCell>
         <mxCell id="lFe04iEfEHljoj5emuic-4" value="+ parseUserList(ifstream if) : vector&amp;lt;User&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="gk7VsiWPiI99spmP87R4-48">
           <mxGeometry y="87" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lFe04iEfEHljoj5emuic-5" value="+ parseAirCleanerList(ifstream if) : vector&amp;lt;AirCleaner&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="gk7VsiWPiI99spmP87R4-48">
+          <mxGeometry x="1" y="117" width="310" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lFe04iEfEHljoj5emuic-6" value="+ parseProviderList(ifstream if) : vector&amp;lt;AirCleaner&amp;gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="gk7VsiWPiI99spmP87R4-48">
+          <mxGeometry y="147" width="300" height="30" as="geometry" />
         </mxCell>
         <mxCell id="lFe04iEfEHljoj5emuic-3" value="+ initSensorList() : void" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="1310" y="509" width="150" height="30" as="geometry" />
