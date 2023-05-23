@@ -10,9 +10,10 @@
 //---------- Interface de la classe <MemberGov> (fichier MemberGov.h) ----------------
 #ifndef AIRWATCHER_MEMBERGOV_H
 #define AIRWATCHER_MEMBERGOV_H
-//------------------------------------------------------ Include personnel
-#include "AirCleaner.h"
-
+//--------------------------------------------------- Interfaces utilisées
+#include <string>
+#include <map>
+using namespace std;
 
 //------------------------------------------------------------- Constantes
 
@@ -30,9 +31,7 @@ class MemberGov
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void analysePIndSensor();
 
-    void analysePIndSensor(String sensorId);
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -45,7 +44,7 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-
+    String country;
 };
 
 //-------------------------------- Autres définitions dépendantes de <MemberGov>

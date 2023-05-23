@@ -3,7 +3,25 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système//
-// Created by Isaline FOISSEY on 23/05/2023.
+#include <iostream>
+using namespace std;
+
+//------------------------------------------------------ Include personnel
+#include "MemberGov.h"
+#include "SuperUser.h"
+//------------------------------------------------------------- Constantes
+
+//----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------- Méthodes publiques
+
+//-------------------------------------------- Constructeurs - destructeur
+//
+MemberGov::MemberGov()
+{
+} //----- Fin de MemberGov
+
+MemberGov::~MemberGov()
+{
+} //----- Fin de MemberGov
 //
 
-#include "MemberGov.h"
