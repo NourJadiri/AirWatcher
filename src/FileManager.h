@@ -12,6 +12,13 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
+#include <vector>
+#include "Sensor.h"
+#include "Measure.h"
+#include "User.h"
+#include "AirCleaner.h"
+#include "Provider.h"
+
 using namespace std;
 
 
@@ -33,8 +40,11 @@ class FileManager
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    void InitSensors();
-
+    vector<Sensor> ParseSensorList(const string & path);
+    vector<Measure> ParseMeasureList(const string & path);
+    vector<User> ParseUserList(const string & path);
+    vector<AirCleaner> ParseAirCleanerList(const string & path);
+    vector<Provider> ParseProviderList(const string & path);
 
 //-------------------------------------------- Constructeurs - destructeur
 

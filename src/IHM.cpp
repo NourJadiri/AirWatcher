@@ -31,6 +31,6 @@ int main ( )
     test ( );
     cout << "Hello world" << endl;
     FileManager * init = new FileManager();
-    init->InitSensors();
+    init->ParseSensorList();
     return 0;
 } //----- Fin de main
