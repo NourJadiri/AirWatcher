@@ -13,6 +13,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <unordered_map>
 #include "Sensor.h"
 #include "Measure.h"
 #include "User.h"
@@ -40,7 +41,7 @@ class FileManager
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    vector<Sensor> ParseSensorList(const string & path);
+    unordered_map<string, Sensor> ParseSensorList();
     vector<Measure> ParseMeasureList(const string & path);
     vector<User> ParseUserList(const string & path);
     vector<AirCleaner> ParseAirCleanerList(const string & path);

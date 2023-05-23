@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <unordered_map>
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -53,12 +54,45 @@ vector<Provider> FileManager::ParseProviderList(const string & path) {
     return vector<Provider>();
 }
 
-vector<Sensor> FileManager::ParseSensorList(const string &path) {
-    ifstream is(path);
-    vector<Sensor> sensorList;
+unordered_map<string, Sensor> FileManager::ParseSensorList()
+{
+    string filePath = "../src/data/sensors.csv";
+    ifstream file(filePath);
 
-    return sensorList;
+    if (!file.is_open())
+    {
+        cout << "Erreur lors de l'ouverture du fichier " << filePath << endl;
+        return unordered_map<string, Sensor>(); // Retourne une map vide en cas d'erreur
+    }
 
+    unordered_map<string, Sensor> sensors;
+
+    string line;
+    while (getline(file, line))
+    {
+        stringstream ss(line);
+        string sensorId;
+        double latitude, longitude;
+
+        if (getline(ss, sensorId, ';') &&
+            ss >> latitude &&
+            ss.ignore() &&
+            ss >> longitude)
+        {
+            Coordinates coord(latitude, longitude);
+            Sensor sensor(sensorId, coord, true);
+            sensors[sensorId] = sensor;
+        }
+        else
+        {
+            cout << "Erreur de format dans le fichier CSV" << endl;
+        }
+    }
+
+    file.close();
+
+    return sensors;
 }
+
 //------- Fin de FileManager() (destructeur)
 

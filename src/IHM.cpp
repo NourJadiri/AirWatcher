@@ -30,7 +30,17 @@ int main ( )
 {
     test ( );
     cout << "Hello world" << endl;
-    FileManager * init = new FileManager();
-    init->ParseSensorList();
-    return 0;
+    FileManager * fileManager = new FileManager();
+    unordered_map<string, Sensor> sensorsMap = fileManager->ParseSensorList();
+
+    // Parcours de la unordered_map
+    for (const auto& pair : sensorsMap)
+    {
+        const string& sensorId = pair.first;
+        const Sensor& sensor = pair.second;
+
+        // Affichage des informations du capteur
+        cout << "ID: " << sensorId << ", Latitude: " << sensor.getCoord().getLatitude() << ", Longitude: " << sensor.getCoord().getLongitude() << endl;
+    }
+
 } //----- Fin de main
