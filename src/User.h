@@ -11,13 +11,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-#include <map>
 using namespace std;
-
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <User>
@@ -32,20 +26,20 @@ class User
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    const string& getId() const;
+    bool operator<(const User& other) const;
+    bool operator==(const User& other) const;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    User(string idInput, string passwordInput);
-
-    virtual ~User ( );
+    User(const string& idInput, const string& passwordInput);
+    User(const string& idInput); // Constructor without password
 
 //------------------------------------------------------------------ PRIVE
+
 private:
     string id;
     string password;
-
 };
-
-//-------------------------------- Autres définitions dépendantes de <User>
 
 #endif // USER_H

@@ -24,14 +24,13 @@ static void test ( )
 
 } //----- Fin de test
 
-int main ( )
-// Algorithme :
-// Appel à la procédure de test
+int main()
 {
-    test ( );
+    test();
     cout << "Hello world" << endl;
-    FileManager * fileManager = new FileManager();
-    unordered_map<string, Sensor> sensorsMap = fileManager->ParseSensorList();
+    FileManager fileManager;
+    unordered_map<string, Sensor> sensorsMap = fileManager.ParseSensorList();
+    map<User, vector<string>> usersMap = fileManager.ParseUserList();
 
     // Parcours de la unordered_map
     for (const auto& pair : sensorsMap)
@@ -42,5 +41,23 @@ int main ( )
         // Affichage des informations du capteur
         cout << "ID: " << sensorId << ", Latitude: " << sensor.getCoord().getLatitude() << ", Longitude: " << sensor.getCoord().getLongitude() << endl;
     }
+    // Parcours de la map
+    for (const auto& pair : usersMap)
+    {
+        const User& user = pair.first;
+        const vector<string>& sensors = pair.second;
 
-} //----- Fin de main
+        // Affichage de l'utilisateur
+        cout << "User: " << user.getId() << endl;
+
+        // Affichage des capteurs associés à l'utilisateur
+        for (const string& sensor : sensors)
+        {
+            cout << "Sensor: " << sensor << endl;
+        }
+
+        cout << endl; // Ligne vide pour séparer les utilisateurs
+    }
+
+    return 0;
+}

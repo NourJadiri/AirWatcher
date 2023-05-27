@@ -44,7 +44,7 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    String country;
+    string country;
 };
 
 //-------------------------------- Autres définitions dépendantes de <MemberGov>

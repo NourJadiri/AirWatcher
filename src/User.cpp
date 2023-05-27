@@ -20,17 +20,22 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+const string& User::getId() const {
+    return id;
+}
+
+bool User::operator<(const User& other) const {
+    return id < other.id;
+}
+
+bool User::operator==(const User& other) const {
+    return id == other.id;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 
-User::User(string idInput, string passwordInput)
-{
-  password = passwordInput;
-  id = idInput;
-} //----- Fin de User
+User::User(const string& idInput, const string& passwordInput) : id(idInput), password(passwordInput) {
+}
 
-
-User::  ~User ( )
-{
-} //----- Fin de ~User
-
-
+User::User(const string& idInput) : id(idInput) {
+}
