@@ -40,9 +40,12 @@ public:
 
     void setProvidedAC(vector<AirCleaner> provAC);
 
-//-------------------------------------------- Constructeurs - destructeur
+    string & getProviderID();
 
-    Provider ( vector<AirCleaner> airCleaners );
+//-------------------------------------------- Constructeurs - destructeur
+    Provider();
+    Provider(string providerID);
+    Provider (string providerID, vector<AirCleaner> airCleaners);
 
     virtual ~Provider ( );
 
@@ -51,6 +54,7 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
+    string providerID;
     vector<AirCleaner> providedAC;
 
 };

@@ -9,7 +9,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "SuperUser.h"
-#include "User.h"
 
 
 //------------------------------------------------------------- Constantes

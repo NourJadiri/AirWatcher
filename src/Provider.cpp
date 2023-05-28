@@ -4,9 +4,9 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <iostream>
-#include <math.h>
-#include <string.h>
+
+
+#include <utility>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -21,14 +21,22 @@ vector<AirCleaner> & Provider::getProvidedAC(){
 }
 
 void Provider::setProvidedAC(vector<AirCleaner> provAC){
-    this->providedAC = provAC;
+    this->providedAC = std::move(provAC);
+}
+
+string & Provider :: getProviderID()
+{
+    return this->providerID;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Provider::Provider(vector<AirCleaner> airCleaners)
+Provider::Provider() {}
+Provider::Provider(string providerIDInput) : providerID(std::move(providerIDInput)) {}
+Provider::Provider(string providerIDInput, vector<AirCleaner> airCleaners)
 {
-    providedAC = airCleaners;
+    providedAC = std::move(airCleaners);
+    providerID = std::move(providerIDInput);
 }//----- Fin de Provider (constructeur)
 
 Provider::~Provider()

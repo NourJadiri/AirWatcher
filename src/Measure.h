@@ -10,7 +10,7 @@
 #define MEASURE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string.h>
+#include <cstring>
 #include <map>
 using namespace std;
 
@@ -51,7 +51,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
 
     Measure ( );
-    Measure ( const string& sensorIdInput, const time_t& dateMeasInput, const string& attributeTypeInput, const double& valueInput);
+    Measure ( string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput);
 
     virtual ~Measure ( );
 
@@ -61,9 +61,9 @@ protected:
 
     //----------------------------------------------------- Attributs protégés
     string sensorId;
-    time_t dateMeas;
+    time_t dateMeas{};
     string attributeType;
-    double value;
+    double value{};
 };
 
 //-------------------------------- Autres définitions dépendantes de <Measure>

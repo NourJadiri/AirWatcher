@@ -90,5 +90,18 @@ int main()
         cout << endl;
     }
 
+    vector<Provider> providers = fileManager.ParseProviderList();
+
+    // Affichage des fournisseurs
+    for (Provider provider : providers) {
+        cout << "Provider ID: " << provider.getProviderID() << endl;
+        cout << "Cleaners: " << endl;
+        const vector<AirCleaner>& cleaners = provider.getProvidedAC();
+        for (AirCleaner cleaner : cleaners) {
+            cout << "  - Cleaner ID: " << cleaner.getAirCleanerID() << endl;
+        }
+        cout << endl;
+    }
+
     return 0;
 }

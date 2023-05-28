@@ -10,6 +10,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "PrivIndiv.h"
 
+#include <utility>
+
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -19,7 +21,7 @@ vector<Sensor> & PrivIndiv::getProvidedSensors(){
 }
 
 void PrivIndiv::setProvidedSensors(vector<Sensor> provSens){
-    this->providedSensors = provSens;
+    this->providedSensors = std::move(provSens);
 }
 
 int & PrivIndiv::getPoints(){
@@ -33,7 +35,7 @@ void PrivIndiv::setPoints(int aPoint){
 //-------------------------------------------- Constructeurs - destructeur
 PrivIndiv::PrivIndiv ( vector<Sensor> provSens )
 {
-    this->providedSensors = provSens;
+    this->providedSensors = std::move(provSens);
 } //----- Fin de PrivIndiv (constructeur par defaut)
 
 

@@ -41,15 +41,15 @@ public:
 
     Coordinates & getCoord();
 
-    void setCoord(Coordinates coord);
+    void setCoord(const Coordinates& coord);
 
     time_t & getDateStart();
 
-    void setDateStart(const time_t aStart);
+    void setDateStart(time_t aStart);
 
     time_t & getDateStop();
 
-    void setDateStop(const time_t aStop);
+    void setDateStop(time_t aStop);
 
 //-------------------------------------------- Constructeurs - destructeur
 

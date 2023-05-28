@@ -4,9 +4,7 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <iostream>
-#include <math.h>
-#include <string.h>
+#include <cmath>
 using namespace std;
 
 //------------------------------------------------------ Include personnel

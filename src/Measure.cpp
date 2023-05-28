@@ -5,6 +5,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <utility>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -19,7 +20,7 @@ using namespace std;
   }
 
   void Measure::setSensorId(string anId){
-      this->sensorId = anId;
+      this->sensorId = std::move(anId);
   }
 
   time_t & Measure::getDateMeas(){
@@ -35,7 +36,7 @@ using namespace std;
   }
 
   void Measure::setAttributeType(string aType){
-      this->attributeType = aType;
+      this->attributeType = std::move(aType);
   }
 
   double & Measure::getValue(){
@@ -55,7 +56,7 @@ Measure::Measure ( )
 {
 } //----- Fin de Measure (constructeur par defaut)
 
-Measure::Measure (const string& sensorIdInput, const time_t& dateMeasInput, const string& attributeTypeInput, const double& valueInput) : sensorId(sensorIdInput), dateMeas(dateMeasInput), attributeType(attributeTypeInput), value(valueInput)
+Measure::Measure (string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput) : sensorId(std::move(sensorIdInput)), dateMeas(dateMeasInput), attributeType(std::move(attributeTypeInput)), value(valueInput)
 {
 } //----- Fin de Measure (constructeur)
 

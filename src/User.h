@@ -33,7 +33,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
 
     User(const string& idInput, const string& passwordInput);
-    User(const string& idInput); // Constructor without password
+    explicit User(const string& idInput); // Constructor without password
 
 //------------------------------------------------------------------ PRIVE
 

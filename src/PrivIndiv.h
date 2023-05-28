@@ -59,7 +59,7 @@ protected:
 
     //----------------------------------------------------- Attributs protégés
     vector<Sensor> providedSensors;
-    int points;
+    int points{};
 
 };
 

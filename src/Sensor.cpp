@@ -5,8 +5,6 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <math.h>
-#include <string.h>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -51,7 +49,7 @@ void Sensor::setReliable(bool reliable) {
     Sensor::reliable = reliable;
 }
 
-Sensor::Sensor(string aId, Coordinates someCoord, bool reliable)
+Sensor::Sensor(string aId, const Coordinates& someCoord, bool reliable)
 {
   this->id = aId;
   coord = someCoord;

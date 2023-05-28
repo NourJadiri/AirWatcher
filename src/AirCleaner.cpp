@@ -31,7 +31,7 @@ using namespace std;
       return coord;
   }
 
-  void AirCleaner::setCoord(Coordinates coordinates){
+  void AirCleaner::setCoord(const Coordinates& coordinates){
       coord = coordinates;
   }
 
