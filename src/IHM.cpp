@@ -59,5 +59,25 @@ int main()
         cout << endl; // Ligne vide pour séparer les utilisateurs
     }
 
+    vector<Measure> measureList = fileManager.ParseMeasureList();
+
+    //parcours du vector measureList
+
+    for(Measure measure : measureList)
+    {
+        // Accéder aux attributs de la mesure et effectuer des opérations
+        string sensorId = measure.getSensorId();
+        time_t dateMeas = measure.getDateMeas();
+        string attributeType = measure.getAttributeType();
+        double value = measure.getValue();
+
+        // Afficher les valeurs de chaque mesure
+        cout << "Sensor ID: " << sensorId << endl;
+        cout << "Date: " << ctime(&dateMeas); // Converter date into readable date
+        cout << "Attribute Type: " << attributeType << endl;
+        cout << "Value: " << value << endl;
+
+    }
+
     return 0;
 }

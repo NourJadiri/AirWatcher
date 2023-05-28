@@ -51,7 +51,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
 
     Measure ( );
-
+    Measure ( const string& sensorIdInput, const time_t& dateMeasInput, const string& attributeTypeInput, const double& valueInput);
 
     virtual ~Measure ( );
 

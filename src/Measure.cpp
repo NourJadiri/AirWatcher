@@ -55,6 +55,10 @@ Measure::Measure ( )
 {
 } //----- Fin de Measure (constructeur par defaut)
 
+Measure::Measure (const string& sensorIdInput, const time_t& dateMeasInput, const string& attributeTypeInput, const double& valueInput) : sensorId(sensorIdInput), dateMeas(dateMeasInput), attributeType(attributeTypeInput), value(valueInput)
+{
+} //----- Fin de Measure (constructeur)
+
 
 Measure::~Measure( )
 {

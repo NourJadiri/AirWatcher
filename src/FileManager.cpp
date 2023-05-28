@@ -16,6 +16,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <ctime>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -24,6 +25,7 @@ using namespace std;
 #include "Sensor.h"
 #include "Coordinates.h"
 #include "User.h"
+#include "Measure.h" // Inclure le fichier d'en-tête de la classe Measure
 
 
 //----------------------------------------------------- Méthodes publiques
@@ -82,12 +84,51 @@ unordered_map<string, Sensor> FileManager::ParseSensorList()
     return sensors;
 }
 
-vector<Measure> FileManager::ParseMeasureList(const string &path)
+vector<Measure> FileManager::ParseMeasureList()
 {
-    // Implementer le code pour la lecture du fichier de mesures
-    vector<Measure> measures;
-    return measures;
+    vector<Measure> measureList;
+    string filePath = "../src/data/measurements.csv";
+    ifstream file(filePath);
+
+    if (!file)
+    {
+        cout << "Erreur lors de l'ouverture du fichier." << endl;
+        return measureList; // Retourner une liste vide si le fichier ne peut pas être ouvert
+    }
+    string line;
+    while (getline(file, line))
+    {
+        stringstream ss(line);
+        string cell;
+
+        string dateStr;
+        string sensorId;
+        string attributeType;
+        string valueStr;
+
+        // Utilisation de getline avec le délimiteur ';' pour extraire les valeurs de chaque cellule
+        if (getline(ss, dateStr, ';') && getline(ss, sensorId, ';') &&
+            getline(ss, attributeType, ';') && getline(ss, valueStr, ';'))
+        {
+            // Conversion des valeurs au format approprié
+            time_t dateMeas = stoi(dateStr); // Conversion de la chaîne de caractères en un entier (date en secondes depuis l'époque)
+            double value = stod(valueStr); // Conversion de la chaîne de caractères en un double
+
+            // Création de l'objet Measure et ajout à la liste
+            Measure measure(sensorId, dateMeas, attributeType, value);
+            measureList.push_back(measure);
+        }
+        else
+        {
+            cout << "Erreur lors de la lecture d'une ligne du fichier." << endl;
+        }
+    }
+
+    file.close();
+
+    return measureList;
 }
+
 
 map<User, vector<string>> FileManager::ParseUserList()
 {
