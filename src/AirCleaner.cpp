@@ -19,7 +19,7 @@ using namespace std;
 
 //Getters et Setters
 
-  string & AirCleaner::getAirCleanerID(){
+  string & AirCleaner::getAirCleanerID() {
       return id;
   }
 

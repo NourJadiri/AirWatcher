@@ -177,12 +177,41 @@ map<User, vector<string>> FileManager::ParseUserList()
 
 }
 
-vector<AirCleaner> FileManager::ParseAirCleanerList(const string &path)
+vector<AirCleaner> FileManager::ParseAirCleanerList()
 {
-    // Implementer le code pour la lecture du fichier des purificateurs d'air
-    vector<AirCleaner> airCleaners;
-    return airCleaners;
+    vector<AirCleaner> airCleanerList;
+    string filePath = "../src/data/cleaners.csv";
+    ifstream file(filePath);
+    if (!file.is_open()) {
+        cerr << "Erreur lors de l'ouverture du fichier" << endl;
+        return airCleanerList;
+    }
+
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string cell;
+        string id;
+        double latitude, longitude;
+        tm dateStart, dateStop;
+
+        if (getline(ss, cell, ';') && getline(ss, cell, ';') && (latitude = stod(cell), true) &&
+                getline(ss, cell, ';') && (longitude = stod(cell), true) &&
+                getline(ss, cell, ';') && (istringstream(cell) >> get_time(&dateStart, "%Y-%m-%d %H:%M:%S"), true) &&
+                getline(ss, cell, ';') && (istringstream(cell) >> get_time(&dateStop, "%Y-%m-%d %H:%M:%S"), true)) {
+
+            Coordinates coord{latitude, longitude};
+            time_t start = mktime(&dateStart);
+            time_t stop = mktime(&dateStop);
+
+            airCleanerList.push_back(AirCleaner{ id, coord, start, stop });
+        }
+    }
+
+    file.close();
+    return airCleanerList;
 }
+
 
 vector<Provider> FileManager::ParseProviderList(const string &path)
 {

@@ -78,6 +78,17 @@ int main()
         cout << "Value: " << value << endl;
 
     }
+    vector<AirCleaner> cleanerList = fileManager.ParseAirCleanerList();
+
+    // Utilisez le vecteur cleanerList selon vos besoins
+    for (AirCleaner cleaner : cleanerList) {
+        cout << "ID: " << cleaner.getAirCleanerID() << endl;
+        cout << "Latitude: " << cleaner.getCoord().getLatitude() << endl;
+        cout << "Longitude: " << cleaner.getCoord().getLongitude() << endl;
+        cout << "Date Start: " << ctime(&cleaner.getDateStart());
+        cout << "Date Stop: " << ctime(&cleaner.getDateStop());
+        cout << endl;
+    }
 
     return 0;
 }

@@ -44,7 +44,7 @@ public:
     unordered_map<string, Sensor> ParseSensorList();
     vector<Measure> ParseMeasureList();
     map<User, vector<string>> ParseUserList();
-    vector<AirCleaner> ParseAirCleanerList(const string & path);
+    vector<AirCleaner> ParseAirCleanerList();
     vector<Provider> ParseProviderList(const string & path);
 
 //-------------------------------------------- Constructeurs - destructeur
