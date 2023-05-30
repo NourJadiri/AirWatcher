@@ -317,25 +317,25 @@ void produceStatsMoment()
     double radius;
 
     // choix du moment
-    std::cout << "Enter the day (YYYY-MM-DD): ";
-    std::cin >> day;
+    cout << "Enter the day (YYYY-MM-DD): ";
+    cin >> day;
 
     // choix des coordonnées
-    std::cout << "Enter the longitude: ";
-    std::cin >> longitude;
-    std::cout << "Enter the latitude: ";
-    std::cin >> latitude;
+    cout << "Enter the longitude (it must be between -180 and 180): ";
+    cin >> longitude;
+    cout << "Enter the latitude (it must be between -90 and 90): ";
+    cin >> latitude;
 
     // choix du rayon
-    std::cout << "Enter the radius: ";
-    std::cin >> radius;
+    cout << "Enter the radius in km (it must be between 0 and 2000): ";
+    cin >> radius;
 
     // Call the produceStatsMoment() method with the user-provided values
-    AppService* appServ = new AppService(dataSet);
+    AppService* appServ = new AppService(*dataSet);
     double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
 
     // Display the calculated statistics
-    std::cout << "Statistics for the specified moment: " << stats << std::endl;
+    cout << "Statistics for the specified moment: " << stats << std::endl;
 
     //produceStatsMoment(Date day, Coordinates coord, double radius) : double
 }
