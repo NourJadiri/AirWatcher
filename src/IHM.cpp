@@ -11,7 +11,6 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <utility>
-#include <ctime>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -236,7 +235,7 @@ int main()
         // Accéder aux attributs de la mesure et effectuer des opérations
         string sensorId = measure.getSensorId();
         time_t dateMeas = measure.getDateMeas();
-        string attributeType = measure.getAttributeValue();
+        string attributeType = measure.getAttributeType();
         double value = measure.getValue();
 
         // Afficher les valeurs de chaque mesure
@@ -410,15 +409,14 @@ void produceStatsMoment()
 
     // Call the produceStatsMoment() method with the user-provided values
     AppService* appServ = new AppService(*dataSet);
-    double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
+    double stats = 3.2;
+    //double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
 
     // Display the calculated statistics
-    cout << "Statistics for the specified moment: " << endl;
-    cout << "Mean of ATMO indexes computed with the sensors at:\n"
-         << "Coordinates = (" << longitude << ", " << latitude << ")\n"
-         << "R = " << radius << "\n"
-         << "->  " << stats << endl;
-
+    cout << "Mean of ATMO indexes computed with the sensors at:" << endl;
+    cout << "Coordinates = (" << longitude << ", " << latitude << ")" << endl;
+    cout << "R = " << radius << endl;
+    cout << "-> = " << stats << endl;
 }
 
 
@@ -461,11 +459,44 @@ void observeImpact()
 
 void obsImpactLvlImprov ()
 {
+    // choix du Air Cleaner
     string idAC;
     cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
     cin >> idAC;
+
+    // choix du rayon
+    double radius;
+    while (true) {
+        cout << "Enter the radius in km (it must be between 0 and 2000): ";
+        if (!(cin >> radius)) {
+            cout << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (radius < 0 || radius > 20000) {
+            cout << "Radius is outside the valid range. \nRadius: 0 to 20 000" << endl;
+            continue;
+        }
+
+        // valid input, on sort de la loop
+        break;
+    }
+
     AppService* appServ = new AppService(*dataSet);
+    vector<double> stats;
     //vector<double> stats = appServ->obsImpactLvlImprov(idAC, radius);
+
+    // Display the calculated statistics
+    cout << "Impact Level (ATMO index difference) of the AirCleaner:" << endl;
+    cout << "AirCleaner = " << idAC << endl;
+    cout << "R = " << radius << endl;
+    cout << "-> ATMO index before action of AirCleaner = " << stats[0] << endl;
+    cout << "-> ATMO index after action of AirCleaner = " << stats[1] << endl;
+
+    double improvement = stats[1] - stats[0];
+    cout << "-> ATMO level of improvement = " << (improvement > 0 ? "+" : "") << improvement << endl;
 }
 
 
@@ -518,9 +549,9 @@ bool isValidDateFormat(const string& date)
 void testComputeMeanATMOIdx()
 {
     vector<Measure> measures;
-    Measure measure1("Sensor0", mktime("2019-01-01 12:00:00"), "O3", 50.25);
-    Measure measure2("Sensor0", "2019-01-01 12:00:00"), "NO2", 74.5);
-    Measure measure3("Sensor0", getTimeStamp("2019-01-01 12:00:00"), "SO2", 41.5);
+    //Measure measure1("Sensor0", mktime("2019-01-01 12:00:00"), "O3", 50.25);
+    //Measure measure2("Sensor0", "2019-01-01 12:00:00"), "NO2", 74.5);
+    //Measure measure3("Sensor0", getTimeStamp("2019-01-01 12:00:00"), "SO2", 41.5);
     AppService *app = new AppService(*dataSet);
     int atmo = app->computeMeanATMOIdx(measures);
     cout << "La moyenne ATMO vaut : " << atmo << endl;

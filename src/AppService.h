@@ -21,7 +21,6 @@
 #include "Coordinates.h"
 #include "Measure.h"
 #include "Sensor.h"
-using namespace std;
 
 //------------------------------------------------------------- Constantes
 
@@ -43,7 +42,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    AppService(DataSet& data);
+    explicit AppService(DataSet& data);
     virtual ~AppService( );
     //----------------------------------------------------- Méthodes publiques
 

@@ -168,9 +168,13 @@ void AppService::analysePIndSensor()
     // TODO: Implémenter la méthode analysePIndSensor (sans paramètre)
 }
 
+AppService::~AppService() {
+
+}
 
 
-    //------------------------------------------------------------------ PRIVE
+
+//------------------------------------------------------------------ PRIVE
 
 
 
