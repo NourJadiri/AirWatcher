@@ -34,8 +34,7 @@ bool User::operator==(const User& other) const {
 
 //-------------------------------------------- Constructeurs - destructeur
 
-User::User(const string& idInput, const string& passwordInput) : id(idInput), password(passwordInput) {
+User::User(const string & idInput) : id(idInput) {
 }
 
-User::User(const string& idInput) : id(idInput) {
-}
+User::User() = default;

@@ -33,13 +33,25 @@ void PrivIndiv::setPoints(int aPoint){
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-PrivIndiv::PrivIndiv ( vector<Sensor> provSens )
+PrivIndiv::PrivIndiv ( const string &id, vector<Sensor> provSens )
 {
+    this->id = id;
     this->providedSensors = std::move(provSens);
 } //----- Fin de PrivIndiv (constructeur par defaut)
 
 
 PrivIndiv::~PrivIndiv( )
 {
-}//------- Fin de ~PrivIndiv() (destructeur)
+}
+
+PrivIndiv::PrivIndiv() {
+
+}
+
+void PrivIndiv::printProvidedSensors() const {
+    for(const auto& sensor : providedSensors){
+        cout << " -"<<sensor.getId() << endl;
+    }
+}
+//------- Fin de ~PrivIndiv() (destructeur)
 

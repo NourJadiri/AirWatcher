@@ -32,14 +32,15 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    User(const string& idInput, const string& passwordInput);
-    explicit User(const string& idInput); // Constructor without password
+    explicit User(const string& idInput);
+
+    User();
+    // Constructor without password
 
 //------------------------------------------------------------------ PRIVE
 
-private:
+protected:
     string id;
-    string password;
 };
 
 #endif // USER_H

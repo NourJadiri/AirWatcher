@@ -17,6 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Sensor.h"
+#include "User.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -30,14 +31,18 @@ using namespace std;
 //
 //------------------------------------------------------------------------
 
-class PrivIndiv
+class PrivIndiv : public User
 {
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------------------- PUBLIC
 
 public:
+    PrivIndiv();
+
 //----------------------------------------------------- Méthodes publiques
     vector<Sensor> & getProvidedSensors();
+
+    void printProvidedSensors() const;
 
     void setProvidedSensors(vector<Sensor> provSens);
 
@@ -47,7 +52,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    PrivIndiv ( vector<Sensor> provSens );
+    PrivIndiv ( const string &id, vector<Sensor> provSens );
 
 
     virtual ~PrivIndiv ( );

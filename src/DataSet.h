@@ -19,6 +19,8 @@
 #include "AirCleaner.h"
 #include "User.h"
 #include "Provider.h"
+#include "FileManager.h"
+#include "PrivIndiv.h"
 
 using namespace std;
 
@@ -49,7 +51,21 @@ public:
     virtual ~DataSet ( );
 
 //------------------------------------------------------------------ PRIVE
+private:
+    FileManager fileManager;
+
 public:
+
+
+    void initSensorList();
+
+    void initUserList();
+
+    void initProviderList();
+
+    void initMeasureList();
+
+    void initAirCleanerList();
 
 private:
 public:
@@ -57,9 +73,9 @@ public:
 
     void setSensorsList(const unordered_map<string, Sensor> &sensorsList);
 
-    const unordered_map<string, User> &getUserList() const;
+    const unordered_map<string, PrivIndiv> &getUserList() const;
 
-    void setUserList(const unordered_map<string, User> &userList);
+    void setUserList(const unordered_map<string, PrivIndiv> &userList);
 
     const unordered_map<string, Provider> &getProviderList() const;
 
@@ -75,12 +91,11 @@ public:
 
 private:
     unordered_map<string,Sensor> sensorsList;
-    unordered_map<string,User> userList;
+    unordered_map<string, PrivIndiv> userList;
     unordered_map<string,Provider> providerList;
 
     vector<Measure> measureList;
     vector<AirCleaner> airCleanerList;
-
 };
 
 //-------------------------------- Autres définitions dépendantes de <DataSet>
