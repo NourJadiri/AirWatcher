@@ -43,6 +43,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
 
     explicit AppService(DataSet& data);
+    explicit AppService();
     virtual ~AppService( );
     //----------------------------------------------------- Méthodes publiques
 

@@ -43,6 +43,11 @@ bool isDateAfterToday( const string& date );
 
 bool isValidDateFormat( const string& date );
 
+//-----TESTS
+
 void testComputeMeanATMOIdx();
+
+void testGetSensorsAround();
+void testMeasureAtMoment();
 
 #endif // IHM_H

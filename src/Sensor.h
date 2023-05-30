@@ -55,6 +55,8 @@ public:
   Sensor ( );
   // Mode d'emploi (constructeur par défaut):
 
+  Sensor ( string id, const Coordinates& coord);
+
   Sensor(string id, const Coordinates& coord, bool reliable);
   // Mode d'emploi (Constructeur):
   // Construit un capteur en attribuant à ses paramètres la valeur des paramètres en entrée. 

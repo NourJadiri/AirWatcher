@@ -151,6 +151,7 @@ void handleProviderFunctionalities()
 int main()
 {
     testComputeMeanATMOIdx();
+    testGetSensorsAround();
     // get le type d'utilisateur
     int userType;
     int typeOk = 0;
@@ -398,12 +399,15 @@ void produceStatsMoment()
     AppService* appServ = new AppService(*dataSet);
     double stats = 3.2;
     //double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
-
-    // affichage
-    cout << "Mean of ATMO indexes computed with the sensors at:" << endl;
-    cout << "Coordinates = (" << longitude << ", " << latitude << ")" << endl;
-    cout << "R = " << radius << endl;
-    cout << "-> = " << stats << endl;
+    if(stats == - 1) cout << "No matching sensors for the given area." << endl;
+    else if(stats == -2) cout << "No measurements related to this date." << endl;
+    else {
+        // affichage
+        cout << "Mean of ATMO indexes computed with the sensors at:" << endl;
+        cout << "Coordinates = (" << longitude << ", " << latitude << ")" << endl;
+        cout << "R = " << radius << endl;
+        cout << "-> = " << stats << endl;
+    }
 }
 
 
@@ -581,4 +585,33 @@ void testComputeMeanATMOIdx()
     delete app;
 
 
+}
+
+void testGetSensorsAround()
+{
+    // Create a sample list of sensors
+    vector<Sensor> sensors;
+    sensors.push_back(Sensor((string)"Sensor1", Coordinates(10, 20)));
+    sensors.push_back(Sensor((string)"Sensor2", Coordinates(15, 25)));
+    sensors.push_back(Sensor((string)"Sensor3", Coordinates(30, 40)));
+    sensors.push_back(Sensor((string)"Sensor4", Coordinates(35, 45)));
+
+    // Create an instance of AppService
+    AppService appService;
+
+    // Call the getSensorsAround method
+    Coordinates center(30, 40);
+    double radius = 10.0;
+    vector<Sensor> sensorsAround = appService.getSensorsAround(center, radius);
+    if(sensorsAround.empty()) cout << "No sensors around for the specified area."<<endl;
+    else
+    {
+        // Print the sensors found within the radius
+        cout << "Sensors within the radius:" << endl;
+        for (const Sensor& sensor : sensorsAround)
+        {
+            cout << "Sensor ID: " << sensor.getId() << endl;
+            cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
+        }
+    }
 }
