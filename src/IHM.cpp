@@ -20,7 +20,7 @@ using namespace std;
 #include "AppService.h"
 
 // initialisation du dataSet (mise en mémoire des données)
-shared_ptr<DataSet> dataSet = make_shared<DataSet>();
+DataSet* dataSet = new DataSet();
 
 
 ///////////////////////////////////////////////////////////////////  PRIVE
@@ -331,8 +331,8 @@ void produceStatsMoment()
     std::cin >> radius;
 
     // Call the produceStatsMoment() method with the user-provided values
-    AppService appServ = new AppService(dataSet);
-    double stats = appServ.produceStatsMoment(day, Coordinates(longitude, latitude), radius);
+    AppService* appServ = new AppService(dataSet);
+    double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
 
     // Display the calculated statistics
     std::cout << "Statistics for the specified moment: " << stats << std::endl;
