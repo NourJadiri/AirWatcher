@@ -11,6 +11,7 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <utility>
+#include <limits>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -549,9 +550,29 @@ bool isValidDateFormat(const string& date)
 void testComputeMeanATMOIdx()
 {
     vector<Measure> measures;
-    //Measure measure1("Sensor0", mktime("2019-01-01 12:00:00"), "O3", 50.25);
-    //Measure measure2("Sensor0", "2019-01-01 12:00:00"), "NO2", 74.5);
-    //Measure measure3("Sensor0", getTimeStamp("2019-01-01 12:00:00"), "SO2", 41.5);
+
+    tm timeStruct = {};
+    string dateTimeString = "2019-01-01 12:00:00";
+
+    // Extraction des composantes de la date/heure
+    sscanf(dateTimeString.c_str(), "%d-%d-%d %d:%d:%d",
+           &timeStruct.tm_year, &timeStruct.tm_mon, &timeStruct.tm_mday,
+           &timeStruct.tm_hour, &timeStruct.tm_min, &timeStruct.tm_sec);
+
+    // Ajustement des valeurs de la structure tm
+    timeStruct.tm_year -= 1900; // Année depuis 1900
+    timeStruct.tm_mon -= 1;     // Mois de 0 à 11
+
+    // Conversion en time_t
+    time_t time = mktime(&timeStruct);
+
+    cout << "Converted time_t value: " << time << endl;
+
+    Measure measure1("Sensor0", time, "O3", 50.25);
+    Measure measure2("Sensor0", time, "NO2", 74.5);
+    Measure measure3("Sensor0", time, "SO2", 41.5);
+
+
     AppService *app = new AppService(*dataSet);
     int atmo = app->computeMeanATMOIdx(measures);
     cout << "La moyenne ATMO vaut : " << atmo << endl;
