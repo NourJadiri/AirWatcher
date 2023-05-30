@@ -150,6 +150,7 @@ void handleProviderFunctionalities()
 
 int main()
 {
+    testComputeMeanATMOIdx();
     // get le type d'utilisateur
     int userType;
     int typeOk = 0;
@@ -185,8 +186,7 @@ int main()
                 break;
         }
     }
-
-
+    testComputeMeanATMOIdx();
 
 
     /*
@@ -568,7 +568,12 @@ void testComputeMeanATMOIdx()
     Measure measure1("Sensor0", time, "O3", 50.25);
     Measure measure2("Sensor0", time, "NO2", 74.5);
     Measure measure3("Sensor0", time, "SO2", 41.5);
+    Measure measure4("Sensor0", time, "PM10",44.75);
 
+    measures.push_back(measure1);
+    measures.push_back(measure2);
+    measures.push_back(measure3);
+    measures.push_back(measure4);
 
     AppService *app = new AppService(*dataSet);
     int atmo = app->computeMeanATMOIdx(measures);

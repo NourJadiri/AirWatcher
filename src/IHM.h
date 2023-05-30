@@ -43,4 +43,6 @@ bool isDateAfterToday( const string& date );
 
 bool isValidDateFormat( const string& date );
 
+void testComputeMeanATMOIdx();
+
 #endif // IHM_H
