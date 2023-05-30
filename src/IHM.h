@@ -37,10 +37,6 @@ void produceStatistics ( );
 
 void produceStatsMoment ( );
 
-void produceStatsPeriod ( );
-
-void obsImpactRadius ( );
-
 void obsImpactLvlImprov ( );
 
 bool isDateAfterToday( const string& date );

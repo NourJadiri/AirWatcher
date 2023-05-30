@@ -49,7 +49,7 @@ void handleAdminFunctionalities()
                 break;
 
             default:
-                std::cout << "Invalid choice. Choose a number between 1 and 2 :)" << std::endl;
+                cout << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
                 break;
         }
     }
@@ -78,7 +78,7 @@ void handlePrivateIndividualFunctionalities()
                 break;
 
             default:
-                std::cout << "Invalid choice. Choose a number between 1 and 2 :)" << std::endl;
+                cout << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
                 break;
         }
     }
@@ -112,7 +112,7 @@ void handleGovernmentAgencyFunctionalities()
                 break;
 
             default:
-                std::cout << "Invalid choice. Choose a number between 1 and 3 :)" << std::endl;
+                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -146,7 +146,7 @@ void handleProviderFunctionalities()
                 break;
 
             default:
-                std::cout << "Invalid choice. Choose a number between 1 and 3 :)" << std::endl;
+                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -160,8 +160,8 @@ int main()
     int userType;
     int typeOk = 0;
     while (typeOk == 0){
-        std::cout << "Enter the number corresponding to your user type: \n\t1. Member of Government Agency \n\t2. Private individual \n\t3. Provider \n\t4. Admin \n\t5. Exit" << endl;
-        std::cin >> userType;
+        cout << "Enter the number corresponding to your user type: \n\t1. Member of Government Agency \n\t2. Private individual \n\t3. Provider \n\t4. Admin \n\t5. Exit" << endl;
+        cin >> userType;
 
         switch (userType)
         {
@@ -191,7 +191,7 @@ int main()
                 break;
 
             default:
-                std::cout << "Invalid user type. Choose a number between 1 and 4 :)" << std::endl;
+                cout << "Invalid user type. Choose a number between 1 and 4 :)" << endl;
                 break;
         }
     }
@@ -281,7 +281,7 @@ void produceStatistics()
 
     while (choiceOk == 0){
         cout << "You chose to produce statistics (get the mean of air quality) in a specified circular area." << endl;
-        cout << "Choose the corresponding number to what you which to do: \n\t1. Compute the mean of air quality in a specified circular area at a given MOMENT \n\t2. Compute the mean of air quality in a specified circular area at a given PERIOD OF TIME \n\t3. Exit" << endl;
+        cout << "Choose the corresponding number to what you which to do: \n\t1. Compute the mean of air quality in a specified circular area at a given MOMENT \n\t2. Compute the mean of air quality in a specified circular area at a given PERIOD OF TIME (not implemented) \n\t3. Exit" << endl;
         cin >> choice;
 
         switch (choice)
@@ -295,7 +295,7 @@ void produceStatistics()
             case 2:
                 choiceOk = 1;
                 cout << "You chose to compute the mean of air quality at a specified period of time." << endl;
-                produceStatsPeriod();
+                cout << "Not implemented yet" << endl;
                 break;
 
             case 3:
@@ -304,7 +304,7 @@ void produceStatistics()
                 break;
 
             default:
-                std::cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -316,9 +316,9 @@ void produceStatsMoment()
     string dayStr;
 
     // conversion de time_t vers un string au format YYYY-MM-DD
-    std::tm* date = std::localtime(&day);
+    tm* date = localtime(&day);
     char buffer[11];
-    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d", date);
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d", date);
     dayStr = buffer;
 
     // choix du moment
@@ -334,7 +334,7 @@ void produceStatsMoment()
 
         if (isDateAfterToday(dayStr))
         {
-            cout << "Error: Please enter a valid day." << std::endl;
+            cout << "Error: Please enter a valid day." << endl;
             continue;
         }
 
@@ -421,6 +421,7 @@ void produceStatsMoment()
 }
 
 
+
 void observeImpact()
 {
     int choiceOk = 0;
@@ -428,7 +429,7 @@ void observeImpact()
 
     while (choiceOk == 0){
         cout << "You chose to observe the impact of an Air Cleaner." << endl;
-        cout << "Choose the corresponding number to what you which to do: \n\t1. Get the radius of the cleaned zone \n\t2. Get the level of improvement in air quality \n\t3. Exit" << endl;
+        cout << "Choose the corresponding number to what you which to do: \n\t1. Get the radius of the cleaned zone (not implemented) \n\t2. Get the level of improvement in air quality \n\t3. Exit" << endl;
         cin >> choice;
 
         switch (choice)
@@ -436,7 +437,7 @@ void observeImpact()
             case 1:
                 choiceOk = 1;
                 cout << "You chose observe the impact of an Air Cleaner by getting the radius of the zone it cleaned." << endl;
-                obsImpactRadius();
+                cout << "Not implemented yet" << endl;
                 break;
 
             case 2:
@@ -451,12 +452,20 @@ void observeImpact()
                 break;
 
             default:
-                std::cout << "Invalid choice. Choose a number between 1 and 3 :)" << std::endl;
+                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
 }
 
+void obsImpactLvlImprov ()
+{
+    string idAC;
+    cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
+    cin >> idAC;
+    AppService* appServ = new AppService(*dataSet);
+    vector<double> stats = appServ->obsImpactLvlImprov(idAC, radius);
+}
 
 
 
