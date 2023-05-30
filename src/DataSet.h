@@ -52,9 +52,32 @@ public:
 public:
 
 private:
+public:
+    const unordered_map<string, Sensor> &getSensorsList() const;
+
+    void setSensorsList(const unordered_map<string, Sensor> &sensorsList);
+
+    const unordered_map<string, User> &getUserList() const;
+
+    void setUserList(const unordered_map<string, User> &userList);
+
+    const unordered_map<string, Provider> &getProviderList() const;
+
+    void setProviderList(const unordered_map<string, Provider> &providerList);
+
+    const vector<Measure> &getMeasureList() const;
+
+    void setMeasureList(const vector<Measure> &measureList);
+
+    const vector<AirCleaner> &getAirCleanerList() const;
+
+    void setAirCleanerList(const vector<AirCleaner> &airCleanerList);
+
+private:
     unordered_map<string,Sensor> sensorsList;
     unordered_map<string,User> userList;
     unordered_map<string,Provider> providerList;
+
     vector<Measure> measureList;
     vector<AirCleaner> airCleanerList;
 

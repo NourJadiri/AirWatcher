@@ -30,20 +30,36 @@ DataSet :: ~DataSet()
 #endif
 }
 
+const unordered_map<string, Sensor> &DataSet::getSensorsList() const {
+    return sensorsList;
+}
+
+void DataSet::setSensorsList(const unordered_map<string, Sensor> &sensorsList) {
+    DataSet::sensorsList = sensorsList;
+}
+
+const unordered_map<string, User> &DataSet::getUserList() const {
+    return userList;
+}
+
+void DataSet::setUserList(const unordered_map<string, User> &userList) {
+    DataSet::userList = userList;
+}
+
+const unordered_map<string, Provider> &DataSet::getProviderList() const {
+    return providerList;
+}
+
+void DataSet::setProviderList(const unordered_map<string, Provider> &providerList) {
+    DataSet::providerList = providerList;
+}
+
 const vector<Measure> &DataSet::getMeasureList() const {
     return measureList;
 }
 
 void DataSet::setMeasureList(const vector<Measure> &measureList) {
     DataSet::measureList = measureList;
-}
-
-const vector<Sensor> &DataSet::getSensorsList() const {
-    return sensorsList;
-}
-
-void DataSet::setSensorsList(const vector<Sensor> &sensorsList) {
-    DataSet::sensorsList = sensorsList;
 }
 
 const vector<AirCleaner> &DataSet::getAirCleanerList() const {
@@ -54,21 +70,6 @@ void DataSet::setAirCleanerList(const vector<AirCleaner> &airCleanerList) {
     DataSet::airCleanerList = airCleanerList;
 }
 
-const vector<User> &DataSet::getUserList() const {
-    return userList;
-}
-
-void DataSet::setUserList(const vector<User> &userList) {
-    DataSet::userList = userList;
-}
-
-const vector<Provider> &DataSet::getProviderList() const {
-    return providerList;
-}
-
-void DataSet::setProviderList(const vector<Provider> &providerList) {
-    DataSet::providerList = providerList;
-}
 //------- Fin de ~DataSet (destructeur)
 
 
