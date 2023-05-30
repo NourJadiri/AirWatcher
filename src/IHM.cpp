@@ -11,6 +11,7 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <utility>
+#include <regex>
 #include <limits>
 using namespace std;
 
@@ -40,13 +41,12 @@ void handleAdminFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -69,13 +69,12 @@ void handlePrivateIndividualFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -98,18 +97,16 @@ void handleGovernmentAgencyFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
-                choiceOk = 1;
                 observeImpact();
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -132,18 +129,16 @@ void handleProviderFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
-                choiceOk = 1;
                 observeImpact();
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -155,8 +150,6 @@ void handleProviderFunctionalities()
 
 int main()
 {
-
-
     // get le type d'utilisateur
     int userType;
     int typeOk = 0;
@@ -167,22 +160,18 @@ int main()
         switch (userType)
         {
             case 1:
-                typeOk = 1;
                 handleGovernmentAgencyFunctionalities();
                 break;
 
             case 2:
-                typeOk = 1;
                 handlePrivateIndividualFunctionalities();
                 break;
 
             case 3:
-                typeOk = 1;
                 handleProviderFunctionalities();
                 break;
 
             case 4:
-                typeOk = 1;
                 handleAdminFunctionalities();
                 break;
 
@@ -288,20 +277,18 @@ void produceStatistics()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 cout << "You chose to compute the mean of air quality at a given moment." << endl;
                 produceStatsMoment();
                 break;
 
             case 2:
-                choiceOk = 1;
                 cout << "You chose to compute the mean of air quality at a specified period of time." << endl;
                 cout << "Not implemented yet" << endl;
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to user menu..." << endl;
                 break;
 
             default:
@@ -391,7 +378,7 @@ void produceStatsMoment()
     // choix du rayon
     double radius;
     while (true) {
-        cout << "Enter the radius in km (it must be between 0 and 2000): ";
+        cout << "Enter the radius in km (it must be between 0 and 20 000): ";
         if (!(cin >> radius)) {
             cout << "Please enter numbers only." << endl;
             cin.clear();
@@ -408,12 +395,11 @@ void produceStatsMoment()
         break;
     }
 
-    // Call the produceStatsMoment() method with the user-provided values
     AppService* appServ = new AppService(*dataSet);
     double stats = 3.2;
     //double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
 
-    // Display the calculated statistics
+    // affichage
     cout << "Mean of ATMO indexes computed with the sensors at:" << endl;
     cout << "Coordinates = (" << longitude << ", " << latitude << ")" << endl;
     cout << "R = " << radius << endl;
@@ -435,20 +421,18 @@ void observeImpact()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 cout << "You chose observe the impact of an Air Cleaner by getting the radius of the zone it cleaned." << endl;
                 cout << "Not implemented yet" << endl;
                 break;
 
             case 2:
-                choiceOk = 1;
                 cout << "You chose observe the impact of an Air Cleaner by getting the level of improvement of air quality around it." << endl;
                 obsImpactLvlImprov();
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to user menu..." << endl;
                 break;
 
             default:
@@ -462,13 +446,26 @@ void obsImpactLvlImprov ()
 {
     // choix du Air Cleaner
     string idAC;
-    cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
-    cin >> idAC;
+    while (true) {
+        cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
+        cin >> idAC;
+
+        // Regular expression pattern pour vérifier qu'on a bien 'Cleaner' followed by one or more digits
+        regex pattern("^Cleaner\\d+$");
+
+        if (!regex_match(idAC, pattern)) {
+            cout << "Invalid ID. Please enter an ID in the format 'CleanerX', where X is the number of the AirCleaner." << endl;
+            continue;
+        }
+
+        // valid input, on sort de la loop
+        break;
+    }
 
     // choix du rayon
     double radius;
     while (true) {
-        cout << "Enter the radius in km (it must be between 0 and 2000): ";
+        cout << "Enter the radius in km (it must be between 0 and 20 000): ";
         if (!(cin >> radius)) {
             cout << "Please enter numbers only." << endl;
             cin.clear();
@@ -489,7 +486,7 @@ void obsImpactLvlImprov ()
     vector<double> stats;
     //vector<double> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
-    // Display the calculated statistics
+    // affichage
     cout << "Impact Level (ATMO index difference) of the AirCleaner:" << endl;
     cout << "AirCleaner = " << idAC << endl;
     cout << "R = " << radius << endl;
