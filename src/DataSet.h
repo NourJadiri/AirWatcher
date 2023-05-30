@@ -15,6 +15,10 @@
 #include <vector>
 #include "Sensor.h"
 #include "Measure.h"
+#include "AirCleaner.h"
+#include "User.h"
+#include "Provider.h"
+
 using namespace std;
 
 
@@ -44,9 +48,33 @@ public:
     virtual ~DataSet ( );
 
 //------------------------------------------------------------------ PRIVE
+public:
+    const vector<Measure> &getMeasureList() const;
+
+    void setMeasureList(const vector<Measure> &measureList);
+
+    const vector<Sensor> &getSensorsList() const;
+
+    void setSensorsList(const vector<Sensor> &sensorsList);
+
+    const vector<AirCleaner> &getAirCleanerList() const;
+
+    void setAirCleanerList(const vector<AirCleaner> &airCleanerList);
+
+    const vector<User> &getUserList() const;
+
+    void setUserList(const vector<User> &userList);
+
+    const vector<Provider> &getProviderList() const;
+
+    void setProviderList(const vector<Provider> &providerList);
+
 private:
-    vector<Sensor> sensorsList;
     vector<Measure> measureList;
+    vector<Sensor> sensorsList;
+    vector<AirCleaner> airCleanerList;
+    vector<User> userList;
+    vector<Provider> providerList;
 
 };
 

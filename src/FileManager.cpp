@@ -54,7 +54,7 @@ unordered_map<string, Sensor> FileManager::ParseSensorList()
     if (!file.is_open())
     {
         cout << "Erreur lors de l'ouverture du fichier " << filePath << endl;
-        return unordered_map<string, Sensor>();
+        return {};
     }
 
     unordered_map<string, Sensor> sensors;
