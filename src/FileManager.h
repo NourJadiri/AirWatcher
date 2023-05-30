@@ -44,16 +44,14 @@ public:
     unordered_map<string, Sensor> ParseSensorList();
     vector<Measure> ParseMeasureList();
     unordered_map<string, vector<string>> ParseUserList();
-    vector<AirCleaner> ParseAirCleanerList();
+    unordered_map<string, AirCleaner> ParseAirCleanerList();
     unordered_map<string, vector<string>> ParseProviderList();
 
 //-------------------------------------------- Constructeurs - destructeur
 
     FileManager ( );
 
-
     virtual ~FileManager ( );
-
 
 };
 

@@ -13,43 +13,45 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "AirCleaner.h"
 
+#include <utility>
+
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
 //Getters et Setters
 
-  string & AirCleaner::getAirCleanerID() {
+const string & AirCleaner::getAirCleanerID() const {
       return id;
-  }
+}
 
-  void AirCleaner::setAirCleanerID(string anID){
-      id = anID;
-  }
+void AirCleaner::setAirCleanerID(string anID){
+      id = std::move(anID);
+}
 
-  Coordinates & AirCleaner::getCoord(){
-      return coord;
-  }
+const Coordinates &AirCleaner::getCoord() const {
+    return coord;
+}
 
-  void AirCleaner::setCoord(const Coordinates& coordinates){
-      coord = coordinates;
-  }
+void AirCleaner::setCoord(const Coordinates& coordinates){
+  coord = coordinates;
+}
 
-  time_t & AirCleaner::getDateStart(){
-      return dateStart;
-  }
+const time_t & AirCleaner::getDateStart() const{
+  return dateStart;
+}
 
-  void AirCleaner::setDateStart(const time_t aStart){
-      dateStart = aStart;
-  }
+void AirCleaner::setDateStart(const time_t aStart){
+  dateStart = aStart;
+}
 
-  time_t & AirCleaner::getDateStop(){
-    return dateStop;
-  }
+const time_t & AirCleaner::getDateStop() const{
+return dateStop;
+}
 
-  void AirCleaner::setDateStop(const time_t aStop){
-      dateStop = aStop;
-  }
+void AirCleaner::setDateStop(const time_t aStop){
+  dateStop = aStop;
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -64,6 +66,9 @@ AirCleaner :: AirCleaner ( string idInput, const Coordinates& coordInput, time_t
 
 AirCleaner::~AirCleaner()
 {
-} //----- Fin de ~AirCleaner
+}
+
+
+//----- Fin de ~AirCleaner
 
 

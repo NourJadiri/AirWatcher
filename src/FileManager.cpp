@@ -178,25 +178,27 @@ unordered_map<string, vector<string>> FileManager::ParseUserList()
 
 }
 
-vector<AirCleaner> FileManager::ParseAirCleanerList()
+unordered_map<string, AirCleaner> FileManager::ParseAirCleanerList()
 {
-    vector<AirCleaner> airCleanerList;
+    unordered_map<string, AirCleaner> airCleanersMap{};
     string filePath = "../src/data/cleaners.csv";
     ifstream file(filePath);
+
     if (!file.is_open()) {
         cerr << "Erreur lors de l'ouverture du fichier" << endl;
-        return airCleanerList;
+        return {};
     }
 
     string line;
+
     while (getline(file, line)) {
         stringstream ss(line);
         string cell;
         string id;
         double latitude, longitude;
-        tm dateStart, dateStop;
+        tm dateStart{}, dateStop{};
 
-        if (getline(ss, cell, ';') && getline(ss, cell, ';') && (latitude = stod(cell), true) &&
+        if (getline(ss, id, ';') && getline(ss, cell, ';') && (latitude = stod(cell), true) &&
                 getline(ss, cell, ';') && (longitude = stod(cell), true) &&
                 getline(ss, cell, ';') && (istringstream(cell) >> get_time(&dateStart, "%Y-%m-%d %H:%M:%S"), true) &&
                 getline(ss, cell, ';') && (istringstream(cell) >> get_time(&dateStop, "%Y-%m-%d %H:%M:%S"), true)) {
@@ -205,12 +207,12 @@ vector<AirCleaner> FileManager::ParseAirCleanerList()
             time_t start = mktime(&dateStart);
             time_t stop = mktime(&dateStop);
 
-            airCleanerList.push_back(AirCleaner{ id, coord, start, stop });
+            airCleanersMap[id] = AirCleaner(id, coord, start, stop);
         }
     }
 
     file.close();
-    return airCleanerList;
+    return airCleanersMap;
 }
 
 

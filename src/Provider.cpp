@@ -17,31 +17,43 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-vector<AirCleaner> & Provider::getProvidedAC(){
-    return this->providedAC;
-}
-
-void Provider::setProvidedAC(vector<AirCleaner> provAC){
-    this->providedAC = std::move(provAC);
-}
-
-string & Provider :: getProviderID()
-{
-    return this->providerID;
-}
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Provider::Provider() {}
-Provider::Provider(string providerIDInput) : providerID(std::move(providerIDInput)) {}
-Provider::Provider(string providerIDInput, vector<AirCleaner> airCleaners)
-{
-    providedAC = std::move(airCleaners);
-    providerID = std::move(providerIDInput);
-}//----- Fin de Provider (constructeur)
+Provider::Provider() = default;
 
-Provider::~Provider()
+Provider::Provider(string providerIDInput) : providerID(std::move(providerIDInput)) {}
+
+Provider::Provider( const string & providerID, const vector<AirCleaner> & airCleaners )
 {
-} //------- Fin de ~Provider (destructeur)
+    this->providerID = providerID;
+    providedAC = airCleaners;
+}
+
+void Provider::printAirCleaners() const {
+    for(const auto & aircleaner : providedAC){
+        cout << aircleaner.getAirCleanerID() << endl;
+    }
+}
+
+const string &Provider::getProviderId() const {
+    return providerID;
+}
+
+void Provider::setProviderId(const string &providerId) {
+    providerID = providerId;
+}
+
+const vector<AirCleaner> &Provider::getProvidedAc() const {
+    return providedAC;
+}
+
+void Provider::setProvidedAc(const vector<AirCleaner> &providedAc) {
+    providedAC = providedAc;
+}
+//----- Fin de Provider (constructeur)
+
+Provider::~Provider()= default;
+//------- Fin de ~Provider (destructeur)
 
 

@@ -35,23 +35,23 @@ class AirCleaner
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    string & getAirCleanerID();
+    const string & getAirCleanerID() const;
 
     void setAirCleanerID(string anID);
 
-    Coordinates & getCoord();
-
     void setCoord(const Coordinates& coord);
 
-    time_t & getDateStart();
+    const time_t & getDateStart() const;
 
     void setDateStart(time_t aStart);
 
-    time_t & getDateStop();
+    const time_t & getDateStop() const;
 
     void setDateStop(time_t aStop);
 
 //-------------------------------------------- Constructeurs - destructeur
+
+    AirCleaner() = default;
 
     AirCleaner (string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput);
 
@@ -61,8 +61,12 @@ public:
 private:
     string id;
     Coordinates coord;
-    time_t dateStart;
-    time_t dateStop;
+public:
+    const Coordinates &getCoord() const;
+
+private:
+    time_t dateStart{};
+    time_t dateStop{};
 };
 
 

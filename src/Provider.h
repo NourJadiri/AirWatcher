@@ -17,6 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "AirCleaner.h"
+#include "User.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -30,22 +31,27 @@ using namespace std;
 //
 //------------------------------------------------------------------------
 
-class Provider
+class Provider : public User
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    vector<AirCleaner> & getProvidedAC();
 
-    void setProvidedAC(vector<AirCleaner> provAC);
+    void printAirCleaners() const;
 
-    string & getProviderID();
+    const string &getProviderId() const;
+
+    void setProviderId(const string &providerId);
+
+    const vector<AirCleaner> &getProvidedAc() const;
+
+    void setProvidedAc(const vector<AirCleaner> &providedAc);
 
 //-------------------------------------------- Constructeurs - destructeur
     Provider();
-    Provider(string providerID);
-    Provider (string providerID, vector<AirCleaner> airCleaners);
+    explicit Provider(string providerID);
+    Provider (const string & providerID, const vector<AirCleaner> & airCleaners);
 
     virtual ~Provider ( );
 
@@ -55,6 +61,9 @@ protected:
 
     //----------------------------------------------------- Attributs protégés
     string providerID;
+
+
+protected:
     vector<AirCleaner> providedAC;
 
 };

@@ -67,35 +67,34 @@ public:
 
     void initAirCleanerList();
 
-private:
+    /// Getters and setters
 public:
     const unordered_map<string, Sensor> &getSensorsList() const;
 
-    void setSensorsList(const unordered_map<string, Sensor> &sensorsList);
+    void setSensorsList(const unordered_map<string, Sensor> &list);
 
     const unordered_map<string, PrivIndiv> &getUserList() const;
 
-    void setUserList(const unordered_map<string, PrivIndiv> &userList);
+    void setUserList(const unordered_map<string, PrivIndiv> &list);
 
     const unordered_map<string, Provider> &getProviderList() const;
 
-    void setProviderList(const unordered_map<string, Provider> &providerList);
+    void setProviderList(const unordered_map<string, Provider> &list);
 
     const vector<Measure> &getMeasureList() const;
 
-    void setMeasureList(const vector<Measure> &measureList);
+    void setMeasureList(const vector<Measure> &list);
 
-    const vector<AirCleaner> &getAirCleanerList() const;
+    const FileManager &getFileManager() const;
 
-    void setAirCleanerList(const vector<AirCleaner> &airCleanerList);
+    void setFileManager(const FileManager &manager);
 
 private:
     unordered_map<string,Sensor> sensorsList;
     unordered_map<string, PrivIndiv> userList;
     unordered_map<string,Provider> providerList;
-
+    unordered_map<string, AirCleaner> airCleanerList;
     vector<Measure> measureList;
-    vector<AirCleaner> airCleanerList;
 };
 
 //-------------------------------- Autres définitions dépendantes de <DataSet>
