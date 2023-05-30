@@ -54,6 +54,7 @@ public:
     vector<Measure> getMeasuresAtMoment(vector<Sensor> listSensor, time_t date);
     void analysePIndSensor(string sensorId);
     void analysePIndSensor();
+    int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
 
 
     //------------------------------------------------------------------ PRIVE

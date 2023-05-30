@@ -45,10 +45,75 @@ double AppService::produceStatsMoment(time_t day, Coordinates coord, double radi
     return 0;
 }
 
+
 int AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
 {
+    if (listMeasures.empty())
+    {
+        return 0; // Return 0 if the list of measures is empty
+    }
+    // Define the breakpoints for each pollutant
+    vector<pair<int, int>> OzoneBreakpoints = {{0, 50}, {50, 100}, {100, 130}, {130, 240}, {240, 380}, {380, INT_MAX}};
+    vector<pair<int, int>> SO2Breakpoints = {{0, 100}, {100, 200}, {200, 350}, {350, 500}, {500, 750}, {750, INT_MAX}};
+    vector<pair<int, int>> NO2Breakpoints = {{0, 40}, {40, 90}, {90, 120}, {120, 230}, {230, 340}, {340, INT_MAX}};
+    vector<pair<int, int>> PM10Breakpoints = {{0, 20}, {20, 40}, {40, 50}, {50, 100}, {100, 150}, {150, INT_MAX}};
+    vector<pair<int, int>> PM25Breakpoints = {{0, 10}, {10, 20}, {20, 25}, {25, 50}, {50, 75}, {75, INT_MAX}};
 
-    return 0;
+    int sumATMOIdx = 0;
+    for (Measure& measure : listMeasures)
+    {
+        int ATMOIdx = 0;
+
+        // Get the attribute type and value of the measure
+        string attributeType = measure.getAttributeValue();
+        double attributeValue = measure.getValue();
+
+        // Calculate ATMO index based on the attribute value
+        if (attributeType == "O3")
+        {
+            ATMOIdx = getATMOIdx(attributeValue, OzoneBreakpoints);
+        }
+        else if (attributeType == "SO2")
+        {
+            ATMOIdx = getATMOIdx(attributeValue, SO2Breakpoints);
+        }
+        else if (attributeType == "NO2")
+        {
+            ATMOIdx = getATMOIdx(attributeValue, NO2Breakpoints);
+        }
+        else if (attributeType == "PM10")
+        {
+            ATMOIdx = getATMOIdx(attributeValue, PM10Breakpoints);
+        }
+        else if (attributeType == "PM2.5")
+        {
+            ATMOIdx = getATMOIdx(attributeValue, PM25Breakpoints);
+        }
+        else
+        {
+            ATMOIdx = 6; // Extrêmement mauvais
+        }
+
+        sumATMOIdx += ATMOIdx;
+    }
+
+    int meanATMOIdx = sumATMOIdx / listMeasures.size();
+    return meanATMOIdx;
+}
+
+int AppService::getATMOIdx(double value, const vector<pair<int, int>>& breakpoints)
+{
+    int i=1;
+    for (const auto& range : breakpoints)
+    {
+        if (value >= range.first && value <= range.second)
+        {
+            return i;
+        }
+        i++;
+    }
+
+    return i; // Invalid range
 }
 
 vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
