@@ -1,5 +1,5 @@
 /*************************************************************************
-                           IHM  -  lancement du programme
+                           IHM  -  interface console & lancement programme
                              -------------------
     début                : 09/05/2023
     copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
@@ -17,14 +17,30 @@
 
 ///////////////////////////////////////////////////////////////////  PRIVE
 //------------------------------------------------------ Fonctions privées
-static void test ( );
-// Mode d'emploi :
-// Procédure de test appelée par la fonction Main
-// Permet de mieux tracer les destructeurs à la fin de l'éxécution de
-// l'application
 
 int main ( );
 // Mode d'emploi :
-// Appelle la procédure test
+// Interface utilisateur
+// remonte toutes les données en mémoire
+
+void handleAdminFunctionalities ( );
+
+void handlePrivateIndividualFunctionalities ( );
+
+void handleGovernmentAgencyFunctionalities ( );
+
+void handleProviderFunctionalities ( );
+
+void observeImpact ( );
+
+void produceStatistics ( );
+
+void produceStatsMoment ( );
+
+void produceStatsPeriod ( );
+
+void obsImpactRadius ( );
+
+void obsImpactLvlImprov ( );
 
 #endif // IHM_H
