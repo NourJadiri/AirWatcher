@@ -30,7 +30,7 @@ int main()
     cout << "Hello world" << endl;
     FileManager fileManager;
     unordered_map<string, Sensor> sensorsMap = fileManager.ParseSensorList();
-    map<User, vector<string>> usersMap = fileManager.ParseUserList();
+    map<string, vector<string>> usersMap = fileManager.ParseUserList();
 
     // Parcours de la unordered_map
     for (const auto& pair : sensorsMap)
@@ -44,11 +44,11 @@ int main()
     // Parcours de la map
     for (const auto& pair : usersMap)
     {
-        const User& user = pair.first;
+        const string user = pair.first;
         const vector<string>& sensors = pair.second;
 
         // Affichage de l'utilisateur
-        cout << "User: " << user.getId() << endl;
+        cout << "User: " << user << endl;
 
         // Affichage des capteurs associés à l'utilisateur
         for (const string& sensor : sensors)
@@ -63,7 +63,7 @@ int main()
 
     //parcours du vector measureList
 
-    for(Measure measure : measureList)
+    /*for(Measure measure : measureList)
     {
         // Accéder aux attributs de la mesure et effectuer des opérations
         string sensorId = measure.getSensorId();
@@ -78,6 +78,7 @@ int main()
         cout << "Value: " << value << endl;
 
     }
+     */
     vector<AirCleaner> cleanerList = fileManager.ParseAirCleanerList();
 
     // Utilisez le vecteur cleanerList selon vos besoins

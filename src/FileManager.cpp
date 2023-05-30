@@ -132,7 +132,7 @@ vector<Measure> FileManager::ParseMeasureList()
 }
 
 
-map<User, vector<string>> FileManager::ParseUserList()
+map<string, vector<string>> FileManager::ParseUserList()
 {
     string filePath = "../src/data/users.csv";
     ifstream file(filePath);
@@ -140,9 +140,9 @@ map<User, vector<string>> FileManager::ParseUserList()
     if (!file.is_open())
     {
         cout << "Erreur lors de l'ouverture du fichier " << filePath << endl;
-        return map<User, vector<string>>();
+        return map<string, vector<string>>();
     }
-    map<User, vector<string>> userList;
+    map<string, vector<string>> userList;
 
     string line;
 
@@ -168,8 +168,7 @@ map<User, vector<string>> FileManager::ParseUserList()
 
         if (!userId.empty())
         {
-            User tempUser(userId); // Crée un objet User temporaire
-            userList[tempUser].push_back(sensor); // Ajoute l'objet temporaire à la map
+            userList[userId].push_back(sensor); // Ajoute l'objet temporaire à la map
         }
     }
 
