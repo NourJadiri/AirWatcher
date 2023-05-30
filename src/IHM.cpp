@@ -11,6 +11,8 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <utility>
+#include <regex>
+#include <limits>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -39,13 +41,12 @@ void handleAdminFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -68,13 +69,12 @@ void handlePrivateIndividualFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -97,18 +97,16 @@ void handleGovernmentAgencyFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
-                choiceOk = 1;
                 observeImpact();
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -131,18 +129,16 @@ void handleProviderFunctionalities()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 produceStatistics();
                 break;
 
             case 2:
-                choiceOk = 1;
                 observeImpact();
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to main menu..." << endl;
                 break;
 
             default:
@@ -154,8 +150,7 @@ void handleProviderFunctionalities()
 
 int main()
 {
-
-
+    testComputeMeanATMOIdx();
     // get le type d'utilisateur
     int userType;
     int typeOk = 0;
@@ -166,22 +161,18 @@ int main()
         switch (userType)
         {
             case 1:
-                typeOk = 1;
                 handleGovernmentAgencyFunctionalities();
                 break;
 
             case 2:
-                typeOk = 1;
                 handlePrivateIndividualFunctionalities();
                 break;
 
             case 3:
-                typeOk = 1;
                 handleProviderFunctionalities();
                 break;
 
             case 4:
-                typeOk = 1;
                 handleAdminFunctionalities();
                 break;
 
@@ -195,8 +186,7 @@ int main()
                 break;
         }
     }
-
-
+    testComputeMeanATMOIdx();
 
 
     /*
@@ -287,20 +277,18 @@ void produceStatistics()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 cout << "You chose to compute the mean of air quality at a given moment." << endl;
                 produceStatsMoment();
                 break;
 
             case 2:
-                choiceOk = 1;
                 cout << "You chose to compute the mean of air quality at a specified period of time." << endl;
                 cout << "Not implemented yet" << endl;
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to user menu..." << endl;
                 break;
 
             default:
@@ -390,7 +378,7 @@ void produceStatsMoment()
     // choix du rayon
     double radius;
     while (true) {
-        cout << "Enter the radius in km (it must be between 0 and 2000): ";
+        cout << "Enter the radius in km (it must be between 0 and 20 000): ";
         if (!(cin >> radius)) {
             cout << "Please enter numbers only." << endl;
             cin.clear();
@@ -407,12 +395,11 @@ void produceStatsMoment()
         break;
     }
 
-    // Call the produceStatsMoment() method with the user-provided values
     AppService* appServ = new AppService(*dataSet);
     double stats = 3.2;
     //double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
 
-    // Display the calculated statistics
+    // affichage
     cout << "Mean of ATMO indexes computed with the sensors at:" << endl;
     cout << "Coordinates = (" << longitude << ", " << latitude << ")" << endl;
     cout << "R = " << radius << endl;
@@ -434,20 +421,18 @@ void observeImpact()
         switch (choice)
         {
             case 1:
-                choiceOk = 1;
                 cout << "You chose observe the impact of an Air Cleaner by getting the radius of the zone it cleaned." << endl;
                 cout << "Not implemented yet" << endl;
                 break;
 
             case 2:
-                choiceOk = 1;
                 cout << "You chose observe the impact of an Air Cleaner by getting the level of improvement of air quality around it." << endl;
                 obsImpactLvlImprov();
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Exiting..." << endl;
+                cout << "Going back to user menu..." << endl;
                 break;
 
             default:
@@ -461,13 +446,26 @@ void obsImpactLvlImprov ()
 {
     // choix du Air Cleaner
     string idAC;
-    cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
-    cin >> idAC;
+    while (true) {
+        cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
+        cin >> idAC;
+
+        // Regular expression pattern pour vérifier qu'on a bien 'Cleaner' followed by one or more digits
+        regex pattern("^Cleaner\\d+$");
+
+        if (!regex_match(idAC, pattern)) {
+            cout << "Invalid ID. Please enter an ID in the format 'CleanerX', where X is the number of the AirCleaner." << endl;
+            continue;
+        }
+
+        // valid input, on sort de la loop
+        break;
+    }
 
     // choix du rayon
     double radius;
     while (true) {
-        cout << "Enter the radius in km (it must be between 0 and 2000): ";
+        cout << "Enter the radius in km (it must be between 0 and 20 000): ";
         if (!(cin >> radius)) {
             cout << "Please enter numbers only." << endl;
             cin.clear();
@@ -488,7 +486,7 @@ void obsImpactLvlImprov ()
     vector<double> stats;
     //vector<double> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
-    // Display the calculated statistics
+    // affichage
     cout << "Impact Level (ATMO index difference) of the AirCleaner:" << endl;
     cout << "AirCleaner = " << idAC << endl;
     cout << "R = " << radius << endl;
@@ -549,9 +547,34 @@ bool isValidDateFormat(const string& date)
 void testComputeMeanATMOIdx()
 {
     vector<Measure> measures;
-    //Measure measure1("Sensor0", mktime("2019-01-01 12:00:00"), "O3", 50.25);
-    //Measure measure2("Sensor0", "2019-01-01 12:00:00"), "NO2", 74.5);
-    //Measure measure3("Sensor0", getTimeStamp("2019-01-01 12:00:00"), "SO2", 41.5);
+
+    tm timeStruct = {};
+    string dateTimeString = "2019-01-01 12:00:00";
+
+    // Extraction des composantes de la date/heure
+    sscanf(dateTimeString.c_str(), "%d-%d-%d %d:%d:%d",
+           &timeStruct.tm_year, &timeStruct.tm_mon, &timeStruct.tm_mday,
+           &timeStruct.tm_hour, &timeStruct.tm_min, &timeStruct.tm_sec);
+
+    // Ajustement des valeurs de la structure tm
+    timeStruct.tm_year -= 1900; // Année depuis 1900
+    timeStruct.tm_mon -= 1;     // Mois de 0 à 11
+
+    // Conversion en time_t
+    time_t time = mktime(&timeStruct);
+
+    cout << "Converted time_t value: " << time << endl;
+
+    Measure measure1("Sensor0", time, "O3", 50.25);
+    Measure measure2("Sensor0", time, "NO2", 74.5);
+    Measure measure3("Sensor0", time, "SO2", 41.5);
+    Measure measure4("Sensor0", time, "PM10",44.75);
+
+    measures.push_back(measure1);
+    measures.push_back(measure2);
+    measures.push_back(measure3);
+    measures.push_back(measure4);
+
     AppService *app = new AppService(*dataSet);
     int atmo = app->computeMeanATMOIdx(measures);
     cout << "La moyenne ATMO vaut : " << atmo << endl;
