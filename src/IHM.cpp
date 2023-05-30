@@ -30,7 +30,7 @@ int main()
     cout << "Hello world" << endl;
     FileManager fileManager;
     unordered_map<string, Sensor> sensorsMap = fileManager.ParseSensorList();
-    map<string, vector<string>> usersMap = fileManager.ParseUserList();
+    unordered_map<string, vector<string>> usersMap = fileManager.ParseUserList();
 
     // Parcours de la unordered_map
     for (const auto& pair : sensorsMap)
