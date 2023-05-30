@@ -235,7 +235,7 @@ int main()
         // Accéder aux attributs de la mesure et effectuer des opérations
         string sensorId = measure.getSensorId();
         time_t dateMeas = measure.getDateMeas();
-        string attributeType = measure.getAttributeType();
+        string attributeType = measure.getAttributeValue();
         double value = measure.getValue();
 
         // Afficher les valeurs de chaque mesure

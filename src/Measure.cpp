@@ -31,7 +31,7 @@ using namespace std;
       this->dateMeas = aDate;
   }
 
-  string & Measure::getAttributeType(){
+  string & Measure::getAttributeValue(){
       return this->attributeType;
   }
 

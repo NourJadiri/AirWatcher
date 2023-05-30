@@ -40,7 +40,7 @@ public:
 
     void setDateMeas(time_t aDate);
 
-    string & getAttributeType();
+    string & getAttributeValue();
 
     void setAttributeType(string aType);
 

@@ -37,22 +37,24 @@ AppService::AppService(DataSet& dataInput)
 
 
     //----------------------------------------------------- Méthodes publiques
-void AppService::produceStatsPeriod(Date day1, Date day2, Coordinates coord, double radius){}
+void AppService::produceStatsPeriod(time_t day1, time_t day2, Coordinates coord, double radius){}
 
-void AppService::produceStatsMoment(time_t day, Coordinates coord, double radius)
+double AppService::produceStatsMoment(time_t day, Coordinates coord, double radius)
 {
-    vector<Sensor> sensors = data.getSensorsAround(coord, radius);
+    //vector<Sensor> sensors = data.getSensorsAround(coord, radius);
+    return 0;
 }
 
 int AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
 {
-    // TODO: Implémenter la méthode computeMeanATMOIdx
+
     return 0;
 }
 
 vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
 {
-    vector<Sensor> sensors = data.getSensorsList();
+    vector<Sensor> sensors;
+    //sensors = data.getSensorsList();
     vector<Sensor> sensorsAround;
 
     for (const Sensor& sensor : sensors)
@@ -69,15 +71,27 @@ vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
 
 vector<Measure> AppService::getMeasuresAtMoment(vector<Sensor> listSensor, time_t date)
 {
-    vector<Measure> measures = data.getMeasureList();
+    vector<Measure> measures;
+    //measures = data->getMeasureList();
     vector<Measure> measuresAtMom;
-    for (const Measure& measure : measures)
+
+    for (Measure& measure : measures)
     {
-        if(measure->getDateMeas() == date)
-            measuresAtMom.push_back(measure);
+        string sensorId = measure.getSensorId();
+        // Vérifier si le sensorId de la mesure appartient à la liste de Sensor
+        for (const Sensor& sensor : listSensor)
+        {
+            if (sensor.getId() == sensorId && measure.getDateMeas() == date)
+            {
+                measuresAtMom.push_back(measure);
+                break;
+            }
+        }
     }
-    return measures;
+
+    return measuresAtMom;
 }
+
 
 void AppService::analysePIndSensor(string sensorId)
 {

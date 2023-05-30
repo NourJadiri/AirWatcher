@@ -15,8 +15,9 @@
 
 #include <vector>
 #include <string>
+#include <utility>
+
 #include "DataSet.h"
-#include "Date.h"
 #include "Coordinates.h"
 #include "Measure.h"
 #include "Sensor.h"
@@ -46,18 +47,18 @@ public:
     virtual ~AppService( );
     //----------------------------------------------------- Méthodes publiques
 
-    void produceStatsPeriod(Date day1, Date day2, Coordinates coord, double radius);
-    void produceStatsMoment(Date day, Coordinates coord, double radius);
+    void produceStatsPeriod(time_t day1, time_t day2, Coordinates coord, double radius);
+    double produceStatsMoment(time_t day, Coordinates coord, double radius);
     int computeMeanATMOIdx(std::vector<Measure> listMeasures);
     vector<Sensor> getSensorsAround(Coordinates coord, double radius);
-    vector<Measure> getMeasuresAtMoment(vector<Sensor> listSensor, Date date);
+    vector<Measure> getMeasuresAtMoment(vector<Sensor> listSensor, time_t date);
     void analysePIndSensor(string sensorId);
     void analysePIndSensor();
 
 
     //------------------------------------------------------------------ PRIVE
 private:
-    DataSet& data;
+    DataSet * data;
 };
 
 #endif // APPSERVICE_H
