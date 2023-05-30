@@ -43,4 +43,8 @@ void obsImpactRadius ( );
 
 void obsImpactLvlImprov ( );
 
+bool isDateAfterToday( const string& date );
+
+bool isValidDateFormat( const string& date );
+
 #endif // IHM_H

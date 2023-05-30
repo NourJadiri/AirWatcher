@@ -304,7 +304,7 @@ void produceStatistics()
                 break;
 
             default:
-                std::cout << "Invalid choice. Choose a number between 1 and 3 :)" << std::endl;
+                std::cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -313,31 +313,111 @@ void produceStatistics()
 void produceStatsMoment()
 {
     time_t day;
-    double longitude, latitude;
-    double radius;
+    string dayStr;
+
+    // conversion de time_t vers un string au format YYYY-MM-DD
+    std::tm* date = std::localtime(&day);
+    char buffer[11];
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d", date);
+    dayStr = buffer;
 
     // choix du moment
-    cout << "Enter the day (YYYY-MM-DD): ";
-    cin >> day;
+    while (true) {
+        cout << "Enter the day (YYYY-MM-DD): ";
+        cin >> dayStr;
+
+        if (!isValidDateFormat(dayStr))
+        {
+            cout << "Error: The date format YYYY-MM-DD must be respected" << endl;
+            continue;
+        }
+
+        if (isDateAfterToday(dayStr))
+        {
+            cout << "Error: Please enter a valid day." << std::endl;
+            continue;
+        }
+
+        tm validatedDate = {};
+        validatedDate.tm_year = stoi(dayStr.substr(0, 4)) - 1900;
+        validatedDate.tm_mon = stoi(dayStr.substr(5, 2)) - 1;
+        validatedDate.tm_mday = stoi(dayStr.substr(8, 2));
+        day = mktime(&validatedDate);
+
+        // valid input, on sort de la loop
+        break;
+    }
 
     // choix des coordonnées
-    cout << "Enter the longitude (it must be between -180 and 180): ";
-    cin >> longitude;
-    cout << "Enter the latitude (it must be between -90 and 90): ";
-    cin >> latitude;
+    double longitude;
+    while (true) {
+        cout << "Enter the longitude (it must be between -180 and 180): ";
+        if (!(cin >> longitude)) {
+            cout << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (longitude < -180 || longitude > 180) {
+            cout << "Longitude is outside the valid range. \nLongitude: -180 to +180" << endl;
+            continue;
+        }
+
+        // valid input, on sort de la loop
+        break;
+    }
+
+    double latitude;
+    while (true) {
+        cout << "Enter the latitude (it must be between -90 and 90): ";
+        if (!(cin >> latitude)) {
+            cout << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (latitude < -90 || latitude > 90) {
+            cout << "Latitude is outside the valid range. \nLatitude: -90 to +90" << endl;
+            continue;
+        }
+
+        // valid input, on sort de la loop
+        break;
+    }
 
     // choix du rayon
-    cout << "Enter the radius in km (it must be between 0 and 2000): ";
-    cin >> radius;
+    double radius;
+    while (true) {
+        cout << "Enter the radius in km (it must be between 0 and 2000): ";
+        if (!(cin >> radius)) {
+            cout << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (radius < 0 || radius > 20000) {
+            cout << "Radius is outside the valid range. \nRadius: 0 to 20 000" << endl;
+            continue;
+        }
+
+        // valid input, on sort de la loop
+        break;
+    }
 
     // Call the produceStatsMoment() method with the user-provided values
     AppService* appServ = new AppService(*dataSet);
     double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
 
     // Display the calculated statistics
-    cout << "Statistics for the specified moment: " << stats << std::endl;
+    cout << "Statistics for the specified moment: " << endl;
+    cout << "Mean of ATMO indexes computed with the sensors at:\n"
+         << "Coordinates = (" << longitude << ", " << latitude << ")\n"
+         << "R = " << radius << "\n"
+         << "->  " << stats << endl;
 
-    //produceStatsMoment(Date day, Coordinates coord, double radius) : double
 }
 
 
@@ -375,4 +455,52 @@ void observeImpact()
                 break;
         }
     }
+}
+
+
+
+
+// fonction pour vérifier si la date est après aujourd'hui
+bool isDateAfterToday(const string& date)
+{
+    time_t currentTime = time(nullptr);
+    tm* now = localtime(&currentTime);
+
+    int currentYear = now->tm_year + 1900;
+    int currentMonth = now->tm_mon + 1;
+    int currentDay = now->tm_mday;
+
+    int year = stoi(date.substr(0, 4));
+    int month = stoi(date.substr(5, 2));
+    int day = stoi(date.substr(8, 2));
+
+    if (year > currentYear)
+        return true;
+    else if (year == currentYear && month > currentMonth)
+        return true;
+    else if (year == currentYear && month == currentMonth && day > currentDay)
+        return true;
+
+    return false;
+}
+
+// fonction pour vérifier que le format de la date est conforme
+bool isValidDateFormat(const string& date)
+{
+    if (date.length() != 10)
+        return false;
+
+    if (date[4] != '-' || date[7] != '-')
+        return false;
+
+    // Check if the year, month, and day components are valid integers
+    try {
+        int year = stoi(date.substr(0, 4));
+        int month = stoi(date.substr(5, 2));
+        int day = stoi(date.substr(8, 2));
+    } catch (const exception& e) {
+        return false;
+    }
+
+    return true;
 }
