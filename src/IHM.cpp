@@ -91,18 +91,22 @@ int main()
         cout << endl;
     }
 
-    vector<Provider> providers = fileManager.ParseProviderList();
+    unordered_map<string, vector<string>> providers = fileManager.ParseProviderList();
 
-    // Affichage des fournisseurs
-    for (Provider provider : providers) {
-        cout << "Provider ID: " << provider.getProviderID() << endl;
-        cout << "Cleaners: " << endl;
-        const vector<AirCleaner>& cleaners = provider.getProvidedAC();
-        for (AirCleaner cleaner : cleaners) {
-            cout << "  - Cleaner ID: " << cleaner.getAirCleanerID() << endl;
+// Affichage des fournisseurs
+    for (const auto& pair : providers) {
+        const string& providerId = pair.first;
+        const vector<string>& cleanerIds = pair.second;
+
+        cout << "Provider ID: " << providerId << endl;
+        cout << "Cleaner IDs: " << endl;
+        for (const string& cleanerId : cleanerIds) {
+            cout << "  - Cleaner ID: " << cleanerId << endl;
         }
         cout << endl;
     }
+
+
 
     return 0;
 }

@@ -214,9 +214,9 @@ vector<AirCleaner> FileManager::ParseAirCleanerList()
 }
 
 
-vector<Provider> FileManager::ParseProviderList()
+unordered_map<string, vector<string>> FileManager::ParseProviderList()
 {
-    vector<Provider> providers;
+    unordered_map<string, vector<string>> providers;
     string filePath = "../src/data/providers.csv";
     ifstream file(filePath);
     if (!file.is_open()) {
@@ -225,47 +225,29 @@ vector<Provider> FileManager::ParseProviderList()
     }
 
     string line;
-    map<string, Provider> providerMap; // Utilisation d'une map pour stocker les providers uniques
-
     while (getline(file, line)) {
         stringstream ss(line);
-        string cell;
+        string providerId, cleanerId;
 
-        string providerId;
-        string cleanerId;
-
-        if (getline(ss, cell, ';')) {
-            providerId = cell;
+        if (getline(ss, providerId, ';') && getline(ss, cleanerId, ';')) {
+            // Vérifier si le providerID existe déjà dans l'unordered_map
+            auto it = providers.find(providerId);
+            if (it != providers.end()) {
+                // Le provider existe déjà, ajouter le cleaner à son vecteur de cleanerIds
+                it->second.push_back(cleanerId);
+            } else {
+                // Le provider n'existe pas encore, créer un nouveau vecteur avec le cleanerId
+                vector<string> cleanerIds{ cleanerId };
+                providers[providerId] = cleanerIds;
+            }
         }
-
-        if (getline(ss, cell, ';')) {
-            cleanerId = cell;
-        }
-
-        // Vérifier si le providerID existe déjà dans la map
-        auto it = providerMap.find(providerId);
-        if (it != providerMap.end()) {
-            // Le provider existe déjà, ajouter le cleaner à son vecteur d'AirCleaners
-            it->second.getProvidedAC().push_back(AirCleaner(cleanerId, Coordinates(), time(nullptr), time(nullptr)));
-        }
-        else {
-            // Le provider n'existe pas encore, créer un nouveau Provider avec le cleaner
-            AirCleaner airCleaner(cleanerId, Coordinates(), time(nullptr), time(nullptr));
-            vector<AirCleaner> airCleaners{ airCleaner };
-            Provider provider(providerId, airCleaners);
-            providerMap.insert({ providerId, provider });
-        }
-    }
-
-    // Transférer les providers uniques de la map vers le vecteur final
-    for (const auto& pair : providerMap) {
-        providers.push_back(pair.second);
     }
 
     file.close();
 
     return providers;
 }
+
 
 
 //------- Fin de FileManager() (destructeur)

@@ -45,7 +45,7 @@ public:
     vector<Measure> ParseMeasureList();
     map<string, vector<string>> ParseUserList();
     vector<AirCleaner> ParseAirCleanerList();
-    vector<Provider> ParseProviderList();
+    unordered_map<string, vector<string>> ParseProviderList();
 
 //-------------------------------------------- Constructeurs - destructeur
 
