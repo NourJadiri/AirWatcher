@@ -412,12 +412,10 @@ void produceStatsMoment()
     double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
 
     // Display the calculated statistics
-    cout << "Statistics for the specified moment: " << endl;
-    cout << "Mean of ATMO indexes computed with the sensors at:\n"
-         << "Coordinates = (" << longitude << ", " << latitude << ")\n"
-         << "R = " << radius << "\n"
-         << "->  " << stats << endl;
-
+    cout << "Mean of ATMO indexes computed with the sensors at:" << endl;
+    cout << "Coordinates = (" << longitude << ", " << latitude << ")" << endl;
+    cout << "R = " << radius << endl;
+    cout << "-> = " << stats << endl;
 }
 
 
@@ -460,11 +458,44 @@ void observeImpact()
 
 void obsImpactLvlImprov ()
 {
+    // choix du Air Cleaner
     string idAC;
     cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
     cin >> idAC;
+
+    // choix du rayon
+    double radius;
+    while (true) {
+        cout << "Enter the radius in km (it must be between 0 and 2000): ";
+        if (!(cin >> radius)) {
+            cout << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (radius < 0 || radius > 20000) {
+            cout << "Radius is outside the valid range. \nRadius: 0 to 20 000" << endl;
+            continue;
+        }
+
+        // valid input, on sort de la loop
+        break;
+    }
+
     AppService* appServ = new AppService(*dataSet);
-    vector<double> stats = appServ->obsImpactLvlImprov(idAC, radius);
+    vector<double> stats;
+    //vector<double> stats = appServ->obsImpactLvlImprov(idAC, radius);
+
+    // Display the calculated statistics
+    cout << "Impact Level (ATMO index difference) of the AirCleaner:" << endl;
+    cout << "AirCleaner = " << idAC << endl;
+    cout << "R = " << radius << endl;
+    cout << "-> ATMO index before action of AirCleaner = " << stats[0] << endl;
+    cout << "-> ATMO index after action of AirCleaner = " << stats[1] << endl;
+
+    double improvement = stats[1] - stats[0];
+    cout << "-> ATMO level of improvement = " << (improvement > 0 ? "+" : "") << improvement << endl;
 }
 
 
