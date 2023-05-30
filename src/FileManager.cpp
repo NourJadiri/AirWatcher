@@ -132,7 +132,7 @@ vector<Measure> FileManager::ParseMeasureList()
 }
 
 
-map<string, vector<string>> FileManager::ParseUserList()
+unordered_map<string, vector<string>> FileManager::ParseUserList()
 {
     string filePath = "../src/data/users.csv";
     ifstream file(filePath);
@@ -140,9 +140,9 @@ map<string, vector<string>> FileManager::ParseUserList()
     if (!file.is_open())
     {
         cout << "Erreur lors de l'ouverture du fichier " << filePath << endl;
-        return map<string, vector<string>>();
+        return unordered_map<string, vector<string>>();
     }
-    map<string, vector<string>> userList;
+    unordered_map<string, vector<string>> userList;
 
     string line;
 

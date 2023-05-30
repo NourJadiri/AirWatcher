@@ -43,7 +43,7 @@ public:
 
     unordered_map<string, Sensor> ParseSensorList();
     vector<Measure> ParseMeasureList();
-    map<string, vector<string>> ParseUserList();
+    unordered_map<string, vector<string>> ParseUserList();
     vector<AirCleaner> ParseAirCleanerList();
     unordered_map<string, vector<string>> ParseProviderList();
 
