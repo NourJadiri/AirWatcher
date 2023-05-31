@@ -197,7 +197,7 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
     double meanATMObefore = computeMeanATMOIdx(measBefore);
     double meanATMOafter = computeMeanATMOIdx(measAfter);
 
-    double diffATMO = abs(meanATMOafter - meanATMObefore);
+    double diffATMO = meanATMOafter - meanATMObefore;
 
     vector<double> results;
     // Add relevant values to the results vector

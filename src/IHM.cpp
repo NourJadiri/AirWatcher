@@ -402,13 +402,13 @@ void produceStatsMoment()
     //double stats = 3.2;
     double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
     if(stats == - 1) cout << "No matching sensors for the given area." << endl;
-    else if(stats == -2) cout << "No measurements related to this date." << endl;
+    else if(stats == -2) cout << "No realiable measurements related to this date." << endl;
     else {
         // affichage
-        cout << "Mean of ATMO indexes computed with the sensors at:" << endl;
-        cout << "Coordinates = (" << longitude << ", " << latitude << ")" << endl;
-        cout << "R = " << radius << endl;
-        cout << "-> = " << stats << endl;
+        cout << "Mean of ATMO indexes computed with the sensors around:" << endl;
+        cout << "\tCenter = (" << longitude << ", " << latitude << ")" << endl;
+        cout << "\tRadius = " << radius << " km" << endl;
+        cout << "\t-> Mean ATMO index = " << stats << endl;
     }
 }
 
@@ -427,12 +427,12 @@ void observeImpact()
         switch (choice)
         {
             case 1:
-                cout << "You chose observe the impact of an Air Cleaner by getting the radius of the zone it cleaned." << endl;
+                cout << "You chose to observe the impact of an Air Cleaner by getting the radius of the zone it cleaned." << endl;
                 cout << "Not implemented yet" << endl;
                 break;
 
             case 2:
-                cout << "You chose observe the impact of an Air Cleaner by getting the level of improvement of air quality around it." << endl;
+                cout << "You chose to observe the impact of an Air Cleaner by getting the level of improvement of air quality around it." << endl;
                 obsImpactLvlImprov();
                 break;
 
@@ -491,20 +491,16 @@ void obsImpactLvlImprov ()
     AppService* appServ = new AppService(*dataSet);
     pair<int,vector<double>> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
-    if(stats.first ==-1) cout << "No matching AirCleaner founded."<<endl;
-    else
-     {
-    // affichage
-    cout << "Impact Level (ATMO index difference) of the AirCleaner:" << endl;
-    cout << "AirCleaner = " << idAC << endl;
-    cout << "R = " << radius << endl;
-    cout << "-> ATMO index before action of AirCleaner = " << stats.second[0] << endl;
-    cout << "-> ATMO index after action of AirCleaner = " << stats.second[1] << endl;
-
-    cout << "-> ATMO level of improvement = " << stats.second[3] << endl;
-    }
+    if (stats.first ==-1)
+        cout << "No matching AirCleaner founded." << endl;
+    else {
+        double improvement = stats.second[2];
+        // affichage
+        cout << "Impact Level (ATMO index difference) of the AirCleaner " << idAC << " on a " << radius << " km radius:" << endl;
+        cout << "-> ATMO index before action of AirCleaner = " << stats.second[0] << endl;
+        cout << "-> ATMO index after action of AirCleaner = " << stats.second[1] << endl;
+        cout << "-> ATMO level of improvement: " << (improvement > 0 ? "+" : "") << improvement << endl;    }
 }
-
 
 
 // fonction pour vérifier si la date est après aujourd'hui
