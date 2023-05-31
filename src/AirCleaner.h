@@ -37,6 +37,8 @@ public:
 
     const string & getAirCleanerID() const;
 
+    const Coordinates & getAirCleanerCoord() const;
+
     void setAirCleanerID(string anID);
 
     void setCoord(const Coordinates& coord);

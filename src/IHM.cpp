@@ -489,18 +489,20 @@ void obsImpactLvlImprov ()
     }
 
     AppService* appServ = new AppService(*dataSet);
-    vector<double> stats;
-    //vector<double> stats = appServ->obsImpactLvlImprov(idAC, radius);
+    pair<int,vector<double>> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
+    if(stats.first ==-1) cout << "No matching AirCleaner founded."<<endl;
+    else
+     {
     // affichage
     cout << "Impact Level (ATMO index difference) of the AirCleaner:" << endl;
     cout << "AirCleaner = " << idAC << endl;
     cout << "R = " << radius << endl;
-    cout << "-> ATMO index before action of AirCleaner = " << stats[0] << endl;
-    cout << "-> ATMO index after action of AirCleaner = " << stats[1] << endl;
+    cout << "-> ATMO index before action of AirCleaner = " << stats.second[0] << endl;
+    cout << "-> ATMO index after action of AirCleaner = " << stats.second[1] << endl;
 
-    double improvement = stats[1] - stats[0];
-    cout << "-> ATMO level of improvement = " << (improvement > 0 ? "+" : "") << improvement << endl;
+    cout << "-> ATMO level of improvement = " << stats.second[3] << endl;
+    }
 }
 
 

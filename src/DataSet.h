@@ -71,6 +71,8 @@ public:
 public:
     const unordered_map<string, Sensor> &getSensorsList() const;
 
+    const unordered_map<string, AirCleaner> &getAirCleanerList() const;
+
     void setSensorsList(const unordered_map<string, Sensor> &list);
 
     const unordered_map<string, PrivIndiv> &getUserList() const;

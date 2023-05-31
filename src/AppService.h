@@ -55,6 +55,7 @@ public:
     void analysePIndSensor(string sensorId);
     void analysePIndSensor();
     int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
+    pair<int, vector<double>> obsImpactLvlImprov(const std::string& id, double radius);
 
 
     //------------------------------------------------------------------ PRIVE

@@ -171,6 +171,45 @@ void AppService::analysePIndSensor()
     // TODO: Implémenter la méthode analysePIndSensor (sans paramètre)
 }
 
+
+pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanId, double radius)
+{
+    unordered_map<string, AirCleaner> airCleanerIds = data->getAirCleanerList();
+    AirCleaner airCl;
+    bool found = false;
+
+    for (const auto& airCleanerId : airCleanerIds) {
+        if (airCleanerId.first == AirCleanId) {
+            airCl = airCleanerId.second;
+            found = true;
+            break; // Exit the loop since the match is found
+        }
+    }
+
+    if (!found) {
+        // No air cleaner found with the given AirCleanId
+        return make_pair(-1, vector<double>()); // Return error code -1 and empty vector
+    }
+    vector<Sensor> listSensors = getSensorsAround(airCl.getCoord(), radius);
+    vector<Measure> measBefore = getMeasuresAtMoment(listSensors, airCl.getDateStart());
+    vector<Measure> measAfter = getMeasuresAtMoment(listSensors, airCl.getDateStop());
+
+    double meanATMObefore = computeMeanATMOIdx(measBefore);
+    double meanATMOafter = computeMeanATMOIdx(measAfter);
+
+    double diffATMO = abs(meanATMOafter - meanATMObefore);
+
+    vector<double> results;
+    // Add relevant values to the results vector
+    results.push_back(meanATMObefore);
+    results.push_back(meanATMOafter);
+    results.push_back(diffATMO);
+
+    return make_pair(0, results); // Return success code 0 and the results vector
+}
+
+
+
 AppService::~AppService() {
 
 }
