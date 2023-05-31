@@ -141,9 +141,6 @@ vector<Measure> AppService::getMeasuresAtMoment(vector<Sensor> listSensor, time_
     vector<Measure> measures;
     measures = data->getMeasureList();
 
-    //ligne pour débeugguer
-    if(measures.empty()) cout<<"je nai aucune mesures"<<endl;
-
     vector<Measure> measuresAtMom;
 
     for (Measure& measure : measures)

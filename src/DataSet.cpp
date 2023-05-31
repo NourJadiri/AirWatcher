@@ -79,11 +79,6 @@ void DataSet::initProviderList() {
     }
 }
 
-
-
-
-
-
 const unordered_map<string, Sensor> &DataSet::getSensorsList() const {
     return sensorsList;
 }
