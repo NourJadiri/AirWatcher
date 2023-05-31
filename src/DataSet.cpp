@@ -30,6 +30,10 @@ void DataSet::initSensorList() {
     sensorsList = std::move(fileManager.ParseSensorList());
 }
 
+void DataSet::initMeasureList() {
+    measureList = std::move(fileManager.ParseMeasureList());
+}
+
 void DataSet::initAirCleanerList() {
     airCleanerList = std::move(fileManager.ParseAirCleanerList());
 }

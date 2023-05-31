@@ -42,10 +42,10 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
     unordered_map<string, Sensor> ParseSensorList();
-    vector<Measure> ParseMeasureList();
     unordered_map<string, vector<string>> ParseUserList();
     unordered_map<string, AirCleaner> ParseAirCleanerList();
     unordered_map<string, vector<string>> ParseProviderList();
+    vector<Measure> ParseMeasureList();
 
 //-------------------------------------------- Constructeurs - destructeur
 
