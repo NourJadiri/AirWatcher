@@ -152,6 +152,7 @@ int main()
 {
     testComputeMeanATMOIdx();
     testGetSensorsAround();
+    testMeasureAtMoment();
     // get le type d'utilisateur
     int userType;
     int typeOk = 0;
@@ -397,8 +398,9 @@ void produceStatsMoment()
     }
 
     AppService* appServ = new AppService(*dataSet);
-    double stats = 3.2;
-    //double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
+
+    //double stats = 3.2;
+    double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
     if(stats == - 1) cout << "No matching sensors for the given area." << endl;
     else if(stats == -2) cout << "No measurements related to this date." << endl;
     else {
@@ -589,19 +591,11 @@ void testComputeMeanATMOIdx()
 
 void testGetSensorsAround()
 {
-    // Create a sample list of sensors
-    vector<Sensor> sensors;
-    sensors.push_back(Sensor((string)"Sensor1", Coordinates(10, 20)));
-    sensors.push_back(Sensor((string)"Sensor2", Coordinates(15, 25)));
-    sensors.push_back(Sensor((string)"Sensor3", Coordinates(30, 40)));
-    sensors.push_back(Sensor((string)"Sensor4", Coordinates(35, 45)));
-
-    // Create an instance of AppService
     AppService appService;
 
     // Call the getSensorsAround method
     Coordinates center(30, 40);
-    double radius = 10.0;
+    double radius = 30.0;
     vector<Sensor> sensorsAround = appService.getSensorsAround(center, radius);
     if(sensorsAround.empty()) cout << "No sensors around for the specified area."<<endl;
     else
@@ -614,4 +608,46 @@ void testGetSensorsAround()
             cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
         }
     }
+}
+
+void testMeasureAtMoment()
+{
+    AppService appService;
+
+    vector<Sensor> sensors;
+    sensors.push_back(Sensor((string)"Sensor0", Coordinates(10, 20)));
+    sensors.push_back(Sensor((string)"Sensor2", Coordinates(15, 25)));
+    sensors.push_back(Sensor((string)"Sensor3", Coordinates(30, 40)));
+    sensors.push_back(Sensor((string)"Sensor4", Coordinates(35, 45)));
+
+    tm timeStruct = {};
+    string dateTimeString = "2019-01-01 12:00:00";
+
+    // Extraction des composantes de la date/heure
+    sscanf(dateTimeString.c_str(), "%d-%d-%d %d:%d:%d",
+           &timeStruct.tm_year, &timeStruct.tm_mon, &timeStruct.tm_mday,
+           &timeStruct.tm_hour, &timeStruct.tm_min, &timeStruct.tm_sec);
+
+    // Ajustement des valeurs de la structure tm
+    timeStruct.tm_year -= 1900; // Année depuis 1900
+    timeStruct.tm_mon -= 1;     // Mois de 0 à 11
+
+    // Conversion en time_t
+    time_t time = mktime(&timeStruct);
+
+    vector<Measure> meas = appService.getMeasuresAtMoment(sensors, time);
+
+    if(meas.empty()) cout << "No measure found for the specified date."<<endl;
+    else
+    {
+        // Print the sensors found within the radius
+        cout << "measures :" << endl;
+        for (Measure& measure : meas)
+        {
+            cout << "Sensor ID: " << measure.getSensorId() << endl;
+            cout << "measure : " << measure.getDateMeas() << ", " << measure.getAttributeValue() << ";" << measure.getValue()<< endl;
+        }
+    }
+
+
 }

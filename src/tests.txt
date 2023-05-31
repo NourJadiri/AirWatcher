@@ -11,3 +11,78 @@ void testComputeMeanATMOIdx()
 
 
 }
+
+
+//pour test getSensorsAround
+vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
+{
+    unordered_map<string, Sensor> sensors;
+    sensors.insert(make_pair("Sensor1",Sensor((string)"Sensor1", Coordinates(10, 20))));
+    sensors.insert(make_pair("Sensor2",Sensor((string)"Sensor2", Coordinates(15, 25))));
+    sensors.insert(make_pair("Sensor3",Sensor((string)"Sensor3", Coordinates(30, 40))));
+
+    //sensors = data->getSensorsList();
+    vector<Sensor> sensorsAround;
+
+    for (const auto& pair : sensors)
+    {
+        const Sensor& sensor = pair.second; // Access the sensor object from the pair
+        if (sensor.getCoord().Distance(coord) <= radius)
+        {
+            sensorsAround.push_back(sensor);
+        }
+    }
+
+    return sensorsAround;
+}
+
+//test pour getMeasuresAtMoment
+vector<Measure> AppService::getMeasuresAtMoment(vector<Sensor> listSensor, time_t date)
+{
+    vector<Measure> measures;
+    tm timeStruct = {};
+    string dateTimeString = "2019-01-01 12:00:00";
+
+    // Extraction des composantes de la date/heure
+    sscanf(dateTimeString.c_str(), "%d-%d-%d %d:%d:%d",
+           &timeStruct.tm_year, &timeStruct.tm_mon, &timeStruct.tm_mday,
+           &timeStruct.tm_hour, &timeStruct.tm_min, &timeStruct.tm_sec);
+
+    // Ajustement des valeurs de la structure tm
+    timeStruct.tm_year -= 1900; // Année depuis 1900
+    timeStruct.tm_mon -= 1;     // Mois de 0 à 11
+
+    // Conversion en time_t
+    time_t time = mktime(&timeStruct);
+
+    cout << "Converted time_t value: " << time << endl;
+
+    Measure measure1("Sensor0", time, "O3", 50.25);
+    Measure measure2("Sensor1", time, "NO2", 74.5);
+    Measure measure3("Sensor2", time, "SO2", 41.5);
+    Measure measure4("Sensor0", time, "PM10",44.75);
+
+    measures.push_back(measure1);
+    measures.push_back(measure2);
+    measures.push_back(measure3);
+    measures.push_back(measure4);
+
+    //measures = data->getMeasureList();
+    vector<Measure> measuresAtMom;
+
+    for (Measure& measure : measures)
+    {
+        string sensorId = measure.getSensorId();
+        // Vérifier si le sensorId de la mesure appartient à la liste de Sensor
+        for (const Sensor& sensor : listSensor)
+        {
+            if (sensor.getId() == sensorId && measure.getDateMeas() == date)
+            {
+                measuresAtMom.push_back(measure);
+                break;
+            }
+        }
+    }
+
+    return measuresAtMom;
+}
