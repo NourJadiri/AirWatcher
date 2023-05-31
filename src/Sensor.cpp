@@ -49,6 +49,10 @@ void Sensor::setReliable(bool reliable) {
     Sensor::reliable = reliable;
 }
 
+Sensor::Sensor( string idInput, const Coordinates& coordInput) : id(idInput), coord(coordInput), reliable(true){}
+//Constructeur qui set relaible a true
+
+
 Sensor::Sensor(string aId, const Coordinates& someCoord, bool reliable)
 {
   this->id = aId;

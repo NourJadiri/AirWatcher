@@ -11,6 +11,7 @@
 //--------------------------------------------------- Includes
 
 #include "AppService.h"
+#include <iostream>
 using namespace std;
 
 //------------------------------------------------------------- Constantes
@@ -35,14 +36,20 @@ AppService::AppService(DataSet& dataInput)
     data = &dataInput;
 }
 
+AppService::AppService() {}
 
     //----------------------------------------------------- Méthodes publiques
 void AppService::produceStatsPeriod(time_t day1, time_t day2, Coordinates coord, double radius){}
 
 double AppService::produceStatsMoment(time_t day, Coordinates coord, double radius)
 {
-    //vector<Sensor> sensors = data.getSensorsAround(coord, radius);
-    return 0;
+    vector<Sensor> sensors = getSensorsAround(coord, radius);
+    if(sensors.empty()) return -1;
+
+    vector<Measure> measures = getMeasuresAtMoment(sensors, day);
+    if(measures.empty()) return -2;
+
+    return computeMeanATMOIdx(measures);
 }
 
 
@@ -57,8 +64,6 @@ int AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
     vector<pair<int, int>> SO2Breakpoints = {{0, 100}, {100, 200}, {200, 350}, {350, 500}, {500, 750}, {750, INT_MAX}};
     vector<pair<int, int>> NO2Breakpoints = {{0, 40}, {40, 90}, {90, 120}, {120, 230}, {230, 340}, {340, INT_MAX}};
     vector<pair<int, int>> PM10Breakpoints = {{0, 20}, {20, 40}, {40, 50}, {50, 100}, {100, 150}, {150, INT_MAX}};
-    vector<pair<int, int>> PM25Breakpoints = {{0, 10}, {10, 20}, {20, 25}, {25, 50}, {50, 75}, {75, INT_MAX}};
-
     int sumATMOIdx = 0;
     for (Measure& measure : listMeasures)
     {
@@ -84,10 +89,6 @@ int AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
         else if (attributeType == "PM10")
         {
             ATMOIdx = getATMOIdx(attributeValue, PM10Breakpoints);
-        }
-        else if (attributeType == "PM2.5")
-        {
-            ATMOIdx = getATMOIdx(attributeValue, PM25Breakpoints);
         }
         else
         {
@@ -118,12 +119,13 @@ int AppService::getATMOIdx(double value, const vector<pair<int, int>>& breakpoin
 
 vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
 {
-    vector<Sensor> sensors;
-    //sensors = data.getSensorsList();
+    unordered_map<string, Sensor> sensors;
+    sensors = data->getSensorsList();
     vector<Sensor> sensorsAround;
 
-    for (const Sensor& sensor : sensors)
+    for (const auto& pair : sensors)
     {
+        const Sensor& sensor = pair.second; // Access the sensor object from the pair
         if (sensor.getCoord().Distance(coord) <= radius)
         {
             sensorsAround.push_back(sensor);
@@ -137,7 +139,8 @@ vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
 vector<Measure> AppService::getMeasuresAtMoment(vector<Sensor> listSensor, time_t date)
 {
     vector<Measure> measures;
-    //measures = data->getMeasureList();
+    measures = data->getMeasureList();
+
     vector<Measure> measuresAtMom;
 
     for (Measure& measure : measures)
