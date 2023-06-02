@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------- Include système
 #include <string>
+#include <utility>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -46,6 +47,14 @@ void Sensor::setReliable(bool reliable) {
     this->reliable = reliable;
 }
 
+const string &Sensor::getPrivIndivId() const {
+    return privIndivId;
+}
+
+void Sensor::setPrivIndivId(const string & privIndivId) {
+    Sensor::privIndivId = privIndivId;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 Sensor::Sensor ( const Sensor & aSensor )
 {
@@ -54,7 +63,7 @@ Sensor::Sensor ( const Sensor & aSensor )
     reliable= aSensor.reliable;
 }
 
-Sensor::Sensor(string idInput, const Coordinates& coordInput) : id(idInput), coord(coordInput), reliable(true)
+Sensor::Sensor(string idInput, const Coordinates& coordInput) : id(std::move(idInput)), coord(coordInput), reliable(true)
 {
     // Constructeur qui set reliable a true
 
@@ -62,18 +71,16 @@ Sensor::Sensor(string idInput, const Coordinates& coordInput) : id(idInput), coo
 
 Sensor::Sensor(string aId, const Coordinates& someCoord, bool reliable)
 {
-    id = aId;
+    id = std::move(aId);
     coord = someCoord;
     this->reliable = reliable;
+    privIndivId = "";
 }
 
 Sensor::Sensor()
-{
-
-}
+= default;
 
 Sensor :: ~Sensor()
-{
-}
+= default;
 
 

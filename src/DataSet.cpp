@@ -35,7 +35,7 @@ void DataSet::initUserList() {
 
     // For each user in the user-sensor list
     for(const auto & pair : usersSensors){
-        auto key = pair.first;
+        auto userId = pair.first;
         auto sensorsIds = pair.second;
 
         // Create a vector of Sensors
@@ -44,12 +44,13 @@ void DataSet::initUserList() {
 
         // And use the sensorList to get all the sensors of a specific user
         for(const auto& sensor : sensorsIds){
+            sensorsList[sensor].setPrivIndivId(userId);
             userSensorList.push_back(sensorsList[sensor]);
         }
 
-        PrivIndiv pindiv(key, userSensorList);
+        PrivIndiv pindiv(userId, userSensorList);
 
-        userList[key] = pindiv;
+        userList[userId] = pindiv;
     }
 }
 

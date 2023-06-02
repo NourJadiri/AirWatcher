@@ -41,6 +41,10 @@ public:
 
     void setReliable(bool reliable);
 
+    const string &getPrivIndivId() const;
+
+    void setPrivIndivId(const string &privIndivId);
+
 //-------------------------------------------- Constructeurs - destructeur
   Sensor ( const Sensor & aSensor );
 
@@ -60,6 +64,8 @@ protected:
     string id;
 
     Coordinates coord = Coordinates(.0, .0);
+
+    string privIndivId;
 
     bool reliable{};
 

@@ -247,13 +247,8 @@ time_t FileManager::convertToTimeT(const string& dateStr)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-FileManager::FileManager ( )
-{
-
-}
+FileManager::FileManager ( ) = default;
 
 
-FileManager::~FileManager( )
-{
-}
+FileManager::~FileManager( ) = default;
 
