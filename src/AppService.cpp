@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <string>
 #include <map>
 using namespace std;
 
@@ -20,8 +21,6 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void AppService::produceStatsPeriod(time_t day1, time_t day2, Coordinates coord, double radius){}
-
 double AppService::produceStatsMoment(time_t day, Coordinates coord, double radius)
 {
     vector<Sensor> sensors = getSensorsAround(coord, radius);
@@ -37,6 +36,7 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
 {
     if (listMeasures.empty())
     {
+        cerr << "Warning: measurement list is empty. ATMO index has not been computed." << endl;
         return 0; // Return 0 if the list of measures is empty
     }
 
@@ -111,16 +111,15 @@ int AppService::getATMOIdx(double value, const vector<pair<int, int>>& breakpoin
     return 10; // Invalid range so worst atmo sub index
 }
 
-vector<Sensor> AppService::getSensorsAround(const Coordinates& coord, double radius)
+
+vector<Sensor> AppService::getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap )
 {
-    unordered_map<string, Sensor> sensors;
-    sensors = data->getSensorsList();
+    const unordered_map<string, Sensor>& sensors = (sensorMap.empty()) ? data->getSensorsList() : sensorMap;
     vector<Sensor> sensorsAround;
 
     for (const auto& pair : sensors)
     {
         const Sensor& sensor = pair.second; // Access the sensor object from the pair
-        double distance = sensor.getCoord().Distance(coord);
         if (sensor.getCoord().Distance(coord) <= radius)
         {
             sensorsAround.push_back(sensor);
@@ -129,6 +128,7 @@ vector<Sensor> AppService::getSensorsAround(const Coordinates& coord, double rad
 
     return sensorsAround;
 }
+
 
 
 vector<Measure> AppService::getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date)

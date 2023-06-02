@@ -36,3 +36,7 @@ InitService::InitService ( DataSet & dataInput )
 InitService::~InitService( )
 {
 }
+
+InitService::InitService() {
+
+}

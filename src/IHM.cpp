@@ -26,10 +26,10 @@ DataSet* dataSet = new DataSet();
 //---------------------------------------------------- Fonctions publiques
 int main()
 {
-    /*Test *test = new Test();
+    Test *test = new Test();
     test->testComputeMeanATMOIdx(dataSet);
-    test->testGetSensorsAround(dataSet);
-    test->testMeasureAtMoment(dataSet);*/
+    //test->testGetSensorsAround(dataSet);
+    //test->testMeasureAtMoment(dataSet);*/
 
     // get le type d'utilisateur
     int userType;
@@ -392,12 +392,13 @@ void produceStatsMoment()
         break;
     }
 
+
     AppService* appServ = new AppService(*dataSet);
 
     //double stats = 3.2;
     double stats = appServ->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
-    if(stats == - 1) cout << "No matching sensors for the given area." << endl;
-    else if(stats == -2) cout << "No realiable measurements related to this date." << endl;
+    if (stats == - 1) cout << "No matching sensors for the given area." << endl;
+    else if (stats == -2) cout << "No realiable measurements related to this date." << endl;
     else {
         // affichage
         cout << "Mean of ATMO indexes computed with the sensors around:" << endl;

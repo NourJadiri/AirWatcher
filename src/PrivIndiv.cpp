@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <utility>
+#include <string>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -40,7 +41,7 @@ int & PrivIndiv::getPoints(){
 //---------------------------------------------------------------- Setters
 
 void PrivIndiv::setProvidedSensors(vector<Sensor> provSens){
-    this->providedSensors = std::move(provSens);
+    this->providedSensors = provSens;
 }
 
 void PrivIndiv::setPoints(int aPoint){
@@ -51,7 +52,7 @@ void PrivIndiv::setPoints(int aPoint){
 PrivIndiv::PrivIndiv ( const string &id, vector<Sensor> provSens )
 {
     this->id = id;
-    this->providedSensors = std::move(provSens);
+    this->providedSensors = provSens;
 }
 
 

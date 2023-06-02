@@ -17,6 +17,7 @@
 #include <sstream>
 #include <ctime>
 #include <iomanip>
+#include <string>
 using namespace std;
 
 //------------------------------------------------------ Include personnel

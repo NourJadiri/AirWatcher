@@ -33,27 +33,27 @@ class AppService
 
 public:
 
-    //-------------------------------------------- Constructeurs - destructeur
-
-    explicit AppService(DataSet& data);
-    explicit AppService();
-    virtual ~AppService( );
-
     //----------------------------------------------------- Méthodes publiques
-
-    void produceStatsPeriod(time_t day1, time_t day2, Coordinates coord, double radius);
 
     double produceStatsMoment(time_t day, Coordinates coord, double radius);
 
     double computeMeanATMOIdx(std::vector<Measure> listMeasures);
 
-    vector<Sensor> getSensorsAround(const Coordinates& coord, double radius);
+    vector<Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
 
     vector<Measure> getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date);
 
     int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
 
     pair<int, vector<double>> obsImpactLvlImprov(const std::string& id, double radius);
+
+    //-------------------------------------------- Constructeurs - destructeur
+
+    explicit AppService(DataSet& data);
+
+    explicit AppService();
+
+    virtual ~AppService( );
 
 
     //------------------------------------------------------------------ PRIVE

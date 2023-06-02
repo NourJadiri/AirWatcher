@@ -27,7 +27,7 @@ const string & AirCleaner::getAirCleanerID() const {
 }
 
 void AirCleaner::setAirCleanerID(string anID){
-      id = std::move(anID);
+      id = anID;
 }
 
 const Coordinates &AirCleaner::getCoord() const {
