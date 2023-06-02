@@ -1,11 +1,15 @@
+/*************************************************************************
+                           Provider  -  user of type provider
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
 
 //---------- Réalisation de la classe <Provider> (fichier Provider.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-
-
 #include <utility>
 #include <iostream>
 using namespace std;
@@ -17,6 +21,31 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+void Provider::printAirCleaners() const {
+    for(const auto & aircleaner : providedAC){
+        cout << aircleaner.getAirCleanerID() << endl;
+    }
+}
+
+//---------------------------------------------------------------- Getters
+
+const string &Provider::getProviderId() const {
+    return providerID;
+}
+
+const vector<AirCleaner> &Provider::getProvidedAc() const {
+    return providedAC;
+}
+
+
+//---------------------------------------------------------------- Setters
+void Provider::setProviderId(const string &providerId) {
+    providerID = providerId;
+}
+
+void Provider::setProvidedAc(const vector<AirCleaner> &providedAc) {
+    providedAC = providedAc;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -30,30 +59,4 @@ Provider::Provider( const string & providerID, const vector<AirCleaner> & airCle
     providedAC = airCleaners;
 }
 
-void Provider::printAirCleaners() const {
-    for(const auto & aircleaner : providedAC){
-        cout << aircleaner.getAirCleanerID() << endl;
-    }
-}
-
-const string &Provider::getProviderId() const {
-    return providerID;
-}
-
-void Provider::setProviderId(const string &providerId) {
-    providerID = providerId;
-}
-
-const vector<AirCleaner> &Provider::getProvidedAc() const {
-    return providedAC;
-}
-
-void Provider::setProvidedAc(const vector<AirCleaner> &providedAc) {
-    providedAC = providedAc;
-}
-//----- Fin de Provider (constructeur)
-
 Provider::~Provider()= default;
-//------- Fin de ~Provider (destructeur)
-
-

@@ -1,13 +1,19 @@
 /*************************************************************************
-                           IHM  -  interface console & lancement programme
+                           IHM  -  lauching and console
                              -------------------
-    début                : 09/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Interface du module <IHM> (fichier IHM.h) -------------------
 #if ! defined ( IHM_H )
 #define IHM_H
+
+//--------------------------------------------------- Interfaces utilisées
+#include "FileManager.h"
+#include "DataSet.h"
+#include "AppService.h"
+#include "Test.h"
 
 //------------------------------------------------------------------------
 // Rôle du module <IHM>
@@ -15,13 +21,9 @@
 // l'exécution, à travers l'appel à une procédure test
 //------------------------------------------------------------------------
 
-///////////////////////////////////////////////////////////////////  PRIVE
-//------------------------------------------------------ Fonctions privées
+//---------------------------------------------------- Fonctions publiques
 
 int main ( );
-// Mode d'emploi :
-// Interface utilisateur
-// remonte toutes les données en mémoire
 
 void handleAdminFunctionalities ( );
 
@@ -42,14 +44,5 @@ void obsImpactLvlImprov ( );
 bool isDateAfterToday( const std::string& date );
 
 bool isValidDateFormat( const std::string& date );
-
-//-----TESTS
-
-void testComputeMeanATMOIdx();
-
-void testGetSensorsAround();
-void testMeasureAtMoment();
-
-time_t convertToTimeT(const std::string& dateStr);
 
 #endif // IHM_H

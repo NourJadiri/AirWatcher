@@ -1,8 +1,8 @@
 /*************************************************************************
-                           Test  -  Classe de tests
+                           Test  -  class for tests
                              -------------------
-    début                : 09/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Interface de la classe <Test> (fichier Test.h) ----------------
@@ -12,12 +12,11 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
-using namespace std;
 
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
+//------------------------------------------------------ Include personnel
+#include "FileManager.h"
+#include "DataSet.h"
+#include "AppService.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Test>
@@ -31,24 +30,24 @@ class Test
 //----------------------------------------------------------------- PUBLIC
 
 public:
+
+    //----------------------------------------------------- Méthodes publiques
+
     void testComputeMeanATMOIdx(DataSet* dataSet);
+
     void testGetSensorsAround(DataSet* dataSet);
+
     void testMeasureAtMoment(DataSet* dataSet);
 
+    time_t convertToTimeT(const std::string& dateStr);
 
-//----------------------------------------------------- Méthodes publiques
-
-
-//-------------------------------------------- Constructeurs - destructeur
+    //-------------------------------------------- Constructeurs - destructeur
 
     Test ( );
 
-
     virtual ~Test ( );
-
 
 };
 
-//-------------------------------- Autres définitions dépendantes de <Test>
 
 #endif // TEST_H

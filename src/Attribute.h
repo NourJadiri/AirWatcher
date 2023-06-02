@@ -1,65 +1,51 @@
-//
-// Created by Celia Djouadi on 23/05/2023.
-//
+/*************************************************************************
+                           Attribute  -  type of pollutant
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
 
 //---------- Interface de la classe <Attribute> (fichier Attribute.h) ----------------
 #if ! defined ( Attribute_H )
 #define Attribute_H
-#include <cstring>
-//------------------------------------------------------------------------
 
+//--------------------------------------------------- Interfaces utilisées
+#include <cstring>
+
+//------------------------------------------------------------------------
+// Rôle de la classe <Attribute>
+//
+//
+//
 //------------------------------------------------------------------------
 
 class Attribute {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
+    //----------------------------------------------------- Méthodes publiques
 
-//-----------------------------------------------------------------Getters
-    string getType()
-    {
-        return type;
-    }
+    std::string getType();
 
-    string getUnit()
-    {
-        return unit;
-    }
+    std::string getUnit();
 
+    std::string getDescription();
 
-    string getDescription()
-    {
-        return description;
-    }
-    //-----------------------------------------------------------------Setters
+    void setType(string id);
 
-    void setType( string id)
-    {
-        type = id;
-    }
+    void setUnit(string unite);
 
-    void setUnit(string unite)
-    {
-        unit = unite;
-    }
+    void setDescription( string aDescription);
 
-    void setDescription( string description)
-    {
-        description= description;
-    }
-
-//-------------------------------------------- Autres Methodes
 //-------------------------------------------- Constructeurs - destructeur
 
     Attribute ( const Attribute & anAttribute );
 
     Attribute ( );
 
-    Attribute ( string unit , string type , string description  );
+    Attribute ( string unit, string type, string description );
 
     virtual ~Attribute ( );
-
 
 
 //------------------------------------------------------------------ PRIVE

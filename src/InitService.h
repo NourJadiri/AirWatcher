@@ -1,8 +1,8 @@
 /*************************************************************************
-                           InitService  -  description
+                           InitService  -  populating database
                              -------------------
-    début                : 09/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Interface de la classe <InitService> (fichier InitService.h) ----------------
@@ -13,8 +13,6 @@
 #include <string>
 #include <map>
 #include "DataSet.h"
-using namespace std;
-
 
 //------------------------------------------------------------- Constantes
 
@@ -29,15 +27,12 @@ using namespace std;
 
 class InitService
 {
-private:
-    DataSet * data;
-
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
 
-void Initialize();
+    void Initialize();
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -46,14 +41,14 @@ void Initialize();
 
     InitService();
 
-
     virtual ~InitService ( );
 
+//------------------------------------------------------------------ PRIVE
 
+private:
+
+    DataSet * data;
 };
-
-//-------------------------------- Autres définitions dépendantes de <InitService>
-
 
 #endif // INITSERVICE_H
 

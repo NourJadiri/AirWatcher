@@ -1,8 +1,8 @@
 /*************************************************************************
-                           Test  -  Classe de tests
+                           Test  -  class for tests
                              -------------------
-    début                : 09/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Réalisation du module <Test> (fichier Test.cpp) ------------
@@ -10,55 +10,56 @@
 /////////////////////////////////////////////////////////////////  INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <regex>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "FileManager.h"
-#include "DataSet.h"
-#include "AppService.h"
 #include "Test.h"
 
-//------------------------------------------------------------- Constantes
-
 //----------------------------------------------------------------- PUBLIC
+
+//----------------------------------------------------- Méthodes publiques
+
 void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 {
     vector<Measure> measures;
 
-    tm timeStruct = {};
     string dateTimeString = "2019-01-01 12:00:00";
+    time_t time = convertToTimeT(dateTimeString);
 
-    // Extraction des composantes de la date/heure
-    sscanf(dateTimeString.c_str(), "%d-%d-%d %d:%d:%d",
-           &timeStruct.tm_year, &timeStruct.tm_mon, &timeStruct.tm_mday,
-           &timeStruct.tm_hour, &timeStruct.tm_min, &timeStruct.tm_sec);
-
-    // Ajustement des valeurs de la structure tm
-    timeStruct.tm_year -= 1900; // Année depuis 1900
-    timeStruct.tm_mon -= 1;     // Mois de 0 à 11
-
-    // Conversion en time_t
-    time_t time = mktime(&timeStruct);
-
-    cout << "Converted time_t value: " << time << endl;
+    //cout << "Converted time_t value: " << time << endl;
 
     Measure measure1("Sensor0", time, "O3", 50.25);
     Measure measure2("Sensor0", time, "NO2", 74.5);
     Measure measure3("Sensor0", time, "SO2", 41.5);
     Measure measure4("Sensor0", time, "PM10",44.75);
+    // this gives an atmo index = 7
+
+    dateTimeString = "2019-01-02 12:00:00";
+    time = convertToTimeT(dateTimeString);
+
+    Measure measure5("Sensor0", time, "O3", 180.25);
+    Measure measure6("Sensor0", time, "NO2", 4.5);
+    Measure measure7("Sensor0", time, "SO2", 151.5);
+    Measure measure8("Sensor0", time, "PM10",44.75);
+    // this gives an atmo index = 8
 
     measures.push_back(measure1);
     measures.push_back(measure2);
     measures.push_back(measure3);
     measures.push_back(measure4);
 
+    measures.push_back(measure5);
+    measures.push_back(measure6);
+    measures.push_back(measure7);
+    measures.push_back(measure8);
+
+
     AppService *app = new AppService(*dataSet);
-    int atmo = app->computeMeanATMOIdx(measures);
-    cout << "La moyenne ATMO vaut : " << atmo << endl;
+    double atmo = app->computeMeanATMOIdx(measures);
+    cout << "Mean ATMO index is: " << atmo << endl;
+    // thus the mean ATMO index is equal to (7+8)/2 = 7.5
+    assert(atmo == 7.5);
     delete app;
-
-
 }
 
 void Test::testGetSensorsAround(DataSet* dataSet)
@@ -92,20 +93,8 @@ void Test::testMeasureAtMoment(DataSet* dataSet)
     sensors.push_back(Sensor((string)"Sensor3", Coordinates(30, 40)));
     sensors.push_back(Sensor((string)"Sensor4", Coordinates(35, 45)));
 
-    tm timeStruct = {};
     string dateTimeString = "2019-01-01 12:00:00";
-
-    // Extraction des composantes de la date/heure
-    sscanf(dateTimeString.c_str(), "%d-%d-%d %d:%d:%d",
-           &timeStruct.tm_year, &timeStruct.tm_mon, &timeStruct.tm_mday,
-           &timeStruct.tm_hour, &timeStruct.tm_min, &timeStruct.tm_sec);
-
-    // Ajustement des valeurs de la structure tm
-    timeStruct.tm_year -= 1900; // Année depuis 1900
-    timeStruct.tm_mon -= 1;     // Mois de 0 à 11
-
-    // Conversion en time_t
-    time_t time = mktime(&timeStruct);
+    time_t time = convertToTimeT(dateTimeString);
 
     vector<Measure> meas = appService.getMeasuresAtMoment(sensors, time);
 
@@ -120,17 +109,28 @@ void Test::testMeasureAtMoment(DataSet* dataSet)
             cout << "measure : " << measure.getDateMeas() << ", " << measure.getAttributeValue() << ";" << measure.getValue()<< endl;
         }
     }
-
-
 }
-//----------------------------------------------------- Méthodes publiques
+
+time_t Test::convertToTimeT(const string& dateStr)
+{
+    struct tm tm;
+    memset(&tm, 0, sizeof(struct tm));
+
+    if (strptime(dateStr.c_str(), "%Y-%m-%d %H:%M:%S", &tm) != nullptr)
+    {
+        time_t time = mktime(&tm);
+        return time;
+    }
+
+    return 0; // Return 0 if the conversion fails
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 Test::Test ( )
 {
-} //----- Fin de Test
+}
 
 Test::~Test ( )
 {
-} //----- Fin de ~Test
+}
 

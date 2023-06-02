@@ -1,45 +1,25 @@
 /*************************************************************************
-                           AppService  -  lancement du programme
+                           AppService  -  computations
                              -------------------
-    début                : 30/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Réalisation de la classe <AppService> (fichier AppService.cpp) ----------------
 
+//---------------------------------------------------------------- INCLUDE
 
-//--------------------------------------------------- Includes
-
-#include "AppService.h"
+//-------------------------------------------------------- Include système
 #include <iostream>
 #include <map>
 using namespace std;
 
-//------------------------------------------------------------- Constantes
+//------------------------------------------------------ Include personnel
+#include "AppService.h"
 
-//------------------------------------------------------------------ Types
+//----------------------------------------------------------------- PUBLIC
 
-//------------------------------------------------------------------------
-// Rôle de la classe <AppService>
-//
-//
-//
-//------------------------------------------------------------------------
-
-
-
-    //----------------------------------------------------------------- PUBLIC
-
-
-//-------------------------------------------- Constructeurs - destructeur
-AppService::AppService(DataSet& dataInput)
-{
-    data = &dataInput;
-}
-
-AppService::AppService() {}
-
-    //----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Méthodes publiques
 void AppService::produceStatsPeriod(time_t day1, time_t day2, Coordinates coord, double radius){}
 
 double AppService::produceStatsMoment(time_t day, Coordinates coord, double radius)
@@ -174,18 +154,6 @@ vector<Measure> AppService::getMeasuresAtMoment(const vector<Sensor>& listSensor
     return measuresAtMom;
 }
 
-
-void AppService::analysePIndSensor(string sensorId)
-{
-    // TODO: Implémenter la méthode analysePIndSensor (avec sensorId en paramètre)
-}
-
-void AppService::analysePIndSensor()
-{
-    // TODO: Implémenter la méthode analysePIndSensor (sans paramètre)
-}
-
-
 pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanId, double radius)
 {
     unordered_map<string, AirCleaner> airCleanerIds = data->getAirCleanerList();
@@ -222,15 +190,19 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
     return make_pair(0, results); // Return success code 0 and the results vector
 }
 
+//-------------------------------------------- Constructeurs - destructeur
+AppService::AppService(DataSet& dataInput)
+{
+    data = &dataInput;
+}
 
+AppService::AppService() {
+
+}
 
 AppService::~AppService() {
 
 }
-
-
-
-//------------------------------------------------------------------ PRIVE
 
 
 

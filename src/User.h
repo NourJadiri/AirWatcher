@@ -1,8 +1,8 @@
 /*************************************************************************
-                           User  -  description
+                           User  -  person who uses the app (abstract)
                              -------------------
-    début                : 09/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Interface de la classe <User> (fichier User.h) ----------------
@@ -11,7 +11,6 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-using namespace std;
 
 //------------------------------------------------------------------------
 // Rôle de la classe <User>
@@ -27,20 +26,22 @@ class User
 public:
 //----------------------------------------------------- Méthodes publiques
     const string& getId() const;
+
     bool operator<(const User& other) const;
+
     bool operator==(const User& other) const;
 
 //-------------------------------------------- Constructeurs - destructeur
-
     explicit User(const string& idInput);
 
     User();
-    // Constructor without password
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
+
     string id;
+
 };
 
 #endif // USER_H

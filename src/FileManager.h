@@ -15,12 +15,11 @@
 #include <vector>
 #include <unordered_map>
 #include "Sensor.h"
+#include "Coordinates.h"
 #include "Measure.h"
 #include "User.h"
 #include "AirCleaner.h"
 #include "Provider.h"
-
-using namespace std;
 
 
 //------------------------------------------------------------- Constantes
@@ -42,9 +41,13 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
     unordered_map<string, Sensor> ParseSensorList();
+
     unordered_map<string, vector<string>> ParseUserList();
+
     unordered_map<string, AirCleaner> ParseAirCleanerList();
+
     unordered_map<string, vector<string>> ParseProviderList();
+
     vector<Measure> ParseMeasureList();
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -54,8 +57,6 @@ public:
     virtual ~FileManager ( );
 
 };
-
-//-------------------------------- Autres définitions dépendantes de <FileManager>
 
 #endif // INITSERVICE_H
 

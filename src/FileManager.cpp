@@ -1,8 +1,8 @@
 /*************************************************************************
-                           FileManager  -  lancement du programme
+                           FileManager  -  parsing through files
                              -------------------
-    début                : 09/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Réalisation de la classe <FileManager> (fichier FileManager.cpp) ------------
@@ -12,7 +12,6 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <unordered_map>
-#include <map>
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -21,30 +20,9 @@
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-
 #include "FileManager.h"
-#include "Sensor.h"
-#include "Coordinates.h"
-#include "User.h"
-#include "Measure.h" // Inclure le fichier d'en-tête de la classe Measure
-#include "Provider.h"
-
 
 //----------------------------------------------------- Méthodes publiques
-
-
-//-------------------------------------------- Constructeurs - destructeur
-
-FileManager::FileManager ( )
-{
-
-} //----- Fin de FileManager (constructeur par defaut)
-
-
-FileManager::~FileManager( )
-{
-}
-
 
 unordered_map<string, Sensor> FileManager::ParseSensorList()
 {
@@ -53,7 +31,7 @@ unordered_map<string, Sensor> FileManager::ParseSensorList()
 
     if (!file.is_open())
     {
-        cout << "Erreur lors de l'ouverture du fichier " << filePath << endl;
+        cout << "Error when opening file " << filePath << endl;
         return {};
     }
 
@@ -77,7 +55,7 @@ unordered_map<string, Sensor> FileManager::ParseSensorList()
         }
         else
         {
-            cout << "Erreur de format dans le fichier CSV" << endl;
+            cout << "Error in format of the CSV file" << endl;
         }
     }
 
@@ -94,9 +72,10 @@ vector<Measure> FileManager::ParseMeasureList()
 
     if (!file)
     {
-        cout << "Erreur lors de l'ouverture du fichier." << endl;
-        return measureList; // Retourner une liste vide si le fichier ne peut pas être ouvert
+        cout << "Error when opening file." << endl;
+        return measureList; // empty list
     }
+
     string line;
     while (getline(file, line))
     {
@@ -122,7 +101,7 @@ vector<Measure> FileManager::ParseMeasureList()
         }
         else
         {
-            cout << "Erreur lors de la lecture d'une ligne du fichier." << endl;
+            cout << "Error when reading a line of the file." << endl;
         }
     }
 
@@ -139,8 +118,8 @@ unordered_map<string, vector<string>> FileManager::ParseUserList()
 
     if (!file.is_open())
     {
-        cout << "Erreur lors de l'ouverture du fichier " << filePath << endl;
-        return unordered_map<string, vector<string>>();
+        cout << "Erreur when opening file " << filePath << endl;
+        return {};
     }
     unordered_map<string, vector<string>> userList;
 
@@ -185,7 +164,7 @@ unordered_map<string, AirCleaner> FileManager::ParseAirCleanerList()
     ifstream file(filePath);
 
     if (!file.is_open()) {
-        cerr << "Erreur lors de l'ouverture du fichier" << endl;
+        cerr << "Error when opening file." << endl;
         return {};
     }
 
@@ -222,7 +201,7 @@ unordered_map<string, vector<string>> FileManager::ParseProviderList()
     string filePath = "../src/data/providers.csv";
     ifstream file(filePath);
     if (!file.is_open()) {
-        cerr << "Erreur lors de l'ouverture du fichier" << endl;
+        cerr << "Error when opening file" << endl;
         return providers;
     }
 
@@ -250,7 +229,15 @@ unordered_map<string, vector<string>> FileManager::ParseProviderList()
     return providers;
 }
 
+//-------------------------------------------- Constructeurs - destructeur
+
+FileManager::FileManager ( )
+{
+
+}
 
 
-//------- Fin de FileManager() (destructeur)
+FileManager::~FileManager( )
+{
+}
 

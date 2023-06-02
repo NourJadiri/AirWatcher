@@ -1,4 +1,10 @@
-// Created by Celia Djouadi on 23/05/2023.
+/*************************************************************************
+                           Attribute  -  type of pollutant
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
 //---------- Réalisation de la classe <Attribute> (fichier Attribute.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
@@ -10,9 +16,40 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Attribute.h"
 
-
-
 //----------------------------------------------------- Méthodes publiques
+
+//---------------------------------------------------------------- Getters
+string Attribute::getType()
+{
+    return type;
+}
+
+string Attribute::getUnit()
+{
+    return unit;
+}
+
+string Attribute::getDescription()
+{
+    return description;
+}
+
+//---------------------------------------------------------------- Setters
+
+void Attribute::setType( string id)
+{
+    type = id;
+}
+
+void Attribute::setUnit(string unite)
+{
+    unit = unite;
+}
+
+void Attribute::setDescription( string aDescription)
+{
+    description = aDescription;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 Attribute::Attribute ( const Attribute & anAttribute )
@@ -20,29 +57,20 @@ Attribute::Attribute ( const Attribute & anAttribute )
     unit = anAttribute.unit;
     type = anAttribute.type;
     description = anAttribute.description;
+}
 
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Attribute>" << endl;
-#endif
-} //----- Fin de Attribute (constructeur par defaut)
-
-
-Attribute::Attribute( string unit , string type , string description  )
+Attribute::Attribute( string unit, string type, string description )
 {
     type = type;
     unit = unit;
     description = description;
-#ifdef MAP
-    cout << "Appel au constructeur de <Attribute>" << endl;
-#endif
-} //----- Fin de Attribute (constructeur)
+}
 
+Attribute::Attribute() {
+
+}
 
 Attribute::~Attribute ( )
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <Attribute>" << endl;
-#endif
-} //----- Fin de ~Attribute (destructeur)
 
-
+}

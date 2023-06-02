@@ -1,10 +1,15 @@
+/*************************************************************************
+                           DataSet  -  the data base
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
 
 //---------- Réalisation de la classe <DataSet> (fichier DataSet.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <cmath>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -18,9 +23,6 @@ DataSet::DataSet()
 {
     initSensorList();
     initUserList();
-#ifdef MAP
-    cout << "Appel au constructeur de <DataSet>" << endl;
-#endif
 }//----- Fin de DataSet(constructeur)
 
 DataSet :: ~DataSet() = default;
@@ -83,6 +85,8 @@ void DataSet::initProviderList() {
     }
 }
 
+//---------------------------------------------------------------- Getters
+
 const unordered_map<string, Sensor> &DataSet::getSensorsList() const {
     return sensorsList;
 }
@@ -91,43 +95,41 @@ const unordered_map<string, AirCleaner> &DataSet:: getAirCleanerList() const {
     return airCleanerList;
 }
 
-
-void DataSet::setSensorsList(const unordered_map<string, Sensor> &list) {
-    DataSet::sensorsList = list;
-}
-
 const unordered_map<string, PrivIndiv> &DataSet::getUserList() const {
     return userList;
-}
-
-void DataSet::setUserList(const unordered_map<string, PrivIndiv> &list) {
-    DataSet::userList = list;
 }
 
 const unordered_map<string, Provider> &DataSet::getProviderList() const {
     return providerList;
 }
 
-void DataSet::setProviderList(const unordered_map<string, Provider> &list) {
-    DataSet::providerList = list;
-}
-
 const vector<Measure> &DataSet::getMeasureList() const {
     return measureList;
-}
-
-void DataSet::setMeasureList(const vector<Measure> &list) {
-    DataSet::measureList = list;
 }
 
 const FileManager &DataSet::getFileManager() const {
     return fileManager;
 }
 
+//---------------------------------------------------------------- Setters
+
+void DataSet::setSensorsList(const unordered_map<string, Sensor> &list) {
+    DataSet::sensorsList = list;
+}
+
+void DataSet::setUserList(const unordered_map<string, PrivIndiv> &list) {
+    DataSet::userList = list;
+}
+
+void DataSet::setProviderList(const unordered_map<string, Provider> &list) {
+    DataSet::providerList = list;
+}
+
+void DataSet::setMeasureList(const vector<Measure> &list) {
+    DataSet::measureList = list;
+}
+
 void DataSet::setFileManager(const FileManager &manager) {
     DataSet::fileManager = manager;
 }
-
-//------- Fin de ~DataSet (destructeur)
-
 

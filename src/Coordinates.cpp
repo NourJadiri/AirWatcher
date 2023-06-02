@@ -1,3 +1,9 @@
+/*************************************************************************
+                           Coordinates  -  longitude + latitude
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
 
 //---------- Réalisation de la classe <Coordinates> (fichier Coordinates.cpp) ------------
 
@@ -14,7 +20,8 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 double Coordinates::Distance(const Coordinates& point) const {
-    return (sqrt((point.latitude-this->latitude)*(point.latitude-this->latitude)+(point.longitude-this->longitude)*(point.longitude-this->longitude)));
+    return ( sqrt((point.latitude-this->latitude)*(point.latitude-this->latitude) +
+    (point.longitude-this->longitude)*(point.longitude-this->longitude)) );
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -40,20 +47,23 @@ Coordinates::~Coordinates( )
 {
 }
 
+//---------------------------------------------------------------- Getters
+
 double Coordinates::getLongitude() const {
     return longitude;
-}
-
-void Coordinates::setLongitude(double longitude) {
-    Coordinates::longitude = longitude;
 }
 
 double Coordinates::getLatitude() const {
     return latitude;
 }
 
-void Coordinates::setLatitude(double latitude) {
-    Coordinates::latitude = latitude;
+//---------------------------------------------------------------- Setters
+
+void Coordinates::setLongitude(double aLongitude) {
+    longitude = aLongitude;
 }
-//------- Fin de ~Coordinates() (destructeur)
+
+void Coordinates::setLatitude(double aLatitude) {
+    latitude = aLatitude;
+}
 

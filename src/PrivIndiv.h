@@ -13,16 +13,10 @@
 #include <string>
 #include <map>
 #include <vector>
-using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Sensor.h"
 #include "User.h"
-
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <PrivIndiv>
@@ -34,29 +28,28 @@ using namespace std;
 class PrivIndiv : public User
 {
 //----------------------------------------------------------------- PUBLIC
-//----------------------------------------------------------------- PUBLIC
 
 public:
-    PrivIndiv();
 
 //----------------------------------------------------- Méthodes publiques
-    vector<Sensor> & getProvidedSensors();
 
     void printProvidedSensors() const;
 
-    void setProvidedSensors(vector<Sensor> provSens);
+    vector<Sensor> & getProvidedSensors();
 
     int & getPoints();
+
+    void setProvidedSensors(vector<Sensor> provSens);
 
     void setPoints(int aPoint);
 
 //-------------------------------------------- Constructeurs - destructeur
 
+    PrivIndiv();
+
     PrivIndiv ( const string &id, vector<Sensor> provSens );
 
-
     virtual ~PrivIndiv ( );
-
 
 //------------------------------------------------------------------ PRIVE
 
@@ -64,10 +57,9 @@ protected:
 
     //----------------------------------------------------- Attributs protégés
     vector<Sensor> providedSensors;
+
     int points{};
 
 };
-
-//-------------------------------- Autres définitions dépendantes de <PrivIndiv>
 
 #endif // PRIVINDIV_H

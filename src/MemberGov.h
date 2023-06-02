@@ -1,23 +1,19 @@
 /*************************************************************************
-                           MemberGov  -  description
+                           MemberGov  -  user of type member of a government agency
                              -------------------
-    début                : 23/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
-//
-// Created by Isaline FOISSEY on 23/05/2023.
-//
+
 //---------- Interface de la classe <MemberGov> (fichier MemberGov.h) ----------------
-#ifndef AIRWATCHER_MEMBERGOV_H
-#define AIRWATCHER_MEMBERGOV_H
+#ifndef MEMBERGOV_H
+#define MEMBERGOV_H
+
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
-#include <map>
-using namespace std;
+#include <cstring>
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
+//------------------------------------------------------ Include personnel
+#include "SuperUser.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <MemberGov>
@@ -25,30 +21,21 @@ using namespace std;
 //
 //
 //------------------------------------------------------------------------
-class MemberGov
+class MemberGov : public SuperUser
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-
 
 //-------------------------------------------- Constructeurs - destructeur
 
     MemberGov ();
 
     virtual ~MemberGov( );
-
-//------------------------------------------------------------------ PRIVE
-
-protected:
-
-    //----------------------------------------------------- Attributs protégés
-    string country;
 };
 
 //-------------------------------- Autres définitions dépendantes de <MemberGov>
 
 
 
-#endif //AIRWATCHER_MEMBERGOV_H
+#endif //MEMBERGOV_H

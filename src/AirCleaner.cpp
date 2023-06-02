@@ -1,19 +1,20 @@
-//
-// Created by adrid on 09/05/2023.
-
+/*************************************************************************
+                           AirCleaner  -  object of an Air Cleaner
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
 
 //---------- Réalisation de la classe <AirCleaner> (fichier AirCleaner.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include "Coordinates.h"
+#include <utility>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "AirCleaner.h"
-
-#include <utility>
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -66,9 +67,6 @@ AirCleaner :: AirCleaner ( string idInput, const Coordinates& coordInput, time_t
 
 AirCleaner::~AirCleaner()
 {
-}
-
-
-//----- Fin de ~AirCleaner
+}//----- Fin de ~AirCleaner
 
 

@@ -1,17 +1,21 @@
+/*************************************************************************
+                           MemberGov  -  user of type member of a government agency
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
+
 //---------- Réalisation de la classe <MemberGov> (fichier MemberGov.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système//
-#include <iostream>
+//-------------------------------------------------------- Include système
 using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "MemberGov.h"
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
-//----------------------------------------------------- Méthodes publiques
 
 //-------------------------------------------- Constructeurs - destructeur
 //

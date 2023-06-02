@@ -1,3 +1,9 @@
+/*************************************************************************
+                           Measure  -  a measurement of a pollutant
+                             -------------------
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+*************************************************************************/
 
 //---------- Réalisation de la classe <Measure> (fichier Measure.cpp) ------------
 
@@ -15,54 +21,55 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-  string & Measure::getSensorId(){
-      return this->sensorId;
-  }
+//---------------------------------------------------------------- Getters
 
-  void Measure::setSensorId(string anId){
-      this->sensorId = std::move(anId);
-  }
+string & Measure::getSensorId(){
+    return this->sensorId;
+}
 
-  time_t & Measure::getDateMeas(){
-      return this->dateMeas;
-  }
+time_t & Measure::getDateMeas(){
+    return this->dateMeas;
+}
 
-  void Measure::setDateMeas(time_t aDate){
-      this->dateMeas = aDate;
-  }
+string & Measure::getAttributeValue(){
+    return this->attributeType;
+}
 
-  string & Measure::getAttributeValue(){
-      return this->attributeType;
-  }
+double & Measure::getValue(){
+    return this->value;
+}
 
-  void Measure::setAttributeType(string aType){
-      this->attributeType = std::move(aType);
-  }
+//---------------------------------------------------------------- Setters
 
-  double & Measure::getValue(){
-      return this->value;
-  }
+void Measure::setSensorId(string anId){
+    this->sensorId = std::move(anId);
+}
 
-  void Measure::setValue(double aValue){
-      this->value = aValue;
-  }
+void Measure::setDateMeas(time_t aDate){
+    this->dateMeas = aDate;
+}
 
+void Measure::setAttributeType(string aType){
+    this->attributeType = std::move(aType);
+}
 
-
+void Measure::setValue(double aValue){
+    this->value = aValue;
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 
 Measure::Measure ( )
 {
-} //----- Fin de Measure (constructeur par defaut)
+}
 
 Measure::Measure (string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput)
 : sensorId(std::move(sensorIdInput)), dateMeas(dateMeasInput), attributeType(std::move(attributeTypeInput)), value(valueInput)
 {
-} //----- Fin de Measure (constructeur)
+}
 
 
 Measure::~Measure( )
 {
-}//------- Fin de ~Measure() (destructeur)
+}
 

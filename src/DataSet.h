@@ -1,8 +1,8 @@
 /*************************************************************************
-                           DataSet  -  description
+                           DataSet  -  the data base
                              -------------------
-    début                : 09/05/2023
-    copyright            : (C) 2023 par Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
+    beginning            : 09/05/2023
+    copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
 //---------- Interface de la classe <DataSet> (fichier DataSet.h) ----------------
@@ -22,13 +22,6 @@
 #include "FileManager.h"
 #include "PrivIndiv.h"
 
-using namespace std;
-
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
 //------------------------------------------------------------------------
 // Rôle de la classe <DataSet>
 //
@@ -42,21 +35,6 @@ class DataSet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-
-
-//-------------------------------------------- Constructeurs - destructeur
-
-    DataSet ( );
-
-    virtual ~DataSet ( );
-
-//------------------------------------------------------------------ PRIVE
-private:
-    FileManager fileManager;
-
-public:
-
-
     void initSensorList();
 
     void initUserList();
@@ -67,8 +45,6 @@ public:
 
     void initAirCleanerList();
 
-    /// Getters and setters
-public:
     const unordered_map<string, Sensor> &getSensorsList() const;
 
     const unordered_map<string, AirCleaner> &getAirCleanerList() const;
@@ -91,14 +67,26 @@ public:
 
     void setFileManager(const FileManager &manager);
 
+//-------------------------------------------- Constructeurs - destructeur
+
+    DataSet ( );
+
+    virtual ~DataSet ( );
+
+//------------------------------------------------------------------ PRIVE
+
 private:
+    FileManager fileManager;
+
     unordered_map<string,Sensor> sensorsList;
+
     unordered_map<string, PrivIndiv> userList;
+
     unordered_map<string,Provider> providerList;
+
     unordered_map<string, AirCleaner> airCleanerList;
+
     vector<Measure> measureList;
 };
-
-//-------------------------------- Autres définitions dépendantes de <DataSet>
 
 #endif // DATASET_H
