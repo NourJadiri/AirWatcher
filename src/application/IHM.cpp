@@ -18,6 +18,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "IHM.h"
 
+
 // initialisation du dataSet (mise en mémoire des données)
 DataSet* dataSet = new DataSet();
 
@@ -26,15 +27,13 @@ DataSet* dataSet = new DataSet();
 //---------------------------------------------------- Fonctions publiques
 int main()
 {
-    Test *test = new Test();
-    test->testObsImpactLvlImprov(dataSet);
-    //test->testGetATMOIdx(dataSet);
-    //test->testComputeMeanATMOIdx(dataSet);
+    Test test;
+    test.testComputeMeanATMOIdx(dataSet);
     //test->testGetSensorsAround(dataSet);
     //test->testMeasureAtMoment(dataSet);*/
 
     // get le type d'utilisateur
-    int userType;
+/*    int userType;
     int typeOk = 0;
     while (typeOk == 0){
         cout << "Enter the number corresponding to your user type: \n\t1. Member of Government Agency \n\t2. Private individual \n\t3. Provider \n\t4. Admin \n\t5. Exit" << endl;
@@ -67,7 +66,7 @@ int main()
                 cout << "Invalid user type. Choose a number between 1 and 4 :)" << endl;
                 break;
         }
-    }
+    }*/
 
     /*
     // Parcours de la unordered_map
@@ -400,7 +399,7 @@ void produceStatsMoment()
     //double stats = 3.2;
     double stats = appServ->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
     if (stats == - 1) cout << "No matching sensors for the given area." << endl;
-    else if (stats == -2) cout << "No reliable measurements related to this date." << endl;
+    else if (stats == -2) cout << "No realiable measurements related to this date." << endl;
     else {
         // affichage
         cout << "Mean of ATMO indexes computed with the sensors around:" << endl;
@@ -489,12 +488,8 @@ void obsImpactLvlImprov ()
     AppService* appServ = new AppService(*dataSet);
     pair<int,vector<double>> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
-    if (stats.first == -1)
-        cout << "The AirCleaner " << idAC << " is not registered in our database." << endl;
-    else if (stats.first == -2)
-        cout << "No matching sensors for the given area." << endl;
-    else if (stats.first == -3)
-        cout << "No reliable measurements related to this date." << endl;
+    if (stats.first ==-1)
+        cout << "No matching AirCleaner founded." << endl;
     else {
         double improvement = stats.second[2];
         // affichage

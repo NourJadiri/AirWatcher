@@ -14,13 +14,13 @@
 #include <map>
 #include <vector>
 #include <unordered_map>
-#include "Sensor.h"
-#include "Measure.h"
-#include "AirCleaner.h"
-#include "User.h"
-#include "Provider.h"
+#include "domain/Sensor.h"
+#include "domain/Measure.h"
+#include "domain/AirCleaner.h"
+#include "domain/User.h"
+#include "domain/Provider.h"
 #include "FileManager.h"
-#include "PrivIndiv.h"
+#include "domain/PrivIndiv.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <DataSet>

@@ -11,8 +11,8 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "FileManager.h"
-#include "DataSet.h"
-#include "AppService.h"
+#include "domain/DataSet.h"
+#include "services/AppService.h"
 #include "Test.h"
 
 //------------------------------------------------------------------------

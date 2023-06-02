@@ -1,68 +1,54 @@
 /*************************************************************************
-                           Measure  -  a measurement of a pollutant
+                           InitService  -  populating database
                              -------------------
     beginning            : 09/05/2023
     copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <Measure> (fichier Measure.h) ----------------
-#if ! defined ( MEASURE_H )
-#define MEASURE_H
+//---------- Interface de la classe <InitService> (fichier InitService.h) ----------------
+#if ! defined ( INITSERVICE_H )
+#define INITSERVICE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <cstring>
+#include <string>
 #include <map>
+#include "domain/DataSet.h"
+#include "FileManager.h"
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Measure>
+// Rôle de la classe <InitService>
 //
 //
 //
 //------------------------------------------------------------------------
 
-class Measure
+class InitService
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    string & getSensorId();
 
-    time_t & getDateMeas();
-
-    string & getAttributeValue();
-
-    double & getValue();
-
-    void setSensorId(string anId);
-
-    void setDateMeas(time_t aDate);
-
-    void setAttributeType(string aType);
-
-    void setValue(double aValue);
+    void Initialize();
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Measure ( );
+    InitService ( DataSet & dataInput );
 
-    Measure ( string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput);
+    InitService();
 
-    virtual ~Measure ( );
+    virtual ~InitService ( );
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
+private:
 
-    //----------------------------------------------------- Attributs protégés
-    string sensorId;
-
-    time_t dateMeas{};
-
-    string attributeType;
-
-    double value{};
+    DataSet * data;
 };
 
+#endif // INITSERVICE_H
 
-#endif // MEASURE_H

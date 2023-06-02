@@ -59,14 +59,19 @@ void AirCleaner::setDateStop(const time_t aStop){
 
 AirCleaner :: AirCleaner ( string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput)
 {
-  id = idInput;
+  id = std::move(idInput);
   coord = coordInput;
   dateStart = dateStartInput;
   dateStop= dateStopInput;
 } //----- Fin de AirCleaner
 
-AirCleaner::~AirCleaner()
-{
-}//----- Fin de ~AirCleaner
+AirCleaner::~AirCleaner() = default;
+
+ostream &operator<<(ostream &os, const AirCleaner &cleaner) {
+    os << "id: " << cleaner.id << " coord: " << cleaner.coord << " dateStart: " << cleaner.dateStart << " dateStop: "
+       << cleaner.dateStop;
+    return os;
+}
+//----- Fin de ~AirCleaner
 
 

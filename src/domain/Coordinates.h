@@ -12,6 +12,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
+#include <iostream>
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Coordinates>
@@ -36,6 +37,11 @@ public:
     double getLatitude() const;
 
     void setLatitude(double latitude);
+
+    friend std::ostream & operator<<(std::ostream & os, const Coordinates& coord){
+        os << "Longitude : " << coord.getLongitude() << ", Latitude : " << coord.getLatitude();
+        return os;
+    }
 
 //-------------------------------------------- Constructeurs - destructeur
 

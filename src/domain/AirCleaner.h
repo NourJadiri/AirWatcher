@@ -13,6 +13,7 @@
 #include <cstring>
 #include <map>
 #include <ctime>
+#include <ostream>
 
 #include "Coordinates.h"
 using namespace std;
@@ -51,6 +52,8 @@ public:
     const time_t & getDateStop() const;
 
     void setDateStop(time_t aStop);
+
+    friend ostream &operator<<(ostream &os, const AirCleaner &cleaner);
 
 //-------------------------------------------- Constructeurs - destructeur
 

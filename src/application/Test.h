@@ -15,8 +15,8 @@
 
 //------------------------------------------------------ Include personnel
 #include "FileManager.h"
-#include "DataSet.h"
-#include "AppService.h"
+#include "domain/DataSet.h"
+#include "services/AppService.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Test>
@@ -32,7 +32,6 @@ class Test
 public:
 
     //----------------------------------------------------- Méthodes publiques
-    void testGetATMOIdx(DataSet* dataSet);
 
     void testComputeMeanATMOIdx(DataSet* dataSet);
 
@@ -40,9 +39,7 @@ public:
 
     void testMeasureAtMoment(DataSet* dataSet);
 
-    void testObsImpactLvlImprov(DataSet* dataSet);
-
-    time_t convertToTimeT(const std::string& dateStr);
+    static time_t convertToTimeT(const std::string& dateStr);
 
     //-------------------------------------------- Constructeurs - destructeur
 

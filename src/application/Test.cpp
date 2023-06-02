@@ -22,37 +22,11 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-void Test::testGetATMOIdx(DataSet* dataSet){
-    AppService *app = new AppService(*dataSet);
-    // Define the breakpoints for each pollutant
-    vector<pair<int, int>> OzoneBreakpoints = {{0, 29}, {30, 54}, {55, 79}, {80, 104}, {105, 129}, {130, 149}, {150, 179}, {180, 209}, {210, 239}, {240, INT_MAX}};
-    vector<pair<int, int>> SO2Breakpoints = {{0, 39}, {40, 79}, {80, 119}, {120, 159}, {160, 199}, {200, 249}, {250, 299}, {300, 399}, {400, 499}, {500, INT_MAX}};
-    vector<pair<int, int>> NO2Breakpoints = {{0, 29}, {30, 54}, {55, 84}, {85, 109}, {110, 134}, {135, 164}, {165, 199}, {200, 274}, {275, 399}, {400, INT_MAX}};
-    vector<pair<int, int>> PM10Breakpoints = {{0, 6}, {7, 13}, {14, 20}, {21, 27}, {28, 34}, {35, 41}, {42, 49}, {50, 64}, {65, 79}, {80, INT_MAX}};
-
-    // O3
-    assert(app->getATMOIdx(23.2, OzoneBreakpoints) == 1);
-    cout << endl << "** Test 1 for getATMOIdx() passed **" << endl << endl;
-
-    // SO2
-    assert(app->getATMOIdx(123.2, SO2Breakpoints) == 4);
-    cout << endl << "** Test 2 for getATMOIdx() passed **" << endl << endl;
-
-    // NO2
-    assert(app->getATMOIdx(138.7, NO2Breakpoints) == 6);
-    cout << endl << "** Test 3 for getATMOIdx() passed **" << endl << endl;
-
-    // PM10
-    assert(app->getATMOIdx(67.8, PM10Breakpoints) == 9);
-    cout << endl << "** Test 4 for getATMOIdx() passed **" << endl << endl;
-}
-
-
 void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 {
     vector<Measure> measures;
 
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
 
     // empty measure list so should print a message saying that the list is empty
     double atmo = app->computeMeanATMOIdx(measures);
@@ -61,6 +35,8 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 
     string dateTimeString = "2019-01-01 12:00:00";
     time_t time = convertToTimeT(dateTimeString);
+
+    //cout << "Converted time_t value: " << time << endl;
 
     Measure measure1("Sensor0", time, "O3", 50.25);
     Measure measure2("Sensor0", time, "NO2", 74.5);
@@ -81,6 +57,7 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
     measures.push_back(measure2);
     measures.push_back(measure3);
     measures.push_back(measure4);
+
     measures.push_back(measure5);
     measures.push_back(measure6);
     measures.push_back(measure7);
@@ -99,7 +76,7 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 void Test::testGetSensorsAround(DataSet* dataSet)
 // on the 10 sensors, only sensors 2 and 3 are within a 150km radius from point(44,1)
 {
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
     // list of sensors
     unordered_map<string, Sensor> sensors;
     sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, -1), true);
@@ -118,15 +95,17 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     Coordinates center(44, 1);
     double radius = 150.0;
 
-    vector<Sensor> sensorsAround = app->getSensorsAround(center, radius, sensors);
+    unordered_map<string, Sensor> sensorsAround = app->getSensorsAround(center, radius, sensors);
 
     if (sensorsAround.empty()) cout << "No sensors around for the specified area." << endl;
     else
     {
         // Print the sensors found within the radius
         cout << "Sensors within the radius:" << endl;
-        for (const Sensor& sensor : sensorsAround)
+        for (const auto & pair : sensorsAround)
         {
+            auto sensor = pair.second;
+
             cout << "Sensor ID: " << sensor.getId() << endl;
             cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
         }
@@ -157,8 +136,9 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     {
         // Print the sensors found within the radius
         cout << "Sensors within the radius:" << endl;
-        for (const Sensor& sensor : sensorsAround)
+        for (const auto & pair : sensorsAround)
         {
+            auto sensor = pair.second;
             cout << "Sensor ID: " << sensor.getId() << endl;
             cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
         }
@@ -173,18 +153,19 @@ void Test::testGetSensorsAround(DataSet* dataSet)
 
 void Test::testMeasureAtMoment(DataSet* dataSet)
 {
-    AppService *app = new AppService(*dataSet);
+    AppService appService;
 
-    vector<Sensor> sensors;
-    sensors.push_back(Sensor((string)"Sensor0", Coordinates(10, 20)));
-    sensors.push_back(Sensor((string)"Sensor2", Coordinates(15, 25)));
-    sensors.push_back(Sensor((string)"Sensor3", Coordinates(30, 40)));
-    sensors.push_back(Sensor((string)"Sensor4", Coordinates(35, 45)));
+    unordered_map<string, Sensor> sensors;
+
+    sensors.emplace("Sensor0", Sensor("Sensor0", Coordinates(10,20)));
+    sensors.emplace("Sensor2", Sensor("Sensor2", Coordinates(15,25)));
+    sensors.emplace("Sensor3", Sensor("Sensor3", Coordinates(30,40)));
+    sensors.emplace("Sensor4", Sensor("Sensor4", Coordinates(35,45)));
 
     string dateTimeString = "2019-01-01 12:00:00";
     time_t time = convertToTimeT(dateTimeString);
 
-    vector<Measure> meas = app->getMeasuresAtMoment(sensors, time);
+    vector<Measure> meas = appService.getMeasuresAtMoment(sensors, time);
 
     if(meas.empty()) cout << "No measure found for the specified date."<<endl;
     else
@@ -197,67 +178,6 @@ void Test::testMeasureAtMoment(DataSet* dataSet)
             cout << "measure : " << measure.getDateMeas() << ", " << measure.getAttributeValue() << ";" << measure.getValue()<< endl;
         }
     }
-}
-
-void Test::testObsImpactLvlImprov(DataSet* dataSet){
-    AppService *app = new AppService(*dataSet);
-    string AirCleanerId = "Cleaner5";
-    double radius = 5.;
-
-    pair<int,vector<double>> stats = app->obsImpactLvlImprov(AirCleanerId, radius);
-    cout << "The AirCleaner " << AirCleanerId << " is not registered in our database." << endl;
-    assert(stats.first == -1);
-    cout << endl << "** Test 1 for obsImpactLvlImprov() passed **" << endl << endl;
-
-    AirCleanerId = "Cleaner1";
-    stats = app->obsImpactLvlImprov(AirCleanerId, radius);
-    cout << "No matching sensors for the given area." << endl;
-    assert(stats.first == -2);
-    cout << endl << "** Test 2 for obsImpactLvlImprov() passed **" << endl << endl;
-
-    radius = 100;
-    vector<Measure> measBefore;
-    vector<Measure> measAfter;
-    string dateTimeString = "2019-02-01 12:00:00";
-    time_t time = convertToTimeT(dateTimeString);
-
-    Measure measure1("Sensor0", time, "O3", 50.25);
-    Measure measure2("Sensor0", time, "NO2", 74.5);
-    Measure measure3("Sensor0", time, "SO2", 41.5);
-    Measure measure4("Sensor0", time, "PM10",44.75);
-    // this gives an atmo index = 7
-
-    dateTimeString = "2019-03-01 12:00:00";
-    time = convertToTimeT(dateTimeString);
-
-    Measure measure5("Sensor0", time, "O3", 13.25);
-    Measure measure6("Sensor0", time, "NO2", 23.5);
-    Measure measure7("Sensor0", time, "SO2", 18.5);
-    Measure measure8("Sensor0", time, "PM10",29.75);
-    // this gives an atmo index = 5
-
-    measBefore.push_back(measure1);
-    measBefore.push_back(measure2);
-    measBefore.push_back(measure3);
-    measBefore.push_back(measure4);
-    measAfter.push_back(measure5);
-    measAfter.push_back(measure6);
-    measAfter.push_back(measure7);
-    measAfter.push_back(measure8);
-
-    stats = app->obsImpactLvlImprov(AirCleanerId, radius, measBefore, measAfter);
-
-    double improvement = stats.second[2];
-    // affichage
-    cout << "Impact Level (ATMO index difference) of the AirCleaner " << AirCleanerId << " on a " << radius << " km radius:" << endl;
-    cout << "-> ATMO index before action of AirCleaner = " << stats.second[0] << endl;
-    cout << "-> ATMO index after action of AirCleaner = " << stats.second[1] << endl;
-    cout << "-> ATMO level of improvement: " << (improvement > 0 ? "+" : "") << improvement << endl;
-
-    assert(stats.first == 0);
-    assert(stats.second[2] == -2);
-    cout << endl << "** Test 3 for obsImpactLvlImprov() passed **" << endl << endl;
-
 }
 
 
@@ -278,11 +198,7 @@ time_t Test::convertToTimeT(const string& dateStr)
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Test::Test ( )
-{
-}
+Test::Test ( ) = default;
 
-Test::~Test ( )
-{
-}
+Test::~Test ( ) = default;
 

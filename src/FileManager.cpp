@@ -93,7 +93,7 @@ vector<Measure> FileManager::ParseMeasureList()
             getline(ss, attributeType, ';') && getline(ss, valueStr, ';'))
         {
             // Conversion des valeurs au format approprié
-            time_t dateMeas = convertToTimeT(dateStr); // Conversion de la chaîne de caractères en time_t
+            time_t dateMeas = convertStringToTime(dateStr); // Conversion de la chaîne de caractères en time_t
             double value = stod(valueStr); // Conversion de la chaîne de caractères en un double
 
             // Création de l'objet Measure et ajout à la liste
@@ -230,19 +230,20 @@ unordered_map<string, vector<string>> FileManager::ParseProviderList()
     return providers;
 }
 
-time_t FileManager::convertToTimeT(const string& dateStr)
+time_t FileManager::convertStringToTime(const string& dateString)
 {
-    struct tm tm = {};
-    istringstream ss(dateStr);
-    ss >> get_time(&tm, "%Y-%m-%d %H:%M:%S");
+    struct tm timeStruct = {};
+    istringstream ss(dateString);
+    ss >> get_time(&timeStruct, "%Y-%m-%d");
 
-    if (!ss.fail())
+    if (ss.fail())
     {
-        time_t time = mktime(&tm);
-        return time;
+        cerr << "Failed to parse date string: " << dateString << endl;
+        return 0; // Return 0 or handle the error as needed
     }
 
-    return 0; // Return 0 if the conversion fails
+    time_t time = mktime(&timeStruct);
+    return time;
 }
 
 //-------------------------------------------- Constructeurs - destructeur

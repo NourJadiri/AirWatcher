@@ -12,6 +12,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
+#include <ostream>
 
 //------------------------------------------------------ Include personnel
 #include "Coordinates.h"
@@ -24,6 +25,7 @@
 
 class Sensor 
 {
+
 //----------------------------------------------------------------- PUBLIC
 
 public:
@@ -41,6 +43,8 @@ public:
 
     void setReliable(bool reliable);
 
+    friend ostream &operator<<(ostream &os, const Sensor &sensor);
+
 //-------------------------------------------- Constructeurs - destructeur
   Sensor ( const Sensor & aSensor );
 
@@ -48,7 +52,7 @@ public:
 
   Sensor (string id, const Coordinates& coord);
 
-  Sensor(string id, const Coordinates& coord, bool reliable);
+  Sensor(const string & id, const Coordinates& coord, bool reliable);
 
   virtual ~Sensor ( );
 

@@ -18,15 +18,15 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void DataSet::initSensorList() {
-    sensorsList = fileManager.ParseSensorList();
+    sensorsList = std::move(fileManager.ParseSensorList());
 }
 
 void DataSet::initMeasureList() {
-    measureList = fileManager.ParseMeasureList();
+    measureList = std::move(fileManager.ParseMeasureList());
 }
 
 void DataSet::initAirCleanerList() {
-    airCleanerList = fileManager.ParseAirCleanerList();
+    airCleanerList = std::move(fileManager.ParseAirCleanerList());
 }
 
 void DataSet::initUserList() {
