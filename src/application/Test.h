@@ -15,8 +15,8 @@
 
 //------------------------------------------------------ Include personnel
 #include "FileManager.h"
-#include "domain/DataSet.h"
-#include "services/AppService.h"
+#include "DataSet.h"
+#include "AppService.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Test>
@@ -39,7 +39,7 @@ public:
 
     void testMeasureAtMoment(DataSet* dataSet);
 
-    static time_t convertToTimeT(const std::string& dateStr);
+    time_t convertToTimeT(const std::string& dateStr);
 
     //-------------------------------------------- Constructeurs - destructeur
 

@@ -26,7 +26,7 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 {
     vector<Measure> measures;
 
-    auto *app = new AppService(*dataSet);
+    AppService *app = new AppService(*dataSet);
 
     // empty measure list so should print a message saying that the list is empty
     double atmo = app->computeMeanATMOIdx(measures);
@@ -76,7 +76,7 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 void Test::testGetSensorsAround(DataSet* dataSet)
 // on the 10 sensors, only sensors 2 and 3 are within a 150km radius from point(44,1)
 {
-    auto *app = new AppService(*dataSet);
+    AppService *app = new AppService(*dataSet);
     // list of sensors
     unordered_map<string, Sensor> sensors;
     sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, -1), true);
@@ -95,17 +95,15 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     Coordinates center(44, 1);
     double radius = 150.0;
 
-    unordered_map<string, Sensor> sensorsAround = app->getSensorsAround(center, radius, sensors);
+    vector<Sensor> sensorsAround = app->getSensorsAround(center, radius, sensors);
 
     if (sensorsAround.empty()) cout << "No sensors around for the specified area." << endl;
     else
     {
         // Print the sensors found within the radius
         cout << "Sensors within the radius:" << endl;
-        for (const auto & pair : sensorsAround)
+        for (const Sensor& sensor : sensorsAround)
         {
-            auto sensor = pair.second;
-
             cout << "Sensor ID: " << sensor.getId() << endl;
             cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
         }
@@ -136,9 +134,8 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     {
         // Print the sensors found within the radius
         cout << "Sensors within the radius:" << endl;
-        for (const auto & pair : sensorsAround)
+        for (const Sensor& sensor : sensorsAround)
         {
-            auto sensor = pair.second;
             cout << "Sensor ID: " << sensor.getId() << endl;
             cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
         }
@@ -155,12 +152,11 @@ void Test::testMeasureAtMoment(DataSet* dataSet)
 {
     AppService appService;
 
-    unordered_map<string, Sensor> sensors;
-
-    sensors.emplace("Sensor0", Sensor("Sensor0", Coordinates(10,20)));
-    sensors.emplace("Sensor2", Sensor("Sensor2", Coordinates(15,25)));
-    sensors.emplace("Sensor3", Sensor("Sensor3", Coordinates(30,40)));
-    sensors.emplace("Sensor4", Sensor("Sensor4", Coordinates(35,45)));
+    vector<Sensor> sensors;
+    sensors.push_back(Sensor((string)"Sensor0", Coordinates(10, 20)));
+    sensors.push_back(Sensor((string)"Sensor2", Coordinates(15, 25)));
+    sensors.push_back(Sensor((string)"Sensor3", Coordinates(30, 40)));
+    sensors.push_back(Sensor((string)"Sensor4", Coordinates(35, 45)));
 
     string dateTimeString = "2019-01-01 12:00:00";
     time_t time = convertToTimeT(dateTimeString);
@@ -198,7 +194,11 @@ time_t Test::convertToTimeT(const string& dateStr)
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Test::Test ( ) = default;
+Test::Test ( )
+{
+}
 
-Test::~Test ( ) = default;
+Test::~Test ( )
+{
+}
 

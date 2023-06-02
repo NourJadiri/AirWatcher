@@ -18,7 +18,6 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "IHM.h"
 
-
 // initialisation du dataSet (mise en mémoire des données)
 DataSet* dataSet = new DataSet();
 
@@ -27,13 +26,13 @@ DataSet* dataSet = new DataSet();
 //---------------------------------------------------- Fonctions publiques
 int main()
 {
-    Test test;
-    test.testComputeMeanATMOIdx(dataSet);
+    Test *test = new Test();
+    test->testComputeMeanATMOIdx(dataSet);
     //test->testGetSensorsAround(dataSet);
     //test->testMeasureAtMoment(dataSet);*/
 
     // get le type d'utilisateur
-/*    int userType;
+    int userType;
     int typeOk = 0;
     while (typeOk == 0){
         cout << "Enter the number corresponding to your user type: \n\t1. Member of Government Agency \n\t2. Private individual \n\t3. Provider \n\t4. Admin \n\t5. Exit" << endl;
@@ -66,7 +65,7 @@ int main()
                 cout << "Invalid user type. Choose a number between 1 and 4 :)" << endl;
                 break;
         }
-    }*/
+    }
 
     /*
     // Parcours de la unordered_map

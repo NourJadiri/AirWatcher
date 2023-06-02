@@ -35,7 +35,7 @@ public:
 
     //----------------------------------------------------- Méthodes publiques
 
-    double produceStatsMoment(time_t day, const Coordinates& coord, double radius);
+    double produceStatsMoment(time_t day, Coordinates coord, double radius);
 
     double computeMeanATMOIdx(std::vector<Measure> listMeasures);
 

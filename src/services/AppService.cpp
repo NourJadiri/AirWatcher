@@ -21,9 +21,9 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-double AppService::produceStatsMoment(time_t day, const Coordinates& coord, double radius)
+double AppService::produceStatsMoment(time_t day, Coordinates coord, double radius)
 {
-    unordered_map<string, Sensor> sensors = getSensorsAround(coord, radius);
+    vector<Sensor> sensors = getSensorsAround(coord, radius);
     if(sensors.empty()) return -1;
 
     vector<Measure> measures = getMeasuresAtMoment(sensors, day);
@@ -76,7 +76,6 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
         }
 
         date = measure.getDateMeas();
-        
         if (maxATMOSubIdxByDate.find(date) == maxATMOSubIdxByDate.end())
         {
             // If the date is not present in the map, initialize it with the current ATMOSubIdx
@@ -113,27 +112,26 @@ int AppService::getATMOIdx(double value, const vector<pair<int, int>>& breakpoin
 }
 
 
-unordered_map<string, Sensor> AppService::getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap )
+vector<Sensor> AppService::getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap )
 {
-    unordered_map<string, Sensor> sensors = (sensorMap.empty()) ? data->getSensorsList() : sensorMap;
-
-    unordered_map<string, Sensor> sensorsAround;
+    const unordered_map<string, Sensor>& sensors = (sensorMap.empty()) ? data->getSensorsList() : sensorMap;
+    vector<Sensor> sensorsAround;
 
     for (const auto& pair : sensors)
     {
-        auto key = pair.first;
         const Sensor& sensor = pair.second; // Access the sensor object from the pair
-
         if (sensor.getCoord().Distance(coord) <= radius)
         {
-            sensorsAround[key] = sensor;
+            sensorsAround.push_back(sensor);
         }
     }
 
     return sensorsAround;
 }
 
-vector<Measure> AppService::getMeasuresAtMoment(unordered_map<string, Sensor> & sensorMap, time_t date)
+
+
+vector<Measure> AppService::getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date)
 {
     vector<Measure> measures;
     measures = data->getMeasureList();
@@ -145,9 +143,13 @@ vector<Measure> AppService::getMeasuresAtMoment(unordered_map<string, Sensor> & 
         string sensorId = measure.getSensorId();
 
         // Vérifier si le sensorId de la mesure appartient à la liste de Sensor
-        if(measure.getDateMeas() == date && sensorMap.find(sensorId) != sensorMap.end())
+        for (const Sensor& sensor : listSensor)
         {
-            measures.push_back(measure);
+            if (sensor.getId() == sensorId && measure.getDateMeas() == date)
+            {
+                measuresAtMom.push_back(measure);
+                break;
+            }
         }
     }
 
@@ -172,7 +174,7 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
         // No air cleaner found with the given AirCleanId
         return make_pair(-1, vector<double>()); // Return error code -1 and empty vector
     }
-    unordered_map<string, Sensor> listSensors = getSensorsAround(airCl.getCoord(), radius);
+    vector<Sensor> listSensors = getSensorsAround(airCl.getCoord(), radius);
     vector<Measure> measBefore = getMeasuresAtMoment(listSensors, airCl.getDateStart());
     vector<Measure> measAfter = getMeasuresAtMoment(listSensors, airCl.getDateStop());
 
@@ -196,9 +198,13 @@ AppService::AppService(DataSet& dataInput)
     data = &dataInput;
 }
 
-AppService::AppService() = default;
+AppService::AppService() {
 
-AppService::~AppService() = default;
+}
+
+AppService::~AppService() {
+
+}
 
 
 
