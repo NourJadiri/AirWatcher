@@ -13,6 +13,7 @@
 #include <string>
 #include <map>
 #include "DataSet.h"
+#include "FileManager.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -33,7 +34,6 @@ public:
 //----------------------------------------------------- Méthodes publiques
 
     void Initialize();
-
 
 //-------------------------------------------- Constructeurs - destructeur
 

@@ -20,7 +20,7 @@ EFFACE = clean
 .PHONY : $(EFFACE)
 
 # edition des liens
-$(BIN) : $(OBJETS)
+$(EXE) : $(OBJETS)
 	$(ECHO) ">>>Edition des liens de <$(EXE)>"
 	$(LD) $(LDFLAGS) $^ -o $@
 
@@ -36,10 +36,10 @@ $(EFFACE) :
 # dependances complementaires
 AirCleaner.o : Coordinates.h
 AppService.o : DataSet.h Coordinates.cpp Measure.h Sensor.h
-DataSet.o : Sensor.h Measure.h AirCleaner.h User.h Provider.h FileManager.h PrivIndiv.h
+DataSet.o : FileManager.h Sensor.h Measure.h AirCleaner.h User.h Provider.h  PrivIndiv.h
 FileManager.o : Sensor.h Coordinates.h Measure.h User.h AirCleaner.h Provider.h
 IHM.o : FileManager.h DataSet.h AppService.h Test.h
-InitService.o : DataSet.h
+InitService.o : DataSet.h FileManager.h
 MemberGov.o : SuperUser.h
 PrivIndiv.o : Sensor.h User.h
 Provider.o : AirCleaner.h User.h

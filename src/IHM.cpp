@@ -534,9 +534,9 @@ bool isValidDateFormat(const string& date)
 
     // Check if the year, month, and day components are valid integers
     try {
-        int year = stoi(date.substr(0, 4));
-        int month = stoi(date.substr(5, 2));
-        int day = stoi(date.substr(8, 2));
+        stoi(date.substr(0, 4));
+        stoi(date.substr(5, 2));
+        stoi(date.substr(8, 2));
     } catch (const exception& e) {
         return false;
     }

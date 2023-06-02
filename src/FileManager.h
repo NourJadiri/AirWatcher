@@ -6,8 +6,8 @@
 *************************************************************************/
 
 //---------- Interface de la classe <FileManager> (fichier FileManager.h) ----------------
-#if ! defined ( INITSERVICE_H )
-#define INITSERVICE_H
+#if ! defined ( FILEMANAGER_H )
+#define FILEMANAGER_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
@@ -58,5 +58,5 @@ public:
 
 };
 
-#endif // INITSERVICE_H
+#endif // FILEMANAGER_H
 

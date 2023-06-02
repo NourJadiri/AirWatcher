@@ -61,9 +61,9 @@ Attribute::Attribute ( const Attribute & anAttribute )
 
 Attribute::Attribute( string unit, string type, string description )
 {
-    type = type;
-    unit = unit;
-    description = description;
+    this->type = type;
+    this->unit = unit;
+    this->description = description;
 }
 
 Attribute::Attribute() {
