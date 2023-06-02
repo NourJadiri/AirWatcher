@@ -50,6 +50,8 @@ public:
 
     vector<Measure> ParseMeasureList();
 
+    time_t convertStringToTime(const string& dateString);
+
 //-------------------------------------------- Constructeurs - destructeur
 
     FileManager ( );

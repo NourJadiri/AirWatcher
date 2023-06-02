@@ -17,17 +17,6 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-//-------------------------------------------- Constructeurs - destructeur
-
-DataSet::DataSet()
-{
-    initSensorList();
-    initUserList();
-}//----- Fin de DataSet(constructeur)
-
-DataSet :: ~DataSet() = default;
-
-
 void DataSet::initSensorList() {
     sensorsList = fileManager.ParseSensorList();
 }
@@ -114,22 +103,32 @@ const FileManager &DataSet::getFileManager() const {
 //---------------------------------------------------------------- Setters
 
 void DataSet::setSensorsList(const unordered_map<string, Sensor> &list) {
-    DataSet::sensorsList = list;
+    sensorsList = list;
 }
 
 void DataSet::setUserList(const unordered_map<string, PrivIndiv> &list) {
-    DataSet::userList = list;
+    userList = list;
 }
 
 void DataSet::setProviderList(const unordered_map<string, Provider> &list) {
-    DataSet::providerList = list;
+    providerList = list;
 }
 
 void DataSet::setMeasureList(const vector<Measure> &list) {
-    DataSet::measureList = list;
+    measureList = list;
 }
 
 void DataSet::setFileManager(const FileManager &manager) {
-    DataSet::fileManager = manager;
+    fileManager = manager;
 }
+
+//-------------------------------------------- Constructeurs - destructeur
+
+DataSet::DataSet()
+{
+    initSensorList();
+    initUserList();
+}
+
+DataSet :: ~DataSet() = default;
 

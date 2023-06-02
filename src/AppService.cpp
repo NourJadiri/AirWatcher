@@ -120,6 +120,7 @@ vector<Sensor> AppService::getSensorsAround(const Coordinates& coord, double rad
     for (const auto& pair : sensors)
     {
         const Sensor& sensor = pair.second; // Access the sensor object from the pair
+        double distance = sensor.getCoord().Distance(coord);
         if (sensor.getCoord().Distance(coord) <= radius)
         {
             sensorsAround.push_back(sensor);
@@ -140,6 +141,7 @@ vector<Measure> AppService::getMeasuresAtMoment(const vector<Sensor>& listSensor
     for (Measure& measure : measures)
     {
         string sensorId = measure.getSensorId();
+
         // Vérifier si le sensorId de la mesure appartient à la liste de Sensor
         for (const Sensor& sensor : listSensor)
         {

@@ -42,7 +42,7 @@ double & Measure::getValue(){
 //---------------------------------------------------------------- Setters
 
 void Measure::setSensorId(string anId){
-    this->sensorId = std::move(anId);
+    this->sensorId = anId;
 }
 
 void Measure::setDateMeas(time_t aDate){
@@ -50,7 +50,7 @@ void Measure::setDateMeas(time_t aDate){
 }
 
 void Measure::setAttributeType(string aType){
-    this->attributeType = std::move(aType);
+    this->attributeType = aType;
 }
 
 void Measure::setValue(double aValue){
@@ -64,10 +64,9 @@ Measure::Measure ( )
 }
 
 Measure::Measure (string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput)
-: sensorId(std::move(sensorIdInput)), dateMeas(dateMeasInput), attributeType(std::move(attributeTypeInput)), value(valueInput)
+: sensorId(sensorIdInput), dateMeas(dateMeasInput), attributeType(attributeTypeInput), value(valueInput)
 {
 }
-
 
 Measure::~Measure( )
 {

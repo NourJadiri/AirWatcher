@@ -34,15 +34,15 @@ bool Sensor::isReliable() const {
 //---------------------------------------------------------------- Setters
 
 void Sensor::setId(const string &id) {
-    Sensor::id = id;
+    this->id = id;
 }
 
 void Sensor::setCoord(const Coordinates &coord) {
-    Sensor::coord = coord;
+    this->coord = coord;
 }
 
 void Sensor::setReliable(bool reliable) {
-    Sensor::reliable = reliable;
+    this->reliable = reliable;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
