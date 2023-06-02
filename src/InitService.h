@@ -1,65 +1,54 @@
 /*************************************************************************
-                           Coordinates  -  longitude + latitude
+                           InitService  -  populating database
                              -------------------
     beginning            : 09/05/2023
     copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <Coordinates> (fichier Coordinates.h) ----------------
-#if ! defined ( COORDINATES_H )
-#define COORDINATES_H
+//---------- Interface de la classe <InitService> (fichier InitService.h) ----------------
+#if ! defined ( INITSERVICE_H )
+#define INITSERVICE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
-#include <iostream>
+#include "DataSet.h"
+#include "FileManager.h"
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Coordinates>
+// Rôle de la classe <InitService>
 //
 //
 //
 //------------------------------------------------------------------------
 
-class Coordinates
+class InitService
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    double Distance(const Coordinates& point) const;
-
-    double getLongitude() const;
-
-    void setLongitude(double longitude);
-
-    double getLatitude() const;
-
-    void setLatitude(double latitude);
-
-    friend std::ostream & operator<<(std::ostream & os, const Coordinates& coord){
-        os << "Longitude : " << coord.getLongitude() << ", Latitude : " << coord.getLatitude();
-        return os;
-    }
+    void Initialize();
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Coordinates();
+    InitService ( DataSet & dataInput );
 
-    Coordinates(double latInput, double longInput);
+    InitService();
 
-    Coordinates (const Coordinates & coord);
-
-    virtual ~Coordinates ( );
+    virtual ~InitService ( );
 
 //------------------------------------------------------------------ PRIVE
+
 private:
 
-    double longitude;
-
-    double latitude;
-
+    DataSet * data;
 };
 
-#endif // COORDINATES_H
+#endif // INITSERVICE_H
+

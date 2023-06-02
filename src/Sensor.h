@@ -1,71 +1,68 @@
 /*************************************************************************
-                           Measure  -  a measurement of a pollutant
+                           Sensor  -  object of a sensor
                              -------------------
     beginning            : 09/05/2023
     copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <Measure> (fichier Measure.h) ----------------
-#if ! defined ( MEASURE_H )
-#define MEASURE_H
+//---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
+#if ! defined ( SENSOR_H)
+#define SENSOR_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <cstring>
+#include <string>
 #include <map>
-#include <ostream>
+
+//------------------------------------------------------ Include personnel
+#include "Coordinates.h"
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Measure>
-//
+// Rôle de la classe <Sensor>
 //
 //
 //------------------------------------------------------------------------
 
-class Measure
+class Sensor 
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    string & getSensorId();
 
-    time_t & getDateMeas();
+    const string &getId() const;
 
-    string & getAttributeValue();
+    const Coordinates &getCoord() const;
 
-    double & getValue();
+    bool isReliable() const;
 
-    void setSensorId(string anId);
+    void setCoord(const Coordinates &coord);
 
-    void setDateMeas(time_t aDate);
+    void setId(const string &id);
 
-    void setAttributeType(string aType);
-
-    void setValue(double aValue);
-
-    friend ostream &operator<<(ostream &os, const Measure &measure);
+    void setReliable(bool reliable);
 
 //-------------------------------------------- Constructeurs - destructeur
+  Sensor ( const Sensor & aSensor );
 
-    Measure ( );
+  Sensor ( );
 
-    Measure ( string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput);
+  Sensor (string id, const Coordinates& coord);
 
-    virtual ~Measure ( );
+  Sensor(string id, const Coordinates& coord, bool reliable);
+
+  virtual ~Sensor ( );
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    string sensorId;
+    string id;
 
-    time_t dateMeas{};
+    Coordinates coord = Coordinates(.0, .0);
 
-    string attributeType;
+    bool reliable{};
 
-    double value{};
 };
 
-
-#endif // MEASURE_H
+#endif // SENSOR_H

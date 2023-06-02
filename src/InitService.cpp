@@ -29,7 +29,7 @@ void InitService::Initialize ( ){
 
 InitService::InitService ( DataSet & dataInput )
 {
-    data = & dataInput;
+    data = &dataInput;
 }
 
 

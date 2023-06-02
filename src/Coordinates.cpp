@@ -57,10 +57,12 @@ Coordinates::Coordinates (double latInput, double longInput)
 Coordinates::Coordinates ( const Coordinates & coord )
 {
     longitude = coord.longitude;
-    latitude = coord.latitude;
+    latitude= coord.latitude;
 } //----- Fin de Sensor (constructeur de copie)
 
-Coordinates::~Coordinates( ) = default;
+Coordinates::~Coordinates( )
+{
+}
 
 //---------------------------------------------------------------- Getters
 

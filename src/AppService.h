@@ -14,10 +14,10 @@
 #include <string>
 #include <utility>
 
-#include "domain/DataSet.h"
-#include "domain/Coordinates.h"
-#include "domain/Measure.h"
-#include "domain/Sensor.h"
+#include "DataSet.h"
+#include "Coordinates.h"
+#include "Measure.h"
+#include "Sensor.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <AppService>
@@ -39,13 +39,15 @@ public:
 
     double computeMeanATMOIdx(std::vector<Measure> listMeasures);
 
-    unordered_map<string,Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
+    vector<Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
 
-    vector<Measure> getMeasuresAtMoment(unordered_map<string, Sensor> & listSensor, time_t date);
+    vector<Measure> getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date);
 
     int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
 
-    pair<int, vector<double>> obsImpactLvlImprov(const std::string& id, double radius);
+    pair<int, vector<double>> obsImpactLvlImprov(const std::string& AirCleanId, double radius, const vector<Measure>& measBefore = {}, const vector<Measure>& measAfter = {});
+
+    string convertTimeToString(const time_t& time);
 
     //-------------------------------------------- Constructeurs - destructeur
 
@@ -60,7 +62,7 @@ public:
 
 private:
 
-    DataSet * data{};
+    DataSet * data;
 };
 
 #endif // APPSERVICE_H

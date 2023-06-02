@@ -32,12 +32,15 @@ class Test
 public:
 
     //----------------------------------------------------- Méthodes publiques
+    void testGetATMOIdx(DataSet* dataSet);
 
     void testComputeMeanATMOIdx(DataSet* dataSet);
 
     void testGetSensorsAround(DataSet* dataSet);
 
     void testMeasureAtMoment(DataSet* dataSet);
+
+    void testObsImpactLvlImprov(DataSet* dataSet);
 
     time_t convertToTimeT(const std::string& dateStr);
 
