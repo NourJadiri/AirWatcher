@@ -56,7 +56,8 @@ Measure::Measure ( )
 {
 } //----- Fin de Measure (constructeur par defaut)
 
-Measure::Measure (string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput) : sensorId(std::move(sensorIdInput)), dateMeas(dateMeasInput), attributeType(std::move(attributeTypeInput)), value(valueInput)
+Measure::Measure (string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput)
+: sensorId(std::move(sensorIdInput)), dateMeas(dateMeasInput), attributeType(std::move(attributeTypeInput)), value(valueInput)
 {
 } //----- Fin de Measure (constructeur)
 

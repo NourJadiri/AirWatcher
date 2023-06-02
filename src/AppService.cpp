@@ -12,6 +12,7 @@
 
 #include "AppService.h"
 #include <iostream>
+#include <map>
 using namespace std;
 
 //------------------------------------------------------------- Constantes
@@ -52,54 +53,67 @@ double AppService::produceStatsMoment(time_t day, Coordinates coord, double radi
     return computeMeanATMOIdx(measures);
 }
 
-
-int AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
+double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
 {
     if (listMeasures.empty())
     {
         return 0; // Return 0 if the list of measures is empty
     }
+
     // Define the breakpoints for each pollutant
-    vector<pair<int, int>> OzoneBreakpoints = {{0, 50}, {50, 100}, {100, 130}, {130, 240}, {240, 380}, {380, INT_MAX}};
-    vector<pair<int, int>> SO2Breakpoints = {{0, 100}, {100, 200}, {200, 350}, {350, 500}, {500, 750}, {750, INT_MAX}};
-    vector<pair<int, int>> NO2Breakpoints = {{0, 40}, {40, 90}, {90, 120}, {120, 230}, {230, 340}, {340, INT_MAX}};
-    vector<pair<int, int>> PM10Breakpoints = {{0, 20}, {20, 40}, {40, 50}, {50, 100}, {100, 150}, {150, INT_MAX}};
-    int sumATMOIdx = 0;
+    vector<pair<int, int>> OzoneBreakpoints = {{0, 29}, {30, 54}, {55, 79}, {80, 104}, {105, 129}, {130, 149}, {150, 179}, {180, 209}, {210, 239}, {240, INT_MAX}};
+    vector<pair<int, int>> SO2Breakpoints = {{0, 39}, {40, 79}, {80, 119}, {120, 159}, {160, 199}, {200, 249}, {250, 299}, {300, 399}, {400, 499}, {500, INT_MAX}};
+    vector<pair<int, int>> NO2Breakpoints = {{0, 29}, {30, 54}, {55, 84}, {85, 109}, {110, 134}, {135, 164}, {165, 199}, {200, 274}, {275, 399}, {400, INT_MAX}};
+    vector<pair<int, int>> PM10Breakpoints = {{0, 6}, {7, 13}, {14, 20}, {21, 27}, {28, 34}, {35, 41}, {42, 49}, {50, 64}, {65, 79}, {80, INT_MAX}};
+    double sumATMOIdx = 0;
+
+    map<string, int> maxATMOSubIdxByDate; // Store the maximum ATMOSubIdx for each day
+
     for (Measure& measure : listMeasures)
     {
-        int ATMOIdx = 0;
-
+        int ATMOSubIdx = 10;
+        string date;
         // Get the attribute type and value of the measure
         string attributeType = measure.getAttributeValue();
         double attributeValue = measure.getValue();
 
-        // Calculate ATMO index based on the attribute value
+        // Calculate ATMO subindex based on the attribute value
         if (attributeType == "O3")
         {
-            ATMOIdx = getATMOIdx(attributeValue, OzoneBreakpoints);
+            ATMOSubIdx = getATMOIdx(attributeValue, OzoneBreakpoints);
         }
         else if (attributeType == "SO2")
         {
-            ATMOIdx = getATMOIdx(attributeValue, SO2Breakpoints);
+            ATMOSubIdx = getATMOIdx(attributeValue, SO2Breakpoints);
         }
         else if (attributeType == "NO2")
         {
-            ATMOIdx = getATMOIdx(attributeValue, NO2Breakpoints);
+            ATMOSubIdx = getATMOIdx(attributeValue, NO2Breakpoints);
         }
         else if (attributeType == "PM10")
         {
-            ATMOIdx = getATMOIdx(attributeValue, PM10Breakpoints);
+            ATMOSubIdx = getATMOIdx(attributeValue, PM10Breakpoints);
+        }
+
+        date = measure.getDateMeas();
+        if (maxATMOSubIdxByDate.find(date) == maxATMOSubIdxByDate.end())
+        {
+            // If the date is not present in the map, initialize it with the current ATMOSubIdx
+            maxATMOSubIdxByDate[date] = ATMOSubIdx;
         }
         else
         {
-            ATMOIdx = 6; // Extrêmement mauvais
+            // If the date is already present, update the value with the maximum ATMOSubIdx
+            maxATMOSubIdxByDate[date] = max(maxATMOSubIdxByDate[date], ATMOSubIdx);
         }
-
-        sumATMOIdx += ATMOIdx;
     }
 
-    int meanATMOIdx = sumATMOIdx / listMeasures.size();
-    return meanATMOIdx;
+    // computing the mean of the ATMO indices
+    for (const auto& entry : maxATMOSubIdxByDate)
+    {
+        sumATMOIdx += entry.second; // Add the maximum ATMOSubIdx for each day to the sum
+    }
+    return sumATMOIdx / maxATMOSubIdxByDate.size(); // Divide by the number of unique days
 }
 
 int AppService::getATMOIdx(double value, const vector<pair<int, int>>& breakpoints)
@@ -114,10 +128,10 @@ int AppService::getATMOIdx(double value, const vector<pair<int, int>>& breakpoin
         i++;
     }
 
-    return i; // Invalid range
+    return 10; // Invalid range so worst atmo sub index
 }
 
-vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
+vector<Sensor> AppService::getSensorsAround(const Coordinates& coord, double radius)
 {
     unordered_map<string, Sensor> sensors;
     sensors = data->getSensorsList();
@@ -136,7 +150,7 @@ vector<Sensor> AppService::getSensorsAround(Coordinates coord, double radius)
 }
 
 
-vector<Measure> AppService::getMeasuresAtMoment(vector<Sensor> listSensor, time_t date)
+vector<Measure> AppService::getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date)
 {
     vector<Measure> measures;
     measures = data->getMeasureList();

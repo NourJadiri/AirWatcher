@@ -39,9 +39,9 @@ void produceStatsMoment ( );
 
 void obsImpactLvlImprov ( );
 
-bool isDateAfterToday( const string& date );
+bool isDateAfterToday( const std::string& date );
 
-bool isValidDateFormat( const string& date );
+bool isValidDateFormat( const std::string& date );
 
 //-----TESTS
 
@@ -49,5 +49,7 @@ void testComputeMeanATMOIdx();
 
 void testGetSensorsAround();
 void testMeasureAtMoment();
+
+time_t convertToTimeT(const std::string& dateStr);
 
 #endif // IHM_H

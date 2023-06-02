@@ -49,9 +49,9 @@ public:
 
     void produceStatsPeriod(time_t day1, time_t day2, Coordinates coord, double radius);
     double produceStatsMoment(time_t day, Coordinates coord, double radius);
-    int computeMeanATMOIdx(std::vector<Measure> listMeasures);
-    vector<Sensor> getSensorsAround(Coordinates coord, double radius);
-    vector<Measure> getMeasuresAtMoment(vector<Sensor> listSensor, time_t date);
+    double computeMeanATMOIdx(std::vector<Measure> listMeasures);
+    vector<Sensor> getSensorsAround(const Coordinates& coord, double radius);
+    vector<Measure> getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date);
     void analysePIndSensor(string sensorId);
     void analysePIndSensor();
     int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
