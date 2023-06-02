@@ -128,6 +128,9 @@ DataSet::DataSet()
 {
     initSensorList();
     initUserList();
+    initMeasureList();
+    initAirCleanerList();
+    initProviderList();
 }
 
 DataSet :: ~DataSet() = default;
