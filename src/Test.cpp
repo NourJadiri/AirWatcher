@@ -10,7 +10,8 @@
 /////////////////////////////////////////////////////////////////  INCLUDE
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <time.h>
+#include <iomanip>
+#include <sstream>
 #include <cassert>
 using namespace std;
 
@@ -175,12 +176,14 @@ void Test::testMeasureAtMoment(DataSet* dataSet)
     }
 }
 
+
 time_t Test::convertToTimeT(const string& dateStr)
 {
-    struct tm tm;
-    memset(&tm, 0, sizeof(struct tm));
+    struct tm tm = {};
+    istringstream ss(dateStr);
+    ss >> get_time(&tm, "%Y-%m-%d %H:%M:%S");
 
-    if (strptime(dateStr.c_str(), "%Y-%m-%d %H:%M:%S", &tm) != nullptr)
+    if (!ss.fail())
     {
         time_t time = mktime(&tm);
         return time;
@@ -188,6 +191,7 @@ time_t Test::convertToTimeT(const string& dateStr)
 
     return 0; // Return 0 if the conversion fails
 }
+
 
 //-------------------------------------------- Constructeurs - destructeur
 Test::Test ( )
