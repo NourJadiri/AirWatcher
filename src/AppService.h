@@ -35,9 +35,9 @@ public:
 
     //----------------------------------------------------- Méthodes publiques
 
-    double produceStatsMoment(time_t day, Coordinates coord, double radius);
+    double produceStatsMoment(time_t day, const Coordinates& coord, double radius, const vector<Measure>& measure = {});
 
-    double computeMeanATMOIdx(std::vector<Measure> listMeasures);
+    double computeMeanATMOIdx(vector<Measure> listMeasures);
 
     vector<Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
 

@@ -24,14 +24,14 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-double AppService::produceStatsMoment(time_t day, const Coordinates& coord, double radius)
+double AppService::produceStatsMoment(time_t day, const Coordinates& coord, double radius, const vector<Measure>& measure)
 {
     // get all the reliable sensor around the circle of center coord and radius radius
     vector<Sensor> sensors = getSensorsAround(coord, radius);
     if(sensors.empty()) return -1;
 
     // get all the measurements corresponding to the previous sensors
-    vector<Measure> measures = getMeasuresAtMoment(sensors, day);
+    vector<Measure> measures = (measure.empty()) ? getMeasuresAtMoment(sensors, day) : measure;
     if(measures.empty()) return -2;
 
     // compute the mean of the ATMO indices of the measurements above
@@ -143,7 +143,6 @@ vector<Sensor> AppService::getSensorsAround(const Coordinates& coord, double rad
 
     return sensorsAround;
 }
-
 
 
 vector<Measure> AppService::getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date)

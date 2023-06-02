@@ -45,4 +45,6 @@ bool isDateAfterToday( const std::string& date );
 
 bool isValidDateFormat( const std::string& date );
 
+time_t convertToTimeT( const string& dateStr );
+
 #endif // IHM_H

@@ -13,6 +13,8 @@
 #include <utility>
 #include <regex>
 #include <limits>
+#include <iomanip>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -27,7 +29,8 @@ DataSet* dataSet = new DataSet();
 int main()
 {
     Test *test = new Test();
-    test->testObsImpactLvlImprov(dataSet);
+    test->testProduceStatsMoment(dataSet);
+    //test->testObsImpactLvlImprov(dataSet);
     //test->testGetATMOIdx(dataSet);
     //test->testComputeMeanATMOIdx(dataSet);
     //test->testGetSensorsAround(dataSet);
@@ -325,11 +328,7 @@ void produceStatsMoment()
             continue;
         }
 
-        tm validatedDate = {};
-        validatedDate.tm_year = stoi(dayStr.substr(0, 4)) - 1900;
-        validatedDate.tm_mon = stoi(dayStr.substr(5, 2)) - 1;
-        validatedDate.tm_mday = stoi(dayStr.substr(8, 2));
-        day = mktime(&validatedDate);
+        day = convertToTimeT(dayStr);
 
         // valid input, on sort de la loop
         break;
@@ -397,7 +396,6 @@ void produceStatsMoment()
 
     AppService* appServ = new AppService(*dataSet);
 
-    //double stats = 3.2;
     double stats = appServ->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
     if (stats == - 1) cout << "No matching sensors for the given area." << endl;
     else if (stats == -2) cout << "No reliable measurements related to this date." << endl;
@@ -548,4 +546,19 @@ bool isValidDateFormat(const string& date)
     }
 
     return true;
+}
+
+time_t convertToTimeT(const string& dateStr)
+{
+    struct tm tm = {};
+    istringstream ss(dateStr);
+    ss >> get_time(&tm, "%Y-%m-%d %H:%M:%S");
+
+    if (!ss.fail())
+    {
+        time_t time = mktime(&tm);
+        return time;
+    }
+
+    return 0; // Return 0 if the conversion fails
 }

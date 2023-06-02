@@ -257,7 +257,64 @@ void Test::testObsImpactLvlImprov(DataSet* dataSet){
     assert(stats.first == 0);
     assert(stats.second[2] == -2);
     cout << endl << "** Test 3 for obsImpactLvlImprov() passed **" << endl << endl;
+}
 
+void Test::testProduceStatsMoment(DataSet *dataSet) {
+    AppService *app = new AppService(*dataSet);
+
+    time_t day = convertToTimeT("2023-06-02");
+    double longitude = 52;
+    double latitude = 20;
+    double radius = 0;
+
+    double stats = app->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
+    cout << "No matching sensors for the given area." << endl;
+    assert(stats == - 1);
+    cout << endl << "** Test 1 for produceStatsMoment() passed **" << endl << endl;
+
+    longitude = 1;
+    latitude = 44;
+    radius = 100;
+    stats = app->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
+    cout << "No reliable measurements related to this date." << endl;
+    assert(stats == -2);
+    cout << endl << "** Test 2 for produceStatsMoment() passed **" << endl << endl;
+
+
+
+    vector<Measure> measures;
+    string dateTimeString = "2023-06-02 12:00:00";
+    time_t time = convertToTimeT(dateTimeString);
+
+    Measure measure1("Sensor0", time, "O3", 80.25);
+    Measure measure2("Sensor0", time, "NO2", 74.5);
+    Measure measure3("Sensor0", time, "SO2", 41.5);
+    Measure measure4("Sensor0", time, "PM10",7.75);
+    // this gives an atmo index = 4
+    Measure measure5("Sensor1", time, "O3", 50.25);
+    Measure measure6("Sensor1", time, "NO2", 74.5);
+    Measure measure7("Sensor1", time, "SO2", 41.5);
+    Measure measure8("Sensor1", time, "PM10",32.75);
+    // this gives an atmo index = 5
+
+    measures.push_back(measure1);
+    measures.push_back(measure2);
+    measures.push_back(measure3);
+    measures.push_back(measure4);
+    measures.push_back(measure5);
+    measures.push_back(measure6);
+    measures.push_back(measure7);
+    measures.push_back(measure8);
+
+    stats = app->produceStatsMoment(day, Coordinates(latitude, longitude), radius, measures);
+
+    // affichage
+    cout << "Mean of ATMO indexes computed with the sensors around:" << endl;
+    cout << "\tCenter = (" << longitude << ", " << latitude << ")" << endl;
+    cout << "\tRadius = " << radius << " km" << endl;
+    cout << "\t-> Mean ATMO index = " << stats << endl;
+    assert(stats == 4.5);
+    cout << endl << "** Test 3 for produceStatsMoment() passed **" << endl << endl;
 }
 
 
