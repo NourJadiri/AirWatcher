@@ -15,7 +15,7 @@
 
 //------------------------------------------------------ Include personnel
 #include "Coordinates.h"
-
+using namespace std;
 //------------------------------------------------------------------------
 // Rôle de la classe <Sensor>
 //

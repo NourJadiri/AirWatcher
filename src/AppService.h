@@ -37,11 +37,11 @@ public:
 
     double produceStatsMoment(time_t day, const Coordinates& coord, double radius, const vector<Measure>& measure = {});
 
-    double computeMeanATMOIdx(vector<Measure> listMeasures);
+    double computeMeanATMOIdx(std::vector<Measure> listMeasures);
 
-    vector<Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
+    unordered_map<string, Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
 
-    vector<Measure> getMeasuresAtMoment(const vector<Sensor>& listSensor, time_t date);
+    vector<Measure> getMeasuresAtMoment(const unordered_map<string,Sensor>& sensorMap, time_t date);
 
     int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
 
@@ -62,7 +62,7 @@ public:
 
 private:
 
-    DataSet * data;
+    DataSet * data{};
 };
 
 #endif // APPSERVICE_H

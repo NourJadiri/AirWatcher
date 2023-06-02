@@ -102,6 +102,7 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     AppService *app = new AppService(*dataSet);
     // list of sensors
     unordered_map<string, Sensor> sensors;
+
     sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, -1), true);
     sensors["Sensor1"] = Sensor("Sensor1", Coordinates(45, -0.3), true);
     sensors["Sensor2"] = Sensor("Sensor2", Coordinates(44, 0.5), true);
@@ -118,15 +119,16 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     Coordinates center(44, 1);
     double radius = 150.0;
 
-    vector<Sensor> sensorsAround = app->getSensorsAround(center, radius, sensors);
+    unordered_map<string, Sensor> sensorsAround = app->getSensorsAround(center, radius, sensors);
 
     if (sensorsAround.empty()) cout << "No sensors around for the specified area." << endl;
     else
     {
         // Print the sensors found within the radius
         cout << "Sensors within the radius:" << endl;
-        for (const Sensor& sensor : sensorsAround)
+        for (const auto & pair : sensorsAround)
         {
+            const auto & sensor = pair.second;
             cout << "Sensor ID: " << sensor.getId() << endl;
             cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
         }
@@ -157,8 +159,9 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     {
         // Print the sensors found within the radius
         cout << "Sensors within the radius:" << endl;
-        for (const Sensor& sensor : sensorsAround)
+        for (const auto & pair : sensorsAround)
         {
+            const auto & sensor = pair.second;
             cout << "Sensor ID: " << sensor.getId() << endl;
             cout << "Sensor Coordinates: (" << sensor.getCoord().getLongitude() << ", " << sensor.getCoord().getLatitude() << ")" << endl;
         }
@@ -173,13 +176,14 @@ void Test::testGetSensorsAround(DataSet* dataSet)
 
 void Test::testMeasureAtMoment(DataSet* dataSet)
 {
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
 
-    vector<Sensor> sensors;
-    sensors.push_back(Sensor((string)"Sensor0", Coordinates(10, 20)));
-    sensors.push_back(Sensor((string)"Sensor2", Coordinates(15, 25)));
-    sensors.push_back(Sensor((string)"Sensor3", Coordinates(30, 40)));
-    sensors.push_back(Sensor((string)"Sensor4", Coordinates(35, 45)));
+    unordered_map<string, Sensor> sensors;
+
+    sensors.emplace("Sensor0", Sensor("Sensor0",Coordinates(10,20)));
+    sensors.emplace("Sensor2", Sensor("Sensor2",Coordinates(15,25)));
+    sensors.emplace("Sensor3", Sensor("Sensor3",Coordinates(30,40)));
+    sensors.emplace("Sensor4", Sensor("Sensor4",Coordinates(35,45)));
 
     string dateTimeString = "2019-01-01 12:00:00";
     time_t time = convertToTimeT(dateTimeString);
@@ -200,7 +204,7 @@ void Test::testMeasureAtMoment(DataSet* dataSet)
 }
 
 void Test::testObsImpactLvlImprov(DataSet* dataSet){
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
     string AirCleanerId = "Cleaner5";
     double radius = 5.;
 
