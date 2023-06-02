@@ -35,7 +35,7 @@ public:
 
     //----------------------------------------------------- Méthodes publiques
 
-    double produceStatsMoment(time_t day, Coordinates coord, double radius);
+    double produceStatsMoment(time_t day, const Coordinates& coord, double radius);
 
     double computeMeanATMOIdx(std::vector<Measure> listMeasures);
 
@@ -45,7 +45,9 @@ public:
 
     int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
 
-    pair<int, vector<double>> obsImpactLvlImprov(const std::string& id, double radius);
+    pair<int, vector<double>> obsImpactLvlImprov(const std::string& AirCleanId, double radius, const vector<Measure>& measBefore = {}, const vector<Measure>& measAfter = {});
+
+    string convertTimeToString(const time_t& time);
 
     //-------------------------------------------- Constructeurs - destructeur
 

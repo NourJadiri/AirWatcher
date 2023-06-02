@@ -27,7 +27,9 @@ DataSet* dataSet = new DataSet();
 int main()
 {
     Test *test = new Test();
-    test->testComputeMeanATMOIdx(dataSet);
+    test->testObsImpactLvlImprov(dataSet);
+    //test->testGetATMOIdx(dataSet);
+    //test->testComputeMeanATMOIdx(dataSet);
     //test->testGetSensorsAround(dataSet);
     //test->testMeasureAtMoment(dataSet);*/
 
@@ -398,7 +400,7 @@ void produceStatsMoment()
     //double stats = 3.2;
     double stats = appServ->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
     if (stats == - 1) cout << "No matching sensors for the given area." << endl;
-    else if (stats == -2) cout << "No realiable measurements related to this date." << endl;
+    else if (stats == -2) cout << "No reliable measurements related to this date." << endl;
     else {
         // affichage
         cout << "Mean of ATMO indexes computed with the sensors around:" << endl;
@@ -487,8 +489,12 @@ void obsImpactLvlImprov ()
     AppService* appServ = new AppService(*dataSet);
     pair<int,vector<double>> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
-    if (stats.first ==-1)
-        cout << "No matching AirCleaner founded." << endl;
+    if (stats.first == -1)
+        cout << "The AirCleaner " << idAC << " is not registered in our database." << endl;
+    else if (stats.first == -2)
+        cout << "No matching sensors for the given area." << endl;
+    else if (stats.first == -3)
+        cout << "No reliable measurements related to this date." << endl;
     else {
         double improvement = stats.second[2];
         // affichage
