@@ -31,7 +31,7 @@ $(EXE) : $(OBJETS)
 
 $(EFFACE) :
 	@$(ECHO) ">>>Suppression des fichiers compilés" $<
-	$(RM) $(RMFLAGS) $(BIN) $(OBJETS)
+	$(RM) $(RMFLAGS) $(EXE) $(OBJETS)
 
 # dependances complementaires
 AirCleaner.o : Coordinates.h
