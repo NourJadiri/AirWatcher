@@ -41,7 +41,7 @@ public:
 
     Coordinates();
 
-    Coordinates(double longInput, double latInput);
+    Coordinates(double latInput, double longInput);
 
     Coordinates (const Coordinates & coord);
 

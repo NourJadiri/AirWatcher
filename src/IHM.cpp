@@ -395,7 +395,7 @@ void produceStatsMoment()
     AppService* appServ = new AppService(*dataSet);
 
     //double stats = 3.2;
-    double stats = appServ->produceStatsMoment(day, Coordinates(longitude, latitude), radius);
+    double stats = appServ->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
     if(stats == - 1) cout << "No matching sensors for the given area." << endl;
     else if(stats == -2) cout << "No realiable measurements related to this date." << endl;
     else {
