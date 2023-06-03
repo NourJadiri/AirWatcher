@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-30T13:57:34.210Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="KCW5CifDpHVyhJmV5Pbb" version="21.3.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-03T14:52:16.265Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15" etag="O8nweCch5yfXZ36rGcsX" version="21.3.6" type="github">
   <diagram name="Page-1" id="Vz2Wcvp0gmtx6I2Lt9n_">
-    <mxGraphModel dx="2868" dy="3238" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="747" dy="2681" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -126,7 +126,7 @@
         <mxCell id="VNQSytcOBWokNpSVMfIY-38" value="AirCleaner" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="520" y="613" width="160" height="98" as="geometry" />
         </mxCell>
-        <mxCell id="VNQSytcOBWokNpSVMfIY-39" value="# id: String&lt;br&gt;# coord: Coordinates&lt;br&gt;# DateStart: Date&lt;br&gt;# DateStop: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="VNQSytcOBWokNpSVMfIY-38" vertex="1">
+        <mxCell id="VNQSytcOBWokNpSVMfIY-39" value="- id: String&lt;br&gt;+ coord: Coordinates&lt;br&gt;- DateStart: Date&lt;br&gt;- DateStop: Date" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="VNQSytcOBWokNpSVMfIY-38" vertex="1">
           <mxGeometry y="26" width="160" height="64" as="geometry" />
         </mxCell>
         <mxCell id="VNQSytcOBWokNpSVMfIY-40" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="VNQSytcOBWokNpSVMfIY-38" vertex="1">
@@ -568,7 +568,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="gk7VsiWPiI99spmP87R4-21" value="AppService" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
-          <mxGeometry x="2116" y="-448" width="510" height="308" as="geometry" />
+          <mxGeometry x="2116" y="-448" width="510" height="394" as="geometry" />
         </mxCell>
         <mxCell id="h3gDe4td7jXamhoJoygT-1" value="# data : DataSet &amp;amp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
           <mxGeometry y="26" width="510" height="26" as="geometry" />
@@ -576,29 +576,32 @@
         <mxCell id="gk7VsiWPiI99spmP87R4-22" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
           <mxGeometry y="52" width="510" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="gk7VsiWPiI99spmP87R4-23" value="+ produceStatsPeriod(Date day1 , Date day2 , Coordinates coord , double radius : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
+        <mxCell id="gk7VsiWPiI99spmP87R4-23" value="+ produceStatsPeriod(time_t day1 , time_t day2 , Coordinates coord , double radius : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
           <mxGeometry y="60" width="510" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="gk7VsiWPiI99spmP87R4-24" value="+ produceStatsMoment(Date day, Coordinates coord, double radius) : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
-          <mxGeometry y="86" width="510" height="26" as="geometry" />
+        <mxCell id="gk7VsiWPiI99spmP87R4-24" value="+ produceStatsMoment(time_t day, Coordinates coord, double radius, vector&amp;lt;Measure&amp;gt; measure) : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
+          <mxGeometry y="86" width="510" height="44" as="geometry" />
         </mxCell>
         <mxCell id="gk7VsiWPiI99spmP87R4-25" value="+ computeMeanATMOIdx(Vector&amp;lt;Measure&amp;gt; listMeasures) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
-          <mxGeometry y="112" width="510" height="26" as="geometry" />
+          <mxGeometry y="130" width="510" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="gk7VsiWPiI99spmP87R4-50" value="+ getSensorsAround(Coordinates coord, double radius) : vector&amp;lt;Sensor&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
-          <mxGeometry y="138" width="510" height="26" as="geometry" />
+        <mxCell id="gk7VsiWPiI99spmP87R4-50" value="+ getSensorsAround(Coordinates coord, double radius, unordered_map&amp;lt; string, &amp;lt;Sensor&amp;gt; &amp;gt; sensorMap&lt;br&gt;) : unordered_map&amp;lt; string, &amp;lt;Sensor&amp;gt; &amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
+          <mxGeometry y="156" width="510" height="54" as="geometry" />
         </mxCell>
-        <mxCell id="gk7VsiWPiI99spmP87R4-51" value="+ getMeasuresAtMoment(vector&amp;lt;Sensor&amp;gt; listSensor, Date date) : vector&amp;lt;Measure&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
-          <mxGeometry y="164" width="510" height="26" as="geometry" />
+        <mxCell id="gk7VsiWPiI99spmP87R4-51" value="+ getMeasuresAtMoment(unordered_map&amp;lt; string, &amp;lt;Sensor&amp;gt;&amp;gt; sensorMap, time_t date) : vector&amp;lt;Measure&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
+          <mxGeometry y="210" width="510" height="40" as="geometry" />
         </mxCell>
         <mxCell id="lFe04iEfEHljoj5emuic-11" value="+ analysePIndSensor(String sensorId)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
-          <mxGeometry y="190" width="510" height="26" as="geometry" />
+          <mxGeometry y="250" width="510" height="26" as="geometry" />
         </mxCell>
         <mxCell id="lFe04iEfEHljoj5emuic-12" value="+ analysePIndSensor()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
-          <mxGeometry y="216" width="510" height="26" as="geometry" />
+          <mxGeometry y="276" width="510" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="rF03WXglpMWDR9BOrnFT-11" value="+ obsImpactAC()&lt;br&gt;+ obsImpactRadius(String id): double&lt;br&gt;+ obsImpactLvlImprov(String id, double radius): List&amp;lt;double&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="gk7VsiWPiI99spmP87R4-21">
-          <mxGeometry y="242" width="510" height="66" as="geometry" />
+        <mxCell id="rF03WXglpMWDR9BOrnFT-11" value="+ obsImpactAC()&lt;br&gt;+ obsImpactRadius(String id): double&lt;br&gt;+ obsImpactLvlImprov(String id, double radius, vector &amp;lt;Measure&amp;gt; measBefore): pair&amp;lt;int,vectort&amp;lt;double&amp;gt;&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="gk7VsiWPiI99spmP87R4-21" vertex="1">
+          <mxGeometry y="302" width="510" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="yoNJW2muiEM-XHwD3TKA-1" value="+ getATMOIdx(double value, vector&amp;lt;pair&amp;lt;int,int&amp;gt;&amp;gt; breakpoints) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="gk7VsiWPiI99spmP87R4-21">
+          <mxGeometry y="368" width="510" height="26" as="geometry" />
         </mxCell>
         <mxCell id="gk7VsiWPiI99spmP87R4-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.542;entryY=0.015;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="gk7VsiWPiI99spmP87R4-48" edge="1">
           <mxGeometry relative="1" as="geometry">
