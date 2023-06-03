@@ -44,6 +44,7 @@ public:
     void setPoints(int aPoint);
 
 //-------------------------------------------- Constructeurs - destructeur
+    PrivIndiv ( const PrivIndiv & aPrivIndiv );
 
     PrivIndiv();
 

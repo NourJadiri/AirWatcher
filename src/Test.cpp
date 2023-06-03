@@ -94,11 +94,6 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 
 void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
     AppService *app = new AppService(*dataSet);
-    unordered_map<string, PrivIndiv> allPrivIndiv = dataSet->getUserList();
-
-    unordered_map<string, Sensor> allSensors = dataSet->getSensorsList();
-
-    cout << allSensors["Sensor36"].getId() << allSensors["Sensor36"].getPrivIndivId() << endl;
 
     vector<Measure> measures;
 
@@ -131,6 +126,7 @@ void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
     // thus the mean ATMO index is equal to (7+8)/2 = 7.5
     assert(atmo == 7.5);
 
+    unordered_map<string, PrivIndiv> allPrivIndiv = dataSet->getUserList();
     string privIndivId1 = allPrivIndiv["User0"].getId();
     int nbPoints1 = allPrivIndiv["User0"].getPoints();
     string privIndivId2 = allPrivIndiv["User1"].getId();

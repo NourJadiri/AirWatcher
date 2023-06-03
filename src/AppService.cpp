@@ -70,10 +70,6 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
             allPrivIndiv[PrivIndivId].setPoints(1);
         }
 
-        cout << "sensor : " << allSensors[sensorId].getId() << endl;
-        cout << "priv : " << allSensors[sensorId].getPrivIndivId() << endl;
-
-
         string date;
 
         // Get the attribute type and value of the measure
@@ -122,6 +118,8 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
     {
         sumATMOIdx += entry.second; // Add the maximum ATMOSubIdx for each sensor and day to the sum
     }
+    cout << allPrivIndiv["User0"].getPoints() << endl;
+
     return sumATMOIdx / maxATMOSubIdxBySensorDay.size(); // Divide by the number of unique sensor and day combinations
 }
 

@@ -24,7 +24,7 @@ using namespace std;
 
 void PrivIndiv::printProvidedSensors() const {
     for(const auto& sensor : providedSensors){
-        cout << " -"<<sensor.getId() << endl;
+        cout << " -" << sensor.getId() << endl;
     }
 }
 
@@ -49,13 +49,19 @@ void PrivIndiv::setPoints(int aPoint){
 }
 
 //-------------------------------------------- Constructeurs - destructeur
+PrivIndiv::PrivIndiv ( const PrivIndiv & aPrivIndiv )
+{
+    id = aPrivIndiv.id;
+    providedSensors = aPrivIndiv.providedSensors;
+    points = aPrivIndiv.points;
+}
+
 PrivIndiv::PrivIndiv ( const string &id, vector<Sensor> provSens )
 {
     this->id = id;
     this->providedSensors = provSens;
     points = 0;
 }
-
 
 PrivIndiv::~PrivIndiv( )
 {
@@ -64,4 +70,3 @@ PrivIndiv::~PrivIndiv( )
 PrivIndiv::PrivIndiv() {
 
 }
-

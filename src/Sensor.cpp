@@ -61,6 +61,7 @@ Sensor::Sensor ( const Sensor & aSensor )
     id = aSensor.id;
     coord = aSensor.coord;
     reliable = aSensor.reliable;
+    privIndivId = aSensor.privIndivId;
 }
 
 Sensor::Sensor(string aId, const Coordinates& someCoord)

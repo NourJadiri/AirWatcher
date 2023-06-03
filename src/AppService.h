@@ -62,7 +62,7 @@ public:
 
 private:
 
-    DataSet * data{};
+    DataSet * data;
 };
 
 #endif // APPSERVICE_H
