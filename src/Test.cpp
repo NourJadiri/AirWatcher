@@ -68,10 +68,10 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
     Measure measure4("Sensor0", time, "PM10",44.75);
     // this gives an atmo index = 7
 
-    Measure measure5("Sensor0", time, "O3", 180.25);
-    Measure measure6("Sensor0", time, "NO2", 4.5);
-    Measure measure7("Sensor0", time, "SO2", 151.5);
-    Measure measure8("Sensor0", time, "PM10",44.75);
+    Measure measure5("Sensor1", time, "O3", 180.25);
+    Measure measure6("Sensor1", time, "NO2", 4.5);
+    Measure measure7("Sensor1", time, "SO2", 151.5);
+    Measure measure8("Sensor1", time, "PM10",44.75);
     // this gives an atmo index = 8
 
     measures.push_back(measure1);

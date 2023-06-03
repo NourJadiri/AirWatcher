@@ -42,7 +42,7 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
 {
     if (listMeasures.empty())
     {
-        cerr << "Warning: measurement list is empty. ATMO index has not been computed." << endl;
+        cout << "Warning: measurement list is empty. ATMO index has not been computed." << endl;
         return 0; // Return 0 if the list of measures is empty
     }
 

@@ -28,14 +28,14 @@ DataSet* dataSet = new DataSet();
 int main()
 {
     Test *test = new Test();
-    //test->testGetMeasuresAtMoment(dataSet);
-    //test->testAddPointsToPrivIndiv(dataSet);
-    //test->testProduceStatsMoment(dataSet);
-    //test->testObsImpactLvlImprov(dataSet);
-    //test->testGetATMOIdx(dataSet);
-    //test->testComputeMeanATMOIdx(dataSet);
+    test->testGetMeasuresAtMoment(dataSet);
+    test->testAddPointsToPrivIndiv(dataSet);
+    test->testProduceStatsMoment(dataSet);
+    test->testObsImpactLvlImprov(dataSet);
+    test->testGetATMOIdx(dataSet);
+    test->testComputeMeanATMOIdx(dataSet);
     test->testGetSensorsAround(dataSet);
-    //test->testGetMeasuresAtMoment(dataSet);*/
+    test->testGetMeasuresAtMoment(dataSet);
 
     // get le type d'utilisateur
     int userType;
@@ -73,77 +73,6 @@ int main()
         }
     }
 
-    /*
-    // Parcours de la unordered_map
-    for (const auto& pair : sensorsMap)
-    {
-        const string& sensorId = pair.first;
-        const Sensor& sensor = pair.second;
-
-        // Affichage des informations du capteur
-        cout << "ID: " << sensorId << ", Latitude: " << sensor.getCoord().getLatitude() << ", Longitude: " << sensor.getCoord().getLongitude() << endl;
-    }
-    // Parcours de la map
-    for (const auto& pair : usersMap)
-    {
-        const string user = pair.first;
-        const vector<string>& sensors = pair.second;
-
-        // Affichage de l'utilisateur
-        cout << "User: " << user << endl;
-
-        // Affichage des capteurs associés à l'utilisateur
-        for (const string& sensor : sensors)
-        {
-            cout << "Sensor: " << sensor << endl;
-        }
-
-        cout << endl; // Ligne vide pour séparer les utilisateurs
-    }
-
-
-    //parcours du vector measureList
-
-    for(Measure measure : measureList)
-    {
-        // Accéder aux attributs de la mesure et effectuer des opérations
-        string sensorId = measure.getSensorId();
-        time_t dateMeas = measure.getDateMeas();
-        string attributeType = measure.getAttributeType();
-        double value = measure.getValue();
-
-        // Afficher les valeurs de chaque mesure
-        cout << "Sensor ID: " << sensorId << endl;
-        cout << "Date: " << ctime(&dateMeas); // Converter date into readable date
-        cout << "Attribute Type: " << attributeType << endl;
-        cout << "Value: " << value << endl;
-
-    }
-
-
-    // Utilisez le vecteur cleanerList selon vos besoins
-    for (AirCleaner cleaner : cleanerList) {
-        cout << "ID: " << cleaner.getAirCleanerID() << endl;
-        cout << "Latitude: " << cleaner.getCoord().getLatitude() << endl;
-        cout << "Longitude: " << cleaner.getCoord().getLongitude() << endl;
-        cout << "Date Start: " << ctime(&cleaner.getDateStart());
-        cout << "Date Stop: " << ctime(&cleaner.getDateStop());
-        cout << endl;
-    }
-
-    // Affichage des fournisseurs
-    for (const auto& pair : providers) {
-        const string& providerId = pair.first;
-        const vector<string>& cleanerIds = pair.second;
-
-        cout << "Provider ID: " << providerId << endl;
-        cout << "Cleaner IDs: " << endl;
-        for (const string& cleanerId : cleanerIds) {
-            cout << "  - Cleaner ID: " << cleanerId << endl;
-        }
-        cout << endl;
-    }
-     */
     return 0;
 }
 
