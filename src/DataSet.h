@@ -78,11 +78,11 @@ public:
 private:
     FileManager fileManager;
 
-    unordered_map<string,Sensor> sensorsList;
+    unordered_map<string, Sensor> sensorsList;
 
     unordered_map<string, PrivIndiv> userList;
 
-    unordered_map<string,Provider> providerList;
+    unordered_map<string, Provider> providerList;
 
     unordered_map<string, AirCleaner> airCleanerList;
 

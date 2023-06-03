@@ -46,6 +46,11 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
         return 0; // Return 0 if the list of measures is empty
     }
 
+    // get the sensors list of the data set to check if the ones who took measurements belong to private individuals
+    unordered_map<string, Sensor> allSensors = data->getSensorsList();
+    // get the list of private individuals
+    unordered_map<string, PrivIndiv> allPrivIndiv = data->getUserList();
+
     // Define the breakpoints for each pollutant
     vector<pair<int, int>> OzoneBreakpoints = {{0, 29}, {30, 54}, {55, 79}, {80, 104}, {105, 129}, {130, 149}, {150, 179}, {180, 209}, {210, 239}, {240, INT_MAX}};
     vector<pair<int, int>> SO2Breakpoints = {{0, 39}, {40, 79}, {80, 119}, {120, 159}, {160, 199}, {200, 249}, {250, 299}, {300, 399}, {400, 499}, {500, INT_MAX}};
@@ -59,6 +64,16 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
     {
         int ATMOSubIdx = 10;
         string sensorId = measure.getSensorId();
+
+        string PrivIndivId = allSensors[sensorId].getPrivIndivId();
+        if (!PrivIndivId.empty()){
+            allPrivIndiv[PrivIndivId].setPoints(1);
+        }
+
+        cout << "sensor : " << allSensors[sensorId].getId() << endl;
+        cout << "priv : " << allSensors[sensorId].getPrivIndivId() << endl;
+
+
         string date;
 
         // Get the attribute type and value of the measure
@@ -158,8 +173,8 @@ vector<Measure> AppService::getMeasuresAtMoment(const unordered_map<string, Sens
     {
         string sensorId = measure.getSensorId();
 
-        // Si la date correspond et que le sensor existe
-        if(measure.getDateMeas() == date && sensorMap.find(sensorId) != sensorMap.end()){
+        // if sensor exists and date corresponds to required date
+        if (measure.getDateMeas() == date && sensorMap.find(sensorId) != sensorMap.end()) {
             measuresAtMom.push_back(measure);
         }
     }

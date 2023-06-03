@@ -82,7 +82,7 @@ const unordered_map<string, Sensor> &DataSet::getSensorsList() const {
     return sensorsList;
 }
 
-const unordered_map<string, AirCleaner> &DataSet:: getAirCleanerList() const {
+const unordered_map<string, AirCleaner> &DataSet::getAirCleanerList() const {
     return airCleanerList;
 }
 

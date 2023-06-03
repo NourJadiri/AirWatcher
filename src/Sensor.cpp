@@ -52,7 +52,7 @@ const string &Sensor::getPrivIndivId() const {
 }
 
 void Sensor::setPrivIndivId(const string & privIndivId) {
-    Sensor::privIndivId = privIndivId;
+    this->privIndivId = privIndivId;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -60,20 +60,14 @@ Sensor::Sensor ( const Sensor & aSensor )
 {
     id = aSensor.id;
     coord = aSensor.coord;
-    reliable= aSensor.reliable;
+    reliable = aSensor.reliable;
 }
 
-Sensor::Sensor(string idInput, const Coordinates& coordInput) : id(std::move(idInput)), coord(coordInput), reliable(true)
-{
-    // Constructeur qui set reliable a true
-
-}
-
-Sensor::Sensor(string aId, const Coordinates& someCoord, bool reliable)
+Sensor::Sensor(string aId, const Coordinates& someCoord)
 {
     id = std::move(aId);
     coord = someCoord;
-    this->reliable = reliable;
+    reliable = true;
     privIndivId = "";
 }
 

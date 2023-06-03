@@ -50,9 +50,7 @@ public:
 
   Sensor ( );
 
-  Sensor (string id, const Coordinates& coord);
-
-  Sensor(string id, const Coordinates& coord, bool reliable);
+  Sensor(string id, const Coordinates& coord);
 
   virtual ~Sensor ( );
 

@@ -50,9 +50,9 @@ void Test::testGetATMOIdx(DataSet* dataSet){
 
 void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 {
-    vector<Measure> measures;
-
     AppService *app = new AppService(*dataSet);
+
+    vector<Measure> measures;
 
     // empty measure list so should print a message saying that the list is empty
     double atmo = app->computeMeanATMOIdx(measures);
@@ -67,9 +67,6 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
     Measure measure3("Sensor0", time, "SO2", 41.5);
     Measure measure4("Sensor0", time, "PM10",44.75);
     // this gives an atmo index = 7
-
-    dateTimeString = "2019-01-02 12:00:00";
-    time = convertToTimeT(dateTimeString);
 
     Measure measure5("Sensor0", time, "O3", 180.25);
     Measure measure6("Sensor0", time, "NO2", 4.5);
@@ -86,12 +83,60 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
     measures.push_back(measure7);
     measures.push_back(measure8);
 
-
     atmo = app->computeMeanATMOIdx(measures);
     cout << "Mean ATMO index is: " << atmo << endl;
     // thus the mean ATMO index is equal to (7+8)/2 = 7.5
     assert(atmo == 7.5);
     cout << endl << "** Test 2 for computeMeanATMOIdx() passed **" << endl << endl;
+
+    delete app;
+}
+
+void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
+    AppService *app = new AppService(*dataSet);
+    unordered_map<string, PrivIndiv> allPrivIndiv = dataSet->getUserList();
+
+    vector<Measure> measures;
+
+    string dateTimeString = "2019-01-01 12:00:00";
+    time_t time = convertToTimeT(dateTimeString);
+
+    Measure measure1("Sensor36", time, "O3", 50.25);
+    Measure measure2("Sensor36", time, "NO2", 74.5);
+    Measure measure3("Sensor36", time, "SO2", 41.5);
+    Measure measure4("Sensor36", time, "PM10",44.75);
+    // this gives an atmo index = 7
+
+    Measure measure5("Sensor70", time, "O3", 180.25);
+    Measure measure6("Sensor70", time, "NO2", 4.5);
+    Measure measure7("Sensor70", time, "SO2", 151.5);
+    Measure measure8("Sensor70", time, "PM10",44.75);
+    // this gives an atmo index = 8
+
+    measures.push_back(measure1);
+    measures.push_back(measure2);
+    measures.push_back(measure3);
+    measures.push_back(measure4);
+    measures.push_back(measure5);
+    measures.push_back(measure6);
+    measures.push_back(measure7);
+    measures.push_back(measure8);
+
+    double atmo = app->computeMeanATMOIdx(measures);
+    cout << "Mean ATMO index is: " << atmo << endl;
+    // thus the mean ATMO index is equal to (7+8)/2 = 7.5
+    assert(atmo == 7.5);
+
+    string privIndivId1 = allPrivIndiv["User0"].getId();
+    int nbPoints1 = allPrivIndiv["User0"].getPoints();
+    string privIndivId2 = allPrivIndiv["User1"].getId();
+    int nbPoints2 = allPrivIndiv["User1"].getPoints();
+
+    cout << "After this query, the user who installed Sensor36, " << privIndivId1 << ", has now " << nbPoints1 << " points." << endl;
+    cout << "After this query, the user who installed Sensor70, " << privIndivId2 << ", has now " << nbPoints2 << " points." << endl;
+
+    assert(nbPoints1 == 4 && nbPoints2 == 4);
+    cout << endl << "** Test 1 for adding points to private indiviudal passed **" << endl << endl;
 
     delete app;
 }
@@ -103,16 +148,16 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     // list of sensors
     unordered_map<string, Sensor> sensors;
 
-    sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, -1), true);
-    sensors["Sensor1"] = Sensor("Sensor1", Coordinates(45, -0.3), true);
-    sensors["Sensor2"] = Sensor("Sensor2", Coordinates(44, 0.5), true);
-    sensors["Sensor3"] = Sensor("Sensor3", Coordinates(44, 1), true);
-    sensors["Sensor4"] = Sensor("Sensor4", Coordinates(49, 1.8), true);
-    sensors["Sensor5"] = Sensor("Sensor5", Coordinates(44, -2.5), true);
-    sensors["Sensor6"] = Sensor("Sensor6", Coordinates(44, 3.2), true);
-    sensors["Sensor7"] = Sensor("Sensor7", Coordinates(41, 3.9), true);
-    sensors["Sensor8"] = Sensor("Sensor8", Coordinates(44, -4.6), true);
-    sensors["Sensor9"] = Sensor("Sensor9", Coordinates(44, 5.3), true);
+    sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, -1));
+    sensors["Sensor1"] = Sensor("Sensor1", Coordinates(45, -0.3));
+    sensors["Sensor2"] = Sensor("Sensor2", Coordinates(44, 0.5));
+    sensors["Sensor3"] = Sensor("Sensor3", Coordinates(44, 1));
+    sensors["Sensor4"] = Sensor("Sensor4", Coordinates(49, 1.8));
+    sensors["Sensor5"] = Sensor("Sensor5", Coordinates(44, -2.5));
+    sensors["Sensor6"] = Sensor("Sensor6", Coordinates(44, 3.2));
+    sensors["Sensor7"] = Sensor("Sensor7", Coordinates(41, 3.9));
+    sensors["Sensor8"] = Sensor("Sensor8", Coordinates(44, -4.6));
+    sensors["Sensor9"] = Sensor("Sensor9", Coordinates(44, 5.3));
 
 
     // Call the getSensorsAround method with the made-up list
@@ -140,8 +185,8 @@ void Test::testGetSensorsAround(DataSet* dataSet)
 
     // Call the getSensorsAround method with the other made-up list
     sensors.clear();
-    sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, -1), true);
-    sensors["Sensor1"] = Sensor("Sensor1", Coordinates(45, -0.3), true);
+    sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, -1));
+    sensors["Sensor1"] = Sensor("Sensor1", Coordinates(45, -0.3));
 
     sensorsAround = app->getSensorsAround(center, radius, sensors);
     cout << "No matching sensors for the given area." << endl;

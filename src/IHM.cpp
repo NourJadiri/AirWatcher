@@ -23,13 +23,13 @@ using namespace std;
 // initialisation du dataSet (mise en mémoire des données)
 DataSet* dataSet = new DataSet();
 
-
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
 int main()
 {
     Test *test = new Test();
-    test->testProduceStatsMoment(dataSet);
+    test->testAddPointsToPrivIndiv(dataSet);
+    //test->testProduceStatsMoment(dataSet);
     //test->testObsImpactLvlImprov(dataSet);
     //test->testGetATMOIdx(dataSet);
     //test->testComputeMeanATMOIdx(dataSet);

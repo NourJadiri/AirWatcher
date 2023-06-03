@@ -36,6 +36,8 @@ public:
 
     void testComputeMeanATMOIdx(DataSet* dataSet);
 
+    void testAddPointsToPrivIndiv(DataSet* dataSet);
+
     void testGetSensorsAround(DataSet* dataSet);
 
     void testMeasureAtMoment(DataSet* dataSet);

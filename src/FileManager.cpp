@@ -51,7 +51,7 @@ unordered_map<string, Sensor> FileManager::ParseSensorList()
             ss >> longitude)
         {
             Coordinates coord(latitude, longitude);
-            Sensor sensor(sensorId, coord, true);
+            Sensor sensor(sensorId, coord);
             sensors[sensorId] = sensor;
         }
         else
@@ -155,7 +155,6 @@ unordered_map<string, vector<string>> FileManager::ParseUserList()
     file.close();
 
     return userList;
-
 }
 
 unordered_map<string, AirCleaner> FileManager::ParseAirCleanerList()
