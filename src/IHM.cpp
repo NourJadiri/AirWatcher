@@ -36,6 +36,7 @@ int main()
     test->testComputeMeanATMOIdx(dataSet);
     test->testGetSensorsAround(dataSet);
     test->testGetMeasuresAtMoment(dataSet);
+    //test->testUpdatePoints();
 
     // get le type d'utilisateur
     int userType;

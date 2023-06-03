@@ -50,6 +50,8 @@ public:
 
     string convertTimeToString(const time_t& time);
 
+    void testUpdatePoints();
+
     //-------------------------------------------- Constructeurs - destructeur
 
     Test ( );

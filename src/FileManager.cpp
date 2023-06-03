@@ -244,6 +244,97 @@ time_t FileManager::convertToTimeT(const string& dateStr)
     return 0; // Return 0 if the conversion fails
 }
 
+map<string, int> FileManager::ParsePointsFile() {
+    map<string, int> pointsMap;
+    ifstream file("../src/data/points.csv");
+    string line;
+
+    while (getline(file, line)) {
+        istringstream iss(line);
+        string id;
+        string pointsStr;
+
+        if (getline(iss, id, ';') && getline(iss, pointsStr, ';')) {
+            try {
+                int points = stoi(pointsStr);
+                pointsMap[id] = points;
+            } catch (const exception& e) {
+                cerr << "Error parsing points for ID: " << id << endl;
+            }
+        }
+    }
+
+    file.close();
+    return pointsMap;
+}
+
+void FileManager::UpdatePoints(string id, int points) {
+    const string filename = "../src/data/points.csv";
+
+    cout << "Appel de UpdatePoints (id : " << id << " ; points : " << points << ")" << endl;
+
+    // Read the existing file
+    ifstream inputFile(filename);
+    if (!inputFile) {
+        cerr << "Failed to open file: " << filename << endl;
+        return;
+    }
+
+    // Create a temporary file for writing
+    ofstream tempFile("../src/data/points_temp.csv");
+    if (!tempFile) {
+        cerr << "Failed to create temporary file." << endl;
+        inputFile.close();
+        return;
+    }
+
+    bool idFound = false;
+    string line;
+
+    // Process each line in the input file
+    while (getline(inputFile, line)) {
+        istringstream iss(line);
+        string currentId;
+        string currentPoints;
+
+        if (getline(iss, currentId, ';') && getline(iss, currentPoints, ';')) {
+            cout << "ligne : " << currentId << ";" << currentPoints << endl;
+            if (currentId == id) {
+                cout << "correspondance tourvée " << endl;
+                // Update the points for the matching ID
+                tempFile << id << ';' << points << ';' << endl;
+                idFound = true;
+            } else {
+                // Copy the line as it is to the temporary file
+                tempFile << line << endl;
+            }
+        }
+    }
+
+    // If the ID was not found, add a new line
+    if (!idFound) {
+        tempFile << id << ';' << points << ';' << endl;
+    }
+
+    // Close the file handles
+    inputFile.close();
+    tempFile.close();
+
+    // Attempt to delete the file
+    if (remove(filename.c_str()) != 0) {
+        // Deletion failed
+        perror("Error deleting file");
+    } else {
+        // Deletion successful
+        printf("File deleted successfully\n");
+    }
+
+    // Rename the temporary file to the original filename
+    if (rename("../src/data/points_temp.csv", filename.c_str()) != 0) {
+        cerr << "Failed to rename the temporary file." << endl;
+    }
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 
 FileManager::FileManager ( ) = default;

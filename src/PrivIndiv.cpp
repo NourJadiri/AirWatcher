@@ -13,6 +13,7 @@
 #include <iostream>
 #include <utility>
 #include <string>
+#include "FileManager.h"
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -46,6 +47,8 @@ void PrivIndiv::setProvidedSensors(vector<Sensor> provSens){
 
 void PrivIndiv::setPoints(int aPoint){
     this->points = aPoint;
+    FileManager f = FileManager();
+    f.UpdatePoints(id,aPoint);
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -61,6 +64,13 @@ PrivIndiv::PrivIndiv ( const string &id, vector<Sensor> provSens )
     this->id = id;
     this->providedSensors = provSens;
     points = 0;
+}
+
+PrivIndiv::PrivIndiv ( const string &id, vector<Sensor> provSens, int points )
+{
+    this->id = id;
+    this->providedSensors = provSens;
+    this->points = points;
 }
 
 PrivIndiv::~PrivIndiv( )

@@ -48,7 +48,11 @@ public:
 
     unordered_map<string, vector<string>> ParseProviderList();
 
+    map<string, int> ParsePointsFile();
+
     vector<Measure> ParseMeasureList();
+
+    void UpdatePoints(string id, int points);
 
     time_t convertToTimeT(const string& dateString);
 

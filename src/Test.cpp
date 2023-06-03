@@ -17,6 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Test.h"
+#include "FileManager.h"
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -95,6 +96,11 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
     AppService *app = new AppService(*dataSet);
 
+    unordered_map<string, PrivIndiv> allPrivIndiv = dataSet->getUserList();
+
+    int nbPoints1Avant = allPrivIndiv["User0"].getPoints();
+    int nbPoints2Avant = allPrivIndiv["User1"].getPoints();
+
     vector<Measure> measures;
 
     string dateTimeString = "2019-01-01 12:00:00";
@@ -126,7 +132,8 @@ void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
     // thus the mean ATMO index is equal to (7+8)/2 = 7.5
     assert(atmo == 7.5);
 
-    unordered_map<string, PrivIndiv> allPrivIndiv = dataSet->getUserList();
+    allPrivIndiv = dataSet->getUserList();
+
     string privIndivId1 = allPrivIndiv["User0"].getId();
     int nbPoints1 = allPrivIndiv["User0"].getPoints();
     string privIndivId2 = allPrivIndiv["User1"].getId();
@@ -135,7 +142,7 @@ void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
     cout << "After this query, the user who installed Sensor36, " << privIndivId1 << ", has now " << nbPoints1 << " points." << endl;
     cout << "After this query, the user who installed Sensor70, " << privIndivId2 << ", has now " << nbPoints2 << " points." << endl;
 
-    assert(nbPoints1 == 4 && nbPoints2 == 4);
+    assert(nbPoints1 == (nbPoints1Avant+4) && nbPoints2 == (nbPoints2Avant+4));
     cout << endl << "** Test 1 for adding points to private indiviudal passed **" << endl << endl;
 
     delete app;
@@ -396,6 +403,12 @@ string Test::convertTimeToString(const time_t& time)
     stringstream ss;
     ss << put_time(tmPtr, "%Y-%m-%d %H:%M:%S");
     return ss.str();
+}
+
+void Test::testUpdatePoints() {
+    FileManager f = FileManager();
+    f.UpdatePoints("User0", 1);
+    f.UpdatePoints("User100", 10); // Doit rajouter une ligne dans le fichier
 }
 
 

@@ -34,7 +34,7 @@ void DataSet::initUserList() {
     unordered_map<string, vector<string>> usersSensors = fileManager.ParseUserList();
 
     // For each user in the user-sensor list
-    for(const auto & pair : usersSensors){
+    for (const auto &pair: usersSensors) {
         auto userId = pair.first;
         auto sensorsIds = pair.second;
 
@@ -43,21 +43,38 @@ void DataSet::initUserList() {
         userSensorList.reserve(sensorsIds.size());
 
         // And use the sensorList to get all the sensors of a specific user
-        for(const auto& sensor : sensorsIds){
+        for (const auto &sensor: sensorsIds) {
             sensorsList[sensor].setPrivIndivId(userId);
             userSensorList.push_back(sensorsList[sensor]);
         }
 
-        PrivIndiv pindiv(userId, userSensorList);
+        // Call ParsePointsFile to get the points map
+        map<string, int> pointsMap = fileManager.ParsePointsFile();
+
+        int points = 0;
+
+        // Check if the ID exists in the points map
+        if (pointsMap.count(userId) > 0) {
+            // ID found, store the points value
+            points = pointsMap[userId];
+        } else {
+            // ID not found, store 0
+            points = 0;
+        }
+
+        PrivIndiv pindiv(userId, userSensorList, points);
 
         userList[userId] = pindiv;
     }
+
+
+
 }
 
 void DataSet::initProviderList() {
     unordered_map<string, vector<string>> providersAirCleaners = fileManager.ParseProviderList();
 
-    for(const auto & pair : providersAirCleaners){
+    for (const auto &pair: providersAirCleaners) {
         auto key = pair.first;
         auto airCleanersIds = pair.second;
 
@@ -66,7 +83,7 @@ void DataSet::initProviderList() {
         airCleanersList.reserve(airCleanersIds.size());
 
         // And then we get all the airCleanersIds provided by the same provider
-        for(const auto & airCleanerId : airCleanersIds){
+        for (const auto &airCleanerId: airCleanersIds) {
             airCleanersList.push_back(airCleanerList[airCleanerId]);
         }
 
@@ -126,8 +143,7 @@ void DataSet::setFileManager(const FileManager &manager) {
 
 //-------------------------------------------- Constructeurs - destructeur
 
-DataSet::DataSet()
-{
+DataSet::DataSet() {
     initSensorList();
     initUserList();
     initMeasureList();
@@ -135,5 +151,5 @@ DataSet::DataSet()
     initProviderList();
 }
 
-DataSet :: ~DataSet() = default;
+DataSet::~DataSet() = default;
 

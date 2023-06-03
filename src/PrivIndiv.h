@@ -50,6 +50,8 @@ public:
 
     PrivIndiv ( const string &id, vector<Sensor> provSens );
 
+    PrivIndiv ( const string &id, vector<Sensor> provSens, int points );
+
     virtual ~PrivIndiv ( );
 
 //------------------------------------------------------------------ PRIVE
