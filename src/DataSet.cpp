@@ -19,7 +19,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void DataSet::initSensorList() {
-    sensorsList = std::move(fileManager.ParseSensorList());
+    sensorsList = fileManager.ParseSensorList();
 }
 
 void DataSet::initMeasureList() {

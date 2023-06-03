@@ -96,6 +96,10 @@ void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
     AppService *app = new AppService(*dataSet);
     unordered_map<string, PrivIndiv> allPrivIndiv = dataSet->getUserList();
 
+    unordered_map<string, Sensor> allSensors = dataSet->getSensorsList();
+
+    cout << allSensors["Sensor36"].getId() << allSensors["Sensor36"].getPrivIndivId() << endl;
+
     vector<Measure> measures;
 
     string dateTimeString = "2019-01-01 12:00:00";
