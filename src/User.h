@@ -25,14 +25,14 @@ class User
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    const string& getId() const;
+    const std::string& getId() const;
 
     bool operator<(const User& other) const;
 
     bool operator==(const User& other) const;
 
 //-------------------------------------------- Constructeurs - destructeur
-    explicit User(const string& idInput);
+    explicit User(const std::string& idInput);
 
     User();
 
@@ -40,7 +40,7 @@ public:
 
 protected:
 
-    string id;
+    std::string id;
 
 };
 

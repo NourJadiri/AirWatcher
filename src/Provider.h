@@ -16,7 +16,7 @@
 
 //------------------------------------------------------ Include personnel
 #include "AirCleaner.h"
-#include "User.h"
+#include "SuperUser.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Provider>
@@ -25,7 +25,7 @@
 //
 //------------------------------------------------------------------------
 
-class Provider : public User
+class Provider : public SuperUser
 {
 //----------------------------------------------------------------- PUBLIC
 

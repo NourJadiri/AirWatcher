@@ -69,7 +69,7 @@ int main()
                 break;
 
             default:
-                cout << "Invalid user type. Choose a number between 1 and 4 :)" << endl;
+                cout << endl << "Invalid user type. Choose a number between 1 and 4 :)" << endl;
                 break;
         }
     }
@@ -84,7 +84,7 @@ void handleAdminFunctionalities()
     int choice;
 
     while (choiceOk == 0){
-        cout << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Exit" << endl;
+        cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Exit" << endl;
         cin >> choice;
 
         switch (choice)
@@ -95,11 +95,11 @@ void handleAdminFunctionalities()
 
             case 2:
                 choiceOk = 1;
-                cout << "Going back to main menu..." << endl;
+                cout << endl << "Going back to main menu..." << endl;
                 break;
 
             default:
-                cout << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
                 break;
         }
     }
@@ -112,7 +112,7 @@ void handlePrivateIndividualFunctionalities()
     int choice;
 
     while (choiceOk == 0){
-        cout << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Exit" << endl;
+        cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Exit" << endl;
         cin >> choice;
 
         switch (choice)
@@ -123,11 +123,11 @@ void handlePrivateIndividualFunctionalities()
 
             case 2:
                 choiceOk = 1;
-                cout << "Going back to main menu..." << endl;
+                cout << endl << "Going back to main menu..." << endl;
                 break;
 
             default:
-                cout << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
                 break;
         }
     }
@@ -140,7 +140,7 @@ void handleGovernmentAgencyFunctionalities()
     int choice;
 
     while (choiceOk == 0){
-        cout << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Observe the impact of an Air Cleaner \n\t3. Exit" << endl;
+        cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Observe the impact of an Air Cleaner \n\t3. Exit" << endl;
         cin >> choice;
 
         switch (choice)
@@ -155,11 +155,11 @@ void handleGovernmentAgencyFunctionalities()
 
             case 3:
                 choiceOk = 1;
-                cout << "Going back to main menu..." << endl;
+                cout << endl << "Going back to main menu..." << endl;
                 break;
 
             default:
-                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -172,7 +172,7 @@ void handleProviderFunctionalities()
     int choice;
 
     while (choiceOk == 0){
-        cout << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Observe the impact of an Air Cleaner \n\t3. Exit" << endl;
+        cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Observe the impact of an Air Cleaner \n\t3. Exit" << endl;
         cin >> choice;
 
         switch (choice)
@@ -187,11 +187,11 @@ void handleProviderFunctionalities()
 
             case 3:
                 choiceOk = 1;
-                cout << "Going back to main menu..." << endl;
+                cout << endl << "Going back to main menu..." << endl;
                 break;
 
             default:
-                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -203,29 +203,29 @@ void produceStatistics()
     int choice;
 
     while (choiceOk == 0){
-        cout << "You chose to produce statistics (get the mean of air quality) in a specified circular area." << endl;
+        cout << endl << "You chose to produce statistics (get the mean of air quality) in a specified circular area." << endl;
         cout << "Choose the corresponding number to what you which to do: \n\t1. Compute the mean of air quality in a specified circular area at a given MOMENT \n\t2. Compute the mean of air quality in a specified circular area at a given PERIOD OF TIME (not implemented) \n\t3. Exit" << endl;
         cin >> choice;
 
         switch (choice)
         {
             case 1:
-                cout << "You chose to compute the mean of air quality at a given moment." << endl;
+                cout << endl << "You chose to compute the mean of air quality at a given moment." << endl;
                 produceStatsMoment();
                 break;
 
             case 2:
-                cout << "You chose to compute the mean of air quality at a specified period of time." << endl;
+                cout << endl << "You chose to compute the mean of air quality at a specified period of time." << endl;
                 cout << "Not implemented yet" << endl;
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Going back to user menu..." << endl;
+                cout << endl << "Going back to user menu..." << endl;
                 break;
 
             default:
-                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -236,30 +236,24 @@ void produceStatsMoment()
     time_t day;
     string dayStr;
 
-    // conversion de time_t vers un string au format YYYY-MM-DD
-    tm* date = localtime(&day);
-    char buffer[11];
-    strftime(buffer, sizeof(buffer), "%Y-%m-%d", date);
-    dayStr = buffer;
-
     // choix du moment
     while (true) {
-        cout << "Enter the day (YYYY-MM-DD): ";
+        cout << endl << "Enter the day (YYYY-MM-DD): ";
         cin >> dayStr;
 
         if (!isValidDateFormat(dayStr))
         {
-            cout << "Error: The date format YYYY-MM-DD must be respected" << endl;
+            cout << endl << "Error: The date format YYYY-MM-DD must be respected" << endl;
             continue;
         }
 
         if (isDateAfterToday(dayStr))
         {
-            cout << "Error: Please enter a valid day." << endl;
+            cout << endl << "Error: Please enter a valid day." << endl;
             continue;
         }
 
-        day = convertToTimeT(dayStr);
+        day = convertToTimeT(dayStr+" 12:00:00");
 
         // valid input, on sort de la loop
         break;
@@ -270,14 +264,14 @@ void produceStatsMoment()
     while (true) {
         cout << "Enter the longitude (it must be between -180 and 180): ";
         if (!(cin >> longitude)) {
-            cout << "Please enter numbers only." << endl;
+            cout << endl << "Please enter numbers only." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
 
         if (longitude < -180 || longitude > 180) {
-            cout << "Longitude is outside the valid range. \nLongitude: -180 to +180" << endl;
+            cout << endl << "Longitude is outside the valid range. \nLongitude: -180 to +180" << endl;
             continue;
         }
 
@@ -289,14 +283,14 @@ void produceStatsMoment()
     while (true) {
         cout << "Enter the latitude (it must be between -90 and 90): ";
         if (!(cin >> latitude)) {
-            cout << "Please enter numbers only." << endl;
+            cout << endl << "Please enter numbers only." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
 
         if (latitude < -90 || latitude > 90) {
-            cout << "Latitude is outside the valid range. \nLatitude: -90 to +90" << endl;
+            cout << endl << "Latitude is outside the valid range. \nLatitude: -90 to +90" << endl;
             continue;
         }
 
@@ -309,14 +303,14 @@ void produceStatsMoment()
     while (true) {
         cout << "Enter the radius in km (it must be between 0 and 20 000): ";
         if (!(cin >> radius)) {
-            cout << "Please enter numbers only." << endl;
+            cout << endl << "Please enter numbers only." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
 
         if (radius < 0 || radius > 20000) {
-            cout << "Radius is outside the valid range. \nRadius: 0 to 20 000" << endl;
+            cout << endl << "Radius is outside the valid range. \nRadius: 0 to 20 000" << endl;
             continue;
         }
 
@@ -328,17 +322,16 @@ void produceStatsMoment()
     AppService* appServ = new AppService(*dataSet);
 
     double stats = appServ->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
-    if (stats == - 1) cout << "No matching sensors for the given area." << endl;
-    else if (stats == -2) cout << "No reliable measurements related to this date." << endl;
+    if (stats == - 1) cout << endl << "No matching sensors for the given area." << endl;
+    else if (stats == -2) cout << endl << "No reliable measurements related to this date." << endl;
     else {
-        // affichage
-        cout << "Mean of ATMO indexes computed with the sensors around:" << endl;
+        // display
+        cout << endl << endl << "Mean of ATMO indexes computed with the sensors around:" << endl;
         cout << "\tCenter = (" << longitude << ", " << latitude << ")" << endl;
         cout << "\tRadius = " << radius << " km" << endl;
         cout << "\t-> Mean ATMO index = " << stats << endl;
     }
 }
-
 
 
 void observeImpact()
@@ -347,29 +340,29 @@ void observeImpact()
     int choice;
 
     while (choiceOk == 0){
-        cout << "You chose to observe the impact of an Air Cleaner." << endl;
+        cout << endl << "You chose to observe the impact of an Air Cleaner." << endl;
         cout << "Choose the corresponding number to what you which to do: \n\t1. Get the radius of the cleaned zone (not implemented) \n\t2. Get the level of improvement in air quality \n\t3. Exit" << endl;
         cin >> choice;
 
         switch (choice)
         {
             case 1:
-                cout << "You chose to observe the impact of an Air Cleaner by getting the radius of the zone it cleaned." << endl;
+                cout << endl << "You chose to observe the impact of an Air Cleaner by getting the radius of the zone it cleaned." << endl;
                 cout << "Not implemented yet" << endl;
                 break;
 
             case 2:
-                cout << "You chose to observe the impact of an Air Cleaner by getting the level of improvement of air quality around it." << endl;
+                cout << endl << "You chose to observe the impact of an Air Cleaner by getting the level of improvement of air quality around it." << endl;
                 obsImpactLvlImprov();
                 break;
 
             case 3:
                 choiceOk = 1;
-                cout << "Going back to user menu..." << endl;
+                cout << endl << "Going back to user menu..." << endl;
                 break;
 
             default:
-                cout << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
                 break;
         }
     }
@@ -380,14 +373,14 @@ void obsImpactLvlImprov ()
     // choix du Air Cleaner
     string idAC;
     while (true) {
-        cout << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
+        cout << endl << "Enter the ID ('CleanerX', with X the number of the AirCleaner) of the AirCleaner around which you wish to observe the level of improvement: ";
         cin >> idAC;
 
         // Regular expression pattern pour vérifier qu'on a bien 'Cleaner' followed by one or more digits
         regex pattern("^Cleaner\\d+$");
 
         if (!regex_match(idAC, pattern)) {
-            cout << "Invalid ID. Please enter an ID in the format 'CleanerX', where X is the number of the AirCleaner." << endl;
+            cout << endl << "Invalid ID. Please enter an ID in the format 'CleanerX', where X is the number of the AirCleaner." << endl;
             continue;
         }
 
@@ -400,14 +393,14 @@ void obsImpactLvlImprov ()
     while (true) {
         cout << "Enter the radius in km (it must be between 0 and 20 000): ";
         if (!(cin >> radius)) {
-            cout << "Please enter numbers only." << endl;
+            cout << endl << "Please enter numbers only." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
 
         if (radius < 0 || radius > 20000) {
-            cout << "Radius is outside the valid range. \nRadius: 0 to 20 000" << endl;
+            cout << endl << "Radius is outside the valid range. \nRadius: 0 to 20 000" << endl;
             continue;
         }
 
@@ -419,15 +412,15 @@ void obsImpactLvlImprov ()
     pair<int,vector<double>> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
     if (stats.first == -1)
-        cout << "The AirCleaner " << idAC << " is not registered in our database." << endl;
+        cout << endl << "The AirCleaner " << idAC << " is not registered in our database." << endl;
     else if (stats.first == -2)
-        cout << "No matching sensors for the given area." << endl;
+        cout << endl << "No matching sensors for the given area." << endl;
     else if (stats.first == -3)
-        cout << "No reliable measurements related to this date." << endl;
+        cout << endl << "No reliable measurements related to this date." << endl;
     else {
         double improvement = stats.second[2];
         // affichage
-        cout << "Impact Level (ATMO index difference) of the AirCleaner " << idAC << " on a " << radius << " km radius:" << endl;
+        cout << endl << "Impact Level (ATMO index difference) of the AirCleaner " << idAC << " on a " << radius << " km radius:" << endl;
         cout << "-> ATMO index before action of AirCleaner = " << stats.second[0] << endl;
         cout << "-> ATMO index after action of AirCleaner = " << stats.second[1] << endl;
         cout << "-> ATMO level of improvement: " << (improvement > 0 ? "+" : "") << improvement << endl;    }
@@ -493,3 +486,4 @@ time_t convertToTimeT(const string& dateStr)
 
     return 0; // Return 0 if the conversion fails
 }
+

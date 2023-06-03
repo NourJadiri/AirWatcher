@@ -42,7 +42,6 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
 {
     if (listMeasures.empty())
     {
-        cout << "Warning: measurement list is empty. ATMO index has not been computed." << endl;
         return 0; // Return 0 if the list of measures is empty
     }
 
@@ -196,8 +195,10 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
         }
 
         // if passed as parameters, we keep them as they are, else we populate them
-        vector<Measure> measBefore = (measBeforeParam.empty()) ? getMeasuresAtMoment(listSensors, airCl.getDateStart()) : measBeforeParam;
-        vector<Measure> measAfter = (measAfterParam.empty()) ? getMeasuresAtMoment(listSensors, airCl.getDateStop()) : measAfterParam;
+        // measurements the day just before the starting day of the air cleaner (thus -86400 seconds)
+        vector<Measure> measBefore = (measBeforeParam.empty()) ? getMeasuresAtMoment(listSensors, airCl.getDateStart()-86400) : measBeforeParam;
+        // measurements the day it finished its action (thus +43200 since dateStop are at midnight)
+        vector<Measure> measAfter = (measAfterParam.empty()) ? getMeasuresAtMoment(listSensors, airCl.getDateStop()+43200) : measAfterParam;
 
         if (measAfter.empty() || measBefore.empty()){
             return make_pair(-3, vector<double>()); // Return error code -3 and empty vector
