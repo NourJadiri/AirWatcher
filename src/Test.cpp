@@ -194,7 +194,15 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     assert(sensorsAround.empty());
     cout << endl << "** Test 2 for getSensorsAround() passed **" << endl << endl;
 
+    // Call the getSensorsAround method with one unreliable sensor, and one reliable
+    sensors.clear();
+    sensors["Sensor0"] = Sensor("Sensor0", Coordinates(44, 0.5));
+    sensors["Sensor1"] = Sensor("Sensor1", Coordinates(45, 1), false);
 
+    sensorsAround = app->getSensorsAround(center, radius, sensors);
+
+    assert(sensorsAround.size() == 1 && sensorsAround["Sensor0"].isReliable() == true);
+    cout << endl << "** Test 3 for getSensorsAround() passed **" << endl << endl;
 
     // Call the getSensorsAround method with the entire list of sensors
     sensorsAround = app->getSensorsAround(center, radius);
@@ -213,39 +221,39 @@ void Test::testGetSensorsAround(DataSet* dataSet)
     }
 
     assert(sensorsAround.size() == 18);
-    cout << endl << "** Test 3 for getSensorsAround() passed **" << endl << endl;
+    cout << endl << "** Test 4 for getSensorsAround() passed **" << endl << endl;
 
     delete app;
 
 }
 
-void Test::testMeasureAtMoment(DataSet* dataSet)
+void Test::testGetMeasuresAtMoment(DataSet* dataSet)
 {
     auto *app = new AppService(*dataSet);
 
     unordered_map<string, Sensor> sensors;
 
     sensors.emplace("Sensor0", Sensor("Sensor0",Coordinates(10,20)));
-    sensors.emplace("Sensor2", Sensor("Sensor2",Coordinates(15,25)));
-    sensors.emplace("Sensor3", Sensor("Sensor3",Coordinates(30,40)));
-    sensors.emplace("Sensor4", Sensor("Sensor4",Coordinates(35,45)));
 
     string dateTimeString = "2019-01-01 12:00:00";
     time_t time = convertToTimeT(dateTimeString);
 
     vector<Measure> meas = app->getMeasuresAtMoment(sensors, time);
-
-    if(meas.empty()) cout << "No measure found for the specified date."<<endl;
-    else
+    cout << "measures :" << endl;
+    for (Measure& measure : meas)
     {
-        // Print the sensors found within the radius
-        cout << "measures :" << endl;
-        for (Measure& measure : meas)
-        {
-            cout << "Sensor ID: " << measure.getSensorId() << endl;
-            cout << "measure : " << measure.getDateMeas() << ", " << measure.getAttributeValue() << ";" << measure.getValue()<< endl;
-        }
+        cout << "Sensor ID: " << measure.getSensorId() << endl;
+        cout << "measure : " << convertTimeToString(measure.getDateMeas()) << ", " << measure.getAttributeValue() << ";" << measure.getValue()<< endl;
     }
+    assert(meas.size() == 4 && meas[0].getDateMeas() == time);
+    cout << endl << "** Test 1 for getMeasuresAtMoment() passed **" << endl << endl;
+
+    dateTimeString = "2023-01-01 12:00:00";
+    time = convertToTimeT(dateTimeString);
+    meas = app->getMeasuresAtMoment(sensors, time);
+    cout << "No reliable measurements related to this date." << endl;
+    assert(meas.empty());
+    cout << endl << "** Test 2 for getMeasuresAtMoment() passed **" << endl << endl;
 }
 
 void Test::testObsImpactLvlImprov(DataSet* dataSet){
@@ -380,6 +388,14 @@ time_t Test::convertToTimeT(const string& dateStr)
     }
 
     return 0; // Return 0 if the conversion fails
+}
+
+string Test::convertTimeToString(const time_t& time)
+{
+    tm* tmPtr = localtime(&time);
+    stringstream ss;
+    ss << put_time(tmPtr, "%Y-%m-%d %H:%M:%S");
+    return ss.str();
 }
 
 

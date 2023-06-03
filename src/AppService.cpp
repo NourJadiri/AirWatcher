@@ -49,7 +49,7 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
     // get the sensors list of the data set to check if the ones who took measurements belong to private individuals
     unordered_map<string, Sensor> allSensors = data->getSensorsList();
     // get the list of private individuals
-    unordered_map<string, PrivIndiv> allPrivIndiv = data->getUserList();
+    unordered_map<string, PrivIndiv>& allPrivIndiv = data->getUserList();
 
     // Define the breakpoints for each pollutant
     vector<pair<int, int>> OzoneBreakpoints = {{0, 29}, {30, 54}, {55, 79}, {80, 104}, {105, 129}, {130, 149}, {150, 179}, {180, 209}, {210, 239}, {240, INT_MAX}};
@@ -66,8 +66,8 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
         string sensorId = measure.getSensorId();
 
         string PrivIndivId = allSensors[sensorId].getPrivIndivId();
-        if (!PrivIndivId.empty()){
-            allPrivIndiv[PrivIndivId].setPoints(1);
+        if (!PrivIndivId.empty()) {
+            allPrivIndiv[PrivIndivId].setPoints(allPrivIndiv[PrivIndivId].getPoints()+1);
         }
 
         string date;
@@ -118,7 +118,6 @@ double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
     {
         sumATMOIdx += entry.second; // Add the maximum ATMOSubIdx for each sensor and day to the sum
     }
-    cout << allPrivIndiv["User0"].getPoints() << endl;
 
     return sumATMOIdx / maxATMOSubIdxBySensorDay.size(); // Divide by the number of unique sensor and day combinations
 }

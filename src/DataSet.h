@@ -51,7 +51,7 @@ public:
 
     void setSensorsList(const unordered_map<string, Sensor> &list);
 
-    const unordered_map<string, PrivIndiv> &getUserList() const;
+    unordered_map<string, PrivIndiv> &getUserList();
 
     void setUserList(const unordered_map<string, PrivIndiv> &list);
 

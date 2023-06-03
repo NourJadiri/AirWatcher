@@ -40,13 +40,15 @@ public:
 
     void testGetSensorsAround(DataSet* dataSet);
 
-    void testMeasureAtMoment(DataSet* dataSet);
+    void testGetMeasuresAtMoment(DataSet* dataSet);
 
     void testObsImpactLvlImprov(DataSet* dataSet);
 
     void testProduceStatsMoment(DataSet* dataSet);
 
     time_t convertToTimeT(const std::string& dateStr);
+
+    string convertTimeToString(const time_t& time);
 
     //-------------------------------------------- Constructeurs - destructeur
 

@@ -86,7 +86,7 @@ const unordered_map<string, AirCleaner> &DataSet::getAirCleanerList() const {
     return airCleanerList;
 }
 
-const unordered_map<string, PrivIndiv> &DataSet::getUserList() const {
+unordered_map<string, PrivIndiv> &DataSet::getUserList() {
     return userList;
 }
 

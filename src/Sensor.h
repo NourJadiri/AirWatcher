@@ -52,6 +52,8 @@ public:
 
   Sensor(string id, const Coordinates& coord);
 
+  Sensor(string aId, const Coordinates& someCoord, bool isReliable);
+
   virtual ~Sensor ( );
 
 //------------------------------------------------------------------ PRIVE

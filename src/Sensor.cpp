@@ -72,6 +72,14 @@ Sensor::Sensor(string aId, const Coordinates& someCoord)
     privIndivId = "";
 }
 
+Sensor::Sensor(string aId, const Coordinates& someCoord, bool isReliable)
+{
+    id = std::move(aId);
+    coord = someCoord;
+    reliable = isReliable;
+    privIndivId = "";
+}
+
 Sensor::Sensor()
 = default;
 

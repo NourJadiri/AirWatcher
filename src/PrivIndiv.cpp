@@ -45,7 +45,7 @@ void PrivIndiv::setProvidedSensors(vector<Sensor> provSens){
 }
 
 void PrivIndiv::setPoints(int aPoint){
-    this->points += aPoint;
+    this->points = aPoint;
 }
 
 //-------------------------------------------- Constructeurs - destructeur

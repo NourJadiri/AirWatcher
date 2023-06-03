@@ -28,13 +28,14 @@ DataSet* dataSet = new DataSet();
 int main()
 {
     Test *test = new Test();
-    test->testAddPointsToPrivIndiv(dataSet);
+    //test->testGetMeasuresAtMoment(dataSet);
+    //test->testAddPointsToPrivIndiv(dataSet);
     //test->testProduceStatsMoment(dataSet);
     //test->testObsImpactLvlImprov(dataSet);
     //test->testGetATMOIdx(dataSet);
     //test->testComputeMeanATMOIdx(dataSet);
-    //test->testGetSensorsAround(dataSet);
-    //test->testMeasureAtMoment(dataSet);*/
+    test->testGetSensorsAround(dataSet);
+    //test->testGetMeasuresAtMoment(dataSet);*/
 
     // get le type d'utilisateur
     int userType;
