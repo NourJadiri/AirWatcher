@@ -17,7 +17,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Test.h"
-#include "FileManager.h"
 
 //----------------------------------------------------------------- PUBLIC
 
