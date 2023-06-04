@@ -15,6 +15,7 @@
 
 //------------------------------------------------------ Include personnel
 #include "Coordinates.h"
+#include "Measure.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Sensor>
@@ -44,6 +45,8 @@ public:
     const string &getPrivIndivId() const;
 
     void setPrivIndivId(const string &privIndivId);
+
+    const vector<Measure> &getMeasure() const;
 
 //-------------------------------------------- Constructeurs - destructeur
   Sensor ( const Sensor & aSensor );
