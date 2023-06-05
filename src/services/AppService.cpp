@@ -48,7 +48,7 @@ double AppService::produceStatsMoment(time_t day, const Coordinates& coord, doub
     auto endChrono = chrono::high_resolution_clock::now();
 
     // Calcul de la durée écoulée
-    auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+    auto duration = chrono::duration_cast<chrono::milliseconds>(endChrono - startChrono);
 
     // Affichage de la durée
     cout << "Execution time of produceStatsMoment : " << duration.count() << " milliseconds" << endl;
@@ -177,7 +177,7 @@ unordered_map<string, Sensor> AppService::getSensorsAround(const Coordinates& co
 
 vector<Measure> AppService::getMeasuresAtMoment(const unordered_map<string, Sensor>& sensorMap, time_t date)
 {
-    unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> measures = data->getMeasureList();
+    unordered_multimap<pair<string, time_t>, Measure, PairHash, PairEqual> measures = data->getMeasureList();
 
     vector<Measure> measuresAtMom;
 
@@ -185,7 +185,7 @@ vector<Measure> AppService::getMeasuresAtMoment(const unordered_map<string, Sens
         const auto & sensorId = pair.first;
 
         // On construit la combinaison capteur - date qu'on veut extraire
-        auto desiredKey = std::make_pair(sensorId, date);
+        auto desiredKey = make_pair(sensorId, date);
 
         // On définit la range d'extraction (possibilité d'avoir plusieurs mesures pour la même clé)
         auto range = measures.equal_range(desiredKey);
@@ -196,16 +196,6 @@ vector<Measure> AppService::getMeasuresAtMoment(const unordered_map<string, Sens
             measuresAtMom.push_back(desiredMeasure);
         }
     }
-
-/*    for (Measure& measure : measures)
-    {
-        string sensorId = measure.getSensorId();
-
-        // if sensor exists and date corresponds to required date
-        if (measure.getDateMeas() == date && sensorMap.find(sensorId) != sensorMap.end()) {
-            measuresAtMom.push_back(measure);
-        }
-    }*/
     return measuresAtMom;
 }
 
@@ -229,7 +219,7 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
             auto endChrono = chrono::high_resolution_clock::now();
 
             // Calcul de la durée écoulée
-            auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+            auto duration = chrono::duration_cast<chrono::milliseconds>(endChrono - startChrono);
 
             // Affichage de la durée
             cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
@@ -247,7 +237,7 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
             auto endChrono = chrono::high_resolution_clock::now();
 
             // Calcul de la durée écoulée
-            auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+            auto duration = chrono::duration_cast<chrono::milliseconds>(endChrono - startChrono);
 
             // Affichage de la durée
             cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
@@ -268,7 +258,7 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
         auto endChrono = chrono::high_resolution_clock::now();
 
         // Calcul de la durée écoulée
-        auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+        auto duration = chrono::duration_cast<chrono::milliseconds>(endChrono - startChrono);
 
         // Affichage de la durée
         cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
@@ -282,7 +272,7 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
         auto endChrono = chrono::high_resolution_clock::now();
 
         // Calcul de la durée écoulée
-        auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+        auto duration = chrono::duration_cast<chrono::milliseconds>(endChrono - startChrono);
 
         // Affichage de la durée
         cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
