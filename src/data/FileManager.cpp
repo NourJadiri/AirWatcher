@@ -18,6 +18,7 @@
 #include <ctime>
 #include <iomanip>
 #include <string>
+
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -27,7 +28,7 @@ using namespace std;
 
 unordered_map<string, Sensor> FileManager::ParseSensorList()
 {
-    string filePath = "../src/data/sensors.csv";
+    const string filePath = basePath + "sensors.csv";
     ifstream file(filePath);
 
     if (!file.is_open())
@@ -65,16 +66,18 @@ unordered_map<string, Sensor> FileManager::ParseSensorList()
     return sensors;
 }
 
-vector<Measure> FileManager::ParseMeasureList()
+unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> FileManager::ParseMeasureList()
 {
-    vector<Measure> measureList;
-    string filePath = "../src/data/measurements.csv";
+    // Utilisation de fonction de hashage propres à l'objet
+    unordered_multimap<std::pair<string,time_t>, Measure, PairHash, PairEqual> measureMap;
+
+    const string filePath = basePath + "measurements.csv";
     ifstream file(filePath);
 
     if (!file)
     {
         cout << "Error when opening file." << endl;
-        return measureList; // empty list
+        return measureMap; // empty list
     }
 
     string line;
@@ -98,7 +101,10 @@ vector<Measure> FileManager::ParseMeasureList()
 
             // Création de l'objet Measure et ajout à la liste
             Measure measure(sensorId, dateMeas, attributeType, value);
-            measureList.push_back(measure);
+
+            std::pair<string, time_t> key = std::make_pair(sensorId, dateMeas);
+
+            measureMap.insert(std::make_pair(key, measure));
         }
         else
         {
@@ -106,15 +112,17 @@ vector<Measure> FileManager::ParseMeasureList()
         }
     }
 
+    cout << measureMap.size() << endl;
+
     file.close();
 
-    return measureList;
+    return measureMap;
 }
 
 
 unordered_map<string, vector<string>> FileManager::ParseUserList()
 {
-    string filePath = "../src/data/users.csv";
+    const string filePath = basePath + "users.csv";
     ifstream file(filePath);
 
     if (!file.is_open())
@@ -160,7 +168,7 @@ unordered_map<string, vector<string>> FileManager::ParseUserList()
 unordered_map<string, AirCleaner> FileManager::ParseAirCleanerList()
 {
     unordered_map<string, AirCleaner> airCleanersMap{};
-    string filePath = "../src/data/cleaners.csv";
+    const string filePath = basePath + "cleaners.csv";
     ifstream file(filePath);
 
     if (!file.is_open()) {
@@ -198,7 +206,8 @@ unordered_map<string, AirCleaner> FileManager::ParseAirCleanerList()
 unordered_map<string, vector<string>> FileManager::ParseProviderList()
 {
     unordered_map<string, vector<string>> providers;
-    string filePath = "../src/data/providers.csv";
+    const string filePath = basePath + "providers.csv";
+
     ifstream file(filePath);
     if (!file.is_open()) {
         cerr << "Error when opening file" << endl;
@@ -246,7 +255,9 @@ time_t FileManager::convertToTimeT(const string& dateStr)
 
 map<string, int> FileManager::ParsePointsFile() {
     map<string, int> pointsMap;
-    ifstream file("../src/data/points.csv");
+
+    const string fileName = basePath + "points.csv";
+    ifstream file(fileName);
     string line;
 
     while (getline(file, line)) {
@@ -268,8 +279,8 @@ map<string, int> FileManager::ParsePointsFile() {
     return pointsMap;
 }
 
-void FileManager::UpdatePoints(string id, int points) {
-    const string filename = "../src/data/points.csv";
+void FileManager::UpdatePoints(const string& id, int points) {
+    const string filename = basePath + "points.csv";
 
     cout << "Appel de UpdatePoints (id : " << id << " ; points : " << points << ")" << endl;
 
@@ -281,7 +292,8 @@ void FileManager::UpdatePoints(string id, int points) {
     }
 
     // Create a temporary file for writing
-    ofstream tempFile("../src/data/points_temp.csv");
+    const string tempFileName = basePath + "points_temp.csv";
+    ofstream tempFile(tempFileName);
     if (!tempFile) {
         cerr << "Failed to create temporary file." << endl;
         inputFile.close();
@@ -330,7 +342,7 @@ void FileManager::UpdatePoints(string id, int points) {
     }
 
     // Rename the temporary file to the original filename
-    if (rename("../src/data/points_temp.csv", filename.c_str()) != 0) {
+    if (rename( tempFileName.c_str() , filename.c_str()) != 0) {
         cerr << "Failed to rename the temporary file." << endl;
     }
 }

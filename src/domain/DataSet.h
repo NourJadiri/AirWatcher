@@ -14,12 +14,13 @@
 #include <map>
 #include <vector>
 #include <unordered_map>
+#include <set>
 #include "Sensor.h"
 #include "Measure.h"
 #include "AirCleaner.h"
 #include "User.h"
 #include "Provider.h"
-#include "FileManager.h"
+#include "data/FileManager.h"
 #include "PrivIndiv.h"
 
 //------------------------------------------------------------------------
@@ -59,9 +60,9 @@ public:
 
     void setProviderList(const unordered_map<string, Provider> &list);
 
-    const vector<Measure> &getMeasureList() const;
+    const unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> &getMeasureList() const;
 
-    void setMeasureList(const vector<Measure> &list);
+    void setMeasureList(const unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> &list);
 
     const FileManager &getFileManager() const;
 
@@ -86,7 +87,7 @@ private:
 
     unordered_map<string, AirCleaner> airCleanerList;
 
-    vector<Measure> measureList;
+    unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> measureList;
 };
 
 #endif // DATASET_H

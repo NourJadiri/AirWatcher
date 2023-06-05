@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <utility>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -38,17 +39,17 @@ string Attribute::getDescription()
 
 void Attribute::setType( string id)
 {
-    type = id;
+    type = std::move(id);
 }
 
 void Attribute::setUnit(string unite)
 {
-    unit = unite;
+    unit = std::move(unite);
 }
 
 void Attribute::setDescription( string aDescription)
 {
-    description = aDescription;
+    description = std::move(aDescription);
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -61,16 +62,11 @@ Attribute::Attribute ( const Attribute & anAttribute )
 
 Attribute::Attribute( string unit, string type, string description )
 {
-    this->type = type;
-    this->unit = unit;
-    this->description = description;
+    this->type = std::move(type);
+    this->unit = std::move(unit);
+    this->description = std::move(description);
 }
 
-Attribute::Attribute() {
+Attribute::Attribute() = default;
 
-}
-
-Attribute::~Attribute ( )
-{
-
-}
+Attribute::~Attribute ( ) = default;

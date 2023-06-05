@@ -1,77 +1,65 @@
 /*************************************************************************
-                           Sensor  -  object of a sensor
+                           Provider  -  user of type provider
                              -------------------
     beginning            : 09/05/2023
     copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <Sensor> (fichier Sensor.h) ----------------
-#if ! defined ( SENSOR_H)
-#define SENSOR_H
+//---------- Interface de la classe <Provider> (fichier Provider.h) ----------------
+#if ! defined ( PROVIDER_H )
+#define PROVIDER_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
 #include <map>
+#include <vector>
 
 //------------------------------------------------------ Include personnel
-#include "Coordinates.h"
-#include "Measure.h"
+#include "domain/AirCleaner.h"
+#include "SuperUser.h"
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Sensor>
+// Rôle de la classe <Provider>
+//
 //
 //
 //------------------------------------------------------------------------
 
-class Sensor 
+class Provider : public SuperUser
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    const string &getId() const;
+    void printAirCleaners() const;
 
-    const Coordinates &getCoord() const;
+    const string &getProviderId() const;
 
-    bool isReliable() const;
+    void setProviderId(const string &providerId);
 
-    void setCoord(const Coordinates &coord);
+    const vector<AirCleaner> &getProvidedAc() const;
 
-    void setId(const string &id);
-
-    void setReliable(bool reliable);
-
-    const string &getPrivIndivId() const;
-
-    void setPrivIndivId(const string &privIndivId);
-
-    const vector<Measure> &getMeasure() const;
+    void setProvidedAc(const vector<AirCleaner> &providedAc);
 
 //-------------------------------------------- Constructeurs - destructeur
-  Sensor ( const Sensor & aSensor );
+    Provider();
 
-  Sensor ( );
+    explicit Provider(string providerID);
 
-  Sensor(string id, const Coordinates& coord);
+    Provider (const string & providerID, const vector<AirCleaner> & airCleaners);
 
-  Sensor(string aId, const Coordinates& someCoord, bool isReliable);
-
-  virtual ~Sensor ( );
+    virtual ~Provider ( );
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    string id;
+    string providerID;
 
-    Coordinates coord = Coordinates(.0, .0);
-
-    string privIndivId;
-
-    bool reliable{};
+    vector<AirCleaner> providedAC;
 
 };
 
-#endif // SENSOR_H
+#endif // PROVIDER_H

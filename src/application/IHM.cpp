@@ -319,7 +319,7 @@ void produceStatsMoment()
     }
 
 
-    AppService* appServ = new AppService(*dataSet);
+    auto* appServ = new AppService(*dataSet);
 
     double stats = appServ->produceStatsMoment(day, Coordinates(latitude, longitude), radius);
     if (stats == - 1) cout << endl << "No matching sensors for the given area." << endl;
@@ -408,7 +408,7 @@ void obsImpactLvlImprov ()
         break;
     }
 
-    AppService* appServ = new AppService(*dataSet);
+    auto* appServ = new AppService(*dataSet);
     pair<int,vector<double>> stats = appServ->obsImpactLvlImprov(idAC, radius);
 
     if (stats.first == -1)

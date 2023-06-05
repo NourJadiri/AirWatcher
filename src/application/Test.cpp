@@ -23,7 +23,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void Test::testGetATMOIdx(DataSet* dataSet){
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
     // Define the breakpoints for each pollutant
     vector<pair<int, int>> OzoneBreakpoints = {{0, 29}, {30, 54}, {55, 79}, {80, 104}, {105, 129}, {130, 149}, {150, 179}, {180, 209}, {210, 239}, {240, INT_MAX}};
     vector<pair<int, int>> SO2Breakpoints = {{0, 39}, {40, 79}, {80, 119}, {120, 159}, {160, 199}, {200, 249}, {250, 299}, {300, 399}, {400, 499}, {500, INT_MAX}};
@@ -50,7 +50,7 @@ void Test::testGetATMOIdx(DataSet* dataSet){
 
 void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 {
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
 
     vector<Measure> measures;
 
@@ -93,7 +93,7 @@ void Test::testComputeMeanATMOIdx(DataSet* dataSet)
 }
 
 void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
 
     unordered_map<string, PrivIndiv> allPrivIndiv = dataSet->getUserList();
 
@@ -150,7 +150,7 @@ void Test::testAddPointsToPrivIndiv(DataSet* dataSet){
 void Test::testGetSensorsAround(DataSet* dataSet)
 // on the 10 sensors, only sensors 2 and 3 are within a 150km radius from point(44,1)
 {
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
     // list of sensors
     unordered_map<string, Sensor> sensors;
 
@@ -245,6 +245,7 @@ void Test::testGetMeasuresAtMoment(DataSet* dataSet)
     time_t time = convertToTimeT(dateTimeString);
 
     vector<Measure> meas = app->getMeasuresAtMoment(sensors, time);
+
     cout << "measures :" << endl;
     for (Measure& measure : meas)
     {
@@ -323,7 +324,7 @@ void Test::testObsImpactLvlImprov(DataSet* dataSet){
 }
 
 void Test::testProduceStatsMoment(DataSet *dataSet) {
-    AppService *app = new AppService(*dataSet);
+    auto *app = new AppService(*dataSet);
 
     time_t day = convertToTimeT("2023-06-02");
     double longitude = 52;
@@ -412,11 +413,7 @@ void Test::testUpdatePoints() {
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Test::Test ( )
-{
-}
+Test::Test ( ) = default;
 
-Test::~Test ( )
-{
-}
+Test::~Test ( ) = default;
 

@@ -1,68 +1,47 @@
 /*************************************************************************
-                           Measure  -  a measurement of a pollutant
+                           User  -  person who uses the app (abstract)
                              -------------------
     beginning            : 09/05/2023
     copyright            : (C) 2023 by Q41 : Adrien Morin, Isaline Foissey, Marie Roulier, Célia Djouadi et Nour ElJadiri
 *************************************************************************/
 
-//---------- Interface de la classe <Measure> (fichier Measure.h) ----------------
-#if ! defined ( MEASURE_H )
-#define MEASURE_H
+//---------- Interface de la classe <User> (fichier User.h) ----------------
+#if ! defined ( USER_H )
+#define USER_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <cstring>
-#include <map>
+#include <string>
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Measure>
+// Rôle de la classe <User>
 //
 //
 //
 //------------------------------------------------------------------------
 
-class Measure
+class User
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    string & getSensorId();
+    const std::string& getId() const;
 
-    time_t & getDateMeas();
+    bool operator<(const User& other) const;
 
-    string & getAttributeValue();
-
-    double & getValue();
-
-    void setSensorId(string anId);
-
-    void setDateMeas(time_t aDate);
-
-    void setAttributeType(string aType);
-
-    void setValue(double aValue);
+    bool operator==(const User& other) const;
 
 //-------------------------------------------- Constructeurs - destructeur
+    explicit User(std::string  idInput);
 
-    Measure ( );
-
-    Measure ( string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput);
-
-    virtual ~Measure ( );
+    User();
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
 
-    //----------------------------------------------------- Attributs protégés
-    string sensorId;
+    std::string id;
 
-    time_t dateMeas{};
-
-    string attributeType;
-
-    double value{};
 };
 
-
-#endif // MEASURE_H
+#endif // USER_H

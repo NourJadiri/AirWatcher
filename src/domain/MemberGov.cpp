@@ -17,12 +17,10 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 //
-MemberGov::MemberGov()
-{
-} //----- Fin de MemberGov
+MemberGov::MemberGov() = default;
+//----- Fin de MemberGov
 
-MemberGov::~MemberGov()
-{
-} //----- Fin de MemberGov
+MemberGov::~MemberGov() = default;
+//----- Fin de MemberGov
 //
 

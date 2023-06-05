@@ -11,9 +11,9 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <utility>
 #include <string>
-#include "FileManager.h"
+#include <utility>
+#include "data/FileManager.h"
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -42,7 +42,7 @@ int & PrivIndiv::getPoints(){
 //---------------------------------------------------------------- Setters
 
 void PrivIndiv::setProvidedSensors(vector<Sensor> provSens){
-    this->providedSensors = provSens;
+    this->providedSensors = std::move(provSens);
 }
 
 void PrivIndiv::setPoints(int aPoint){
@@ -62,21 +62,17 @@ PrivIndiv::PrivIndiv ( const PrivIndiv & aPrivIndiv )
 PrivIndiv::PrivIndiv ( const string &id, vector<Sensor> provSens )
 {
     this->id = id;
-    this->providedSensors = provSens;
+    this->providedSensors = std::move(provSens);
     points = 0;
 }
 
 PrivIndiv::PrivIndiv ( const string &id, vector<Sensor> provSens, int points )
 {
     this->id = id;
-    this->providedSensors = provSens;
+    this->providedSensors = std::move(provSens);
     this->points = points;
 }
 
-PrivIndiv::~PrivIndiv( )
-{
-}
+PrivIndiv::~PrivIndiv( )= default;
 
-PrivIndiv::PrivIndiv() {
-
-}
+PrivIndiv::PrivIndiv() = default;

@@ -19,15 +19,15 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 void DataSet::initSensorList() {
-    sensorsList = fileManager.ParseSensorList();
+    sensorsList = std::move(fileManager.ParseSensorList());
 }
 
 void DataSet::initMeasureList() {
-    measureList = fileManager.ParseMeasureList();
+    measureList = std::move(fileManager.ParseMeasureList());
 }
 
 void DataSet::initAirCleanerList() {
-    airCleanerList = fileManager.ParseAirCleanerList();
+    airCleanerList = std::move(fileManager.ParseAirCleanerList());
 }
 
 void DataSet::initUserList() {
@@ -51,7 +51,7 @@ void DataSet::initUserList() {
         // Call ParsePointsFile to get the points map
         map<string, int> pointsMap = fileManager.ParsePointsFile();
 
-        int points = 0;
+        int points;
 
         // Check if the ID exists in the points map
         if (pointsMap.count(userId) > 0) {
@@ -111,7 +111,7 @@ const unordered_map<string, Provider> &DataSet::getProviderList() const {
     return providerList;
 }
 
-const vector<Measure> &DataSet::getMeasureList() const {
+const unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> & DataSet::getMeasureList() const {
     return measureList;
 }
 
@@ -133,7 +133,7 @@ void DataSet::setProviderList(const unordered_map<string, Provider> &list) {
     providerList = list;
 }
 
-void DataSet::setMeasureList(const vector<Measure> &list) {
+void DataSet::setMeasureList(const unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> & list) {
     measureList = list;
 }
 

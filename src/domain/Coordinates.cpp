@@ -11,7 +11,6 @@
 
 //-------------------------------------------------------- Include système
 #include <cmath>
-#include <algorithm>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -60,9 +59,7 @@ Coordinates::Coordinates ( const Coordinates & coord )
     latitude= coord.latitude;
 } //----- Fin de Sensor (constructeur de copie)
 
-Coordinates::~Coordinates( )
-{
-}
+Coordinates::~Coordinates( ) = default;
 
 //---------------------------------------------------------------- Getters
 

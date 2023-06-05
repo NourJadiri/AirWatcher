@@ -11,6 +11,8 @@
 
 //------------------------------------------------------ Include personnel
 #include "User.h"
+
+#include <utility>
 using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
@@ -33,7 +35,7 @@ bool User::operator==(const User& other) const {
 
 //-------------------------------------------- Constructeurs - destructeur
 
-User::User(const string & idInput) : id(idInput) {
+User::User(string  idInput) : id(std::move(idInput)) {
 }
 
 User::User() = default;

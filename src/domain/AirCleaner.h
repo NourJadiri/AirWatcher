@@ -38,9 +38,9 @@ public:
 
     const string & getAirCleanerID() const;
 
-    const Coordinates & getAirCleanerCoord() const;
-
     void setAirCleanerID(string anID);
+
+    const Coordinates &getCoord() const;
 
     void setCoord(const Coordinates& coord);
 
@@ -58,16 +58,12 @@ public:
 
     AirCleaner (string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput);
 
-    virtual ~AirCleaner ( );
+    virtual ~AirCleaner ( ) = default;
 
 //------------------------------------------------------------------ PRIVE
 private:
     string id;
     Coordinates coord;
-public:
-    const Coordinates &getCoord() const;
-
-private:
     time_t dateStart{};
     time_t dateStop{};
 };

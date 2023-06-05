@@ -39,7 +39,7 @@ void Sensor::setId(const string &id) {
     this->id = id;
 }
 
-void Sensor::setCoord(const Coordinates &coord) {
+void Sensor::setCoord(const Coordinates & coord) {
     this->coord = coord;
 }
 

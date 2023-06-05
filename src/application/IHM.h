@@ -10,9 +10,9 @@
 #define IHM_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "FileManager.h"
-#include "DataSet.h"
-#include "AppService.h"
+#include "data/FileManager.h"
+#include "domain/DataSet.h"
+#include "services/AppService.h"
 #include "Test.h"
 
 //------------------------------------------------------------------------

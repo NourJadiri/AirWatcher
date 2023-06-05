@@ -16,11 +16,9 @@
 
 //-------------------------------------------- Constructeurs - destructeur
 
-SuperUser::SuperUser ( )
-{
-} //----- Fin de SuperUser
+SuperUser::SuperUser ( ) = default;
+//----- Fin de SuperUser
 
-SuperUser::~SuperUser ( )
-{
-} //----- Fin de SuperUser
+SuperUser::~SuperUser ( )= default;
+//----- Fin de SuperUser
 

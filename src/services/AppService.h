@@ -14,10 +14,10 @@
 #include <string>
 #include <utility>
 
-#include "DataSet.h"
-#include "Coordinates.h"
-#include "Measure.h"
-#include "Sensor.h"
+#include "domain/DataSet.h"
+#include "domain/Coordinates.h"
+#include "domain/Measure.h"
+#include "domain/Sensor.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <AppService>
@@ -41,7 +41,7 @@ public:
 
     unordered_map<string, Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
 
-    vector<Measure> getMeasuresAtMoment(const unordered_map<string,Sensor>& sensorMap, time_t date);
+    vector<Measure> getMeasuresAtMoment(const unordered_map<string, Sensor>& sensorMap, time_t date);
 
     int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
 
@@ -55,14 +55,14 @@ public:
 
     explicit AppService();
 
-    virtual ~AppService( );
+    virtual ~AppService();
 
 
     //------------------------------------------------------------------ PRIVE
 
 private:
 
-    DataSet * data;
+    DataSet * data{};
 };
 
 #endif // APPSERVICE_H

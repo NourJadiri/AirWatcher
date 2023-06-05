@@ -10,8 +10,8 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include <utility>
 #include <iostream>
+#include <utility>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -51,7 +51,7 @@ void Provider::setProvidedAc(const vector<AirCleaner> &providedAc) {
 
 Provider::Provider() = default;
 
-Provider::Provider(string providerIDInput) : providerID(providerIDInput) {}
+Provider::Provider(string providerIDInput) : providerID(std::move(providerIDInput)) {}
 
 Provider::Provider( const string & providerID, const vector<AirCleaner> & airCleaners )
 {

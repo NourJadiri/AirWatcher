@@ -16,6 +16,9 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include <algorithm>
+#include <set>
+
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -157,15 +160,29 @@ unordered_map<string, Sensor> AppService::getSensorsAround(const Coordinates& co
 }
 
 
-
 vector<Measure> AppService::getMeasuresAtMoment(const unordered_map<string, Sensor>& sensorMap, time_t date)
 {
-    vector<Measure> measures;
-    measures = data->getMeasureList();
+    unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> measures = data->getMeasureList();
 
     vector<Measure> measuresAtMom;
 
-    for (Measure& measure : measures)
+    for( const auto & pair : sensorMap ){
+        const auto & sensorId = pair.first;
+
+        // On construit la combinaison capteur - date qu'on veut extraire
+        auto desiredKey = std::make_pair(sensorId, date);
+
+        // On définit la range d'extraction (possibilité d'avoir plusieurs mesures pour la même clé)
+        auto range = measures.equal_range(desiredKey);
+
+        for(auto it = range.first; it != range.second; ++it){
+            Measure desiredMeasure = it->second;
+
+            measuresAtMom.push_back(desiredMeasure);
+        }
+    }
+
+/*    for (Measure& measure : measures)
     {
         string sensorId = measure.getSensorId();
 
@@ -173,8 +190,7 @@ vector<Measure> AppService::getMeasuresAtMoment(const unordered_map<string, Sens
         if (measure.getDateMeas() == date && sensorMap.find(sensorId) != sensorMap.end()) {
             measuresAtMom.push_back(measure);
         }
-    }
-
+    }*/
     return measuresAtMom;
 }
 

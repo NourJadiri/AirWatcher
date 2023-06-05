@@ -34,14 +34,14 @@ $(EFFACE) :
 	$(RM) $(RMFLAGS) $(EXE) $(OBJETS)
 
 # dependances complementaires
-AirCleaner.o : Coordinates.h
-AppService.o : DataSet.h Coordinates.cpp Measure.h Sensor.h
-DataSet.o : FileManager.h Sensor.h Measure.h AirCleaner.h User.h Provider.h  PrivIndiv.h
-FileManager.o : Sensor.h Coordinates.h Measure.h User.h AirCleaner.h Provider.h
-IHM.o : FileManager.h DataSet.h AppService.h Test.h
-MemberGov.o : SuperUser.h
-PrivIndiv.o : Sensor.h User.h
-Provider.o : AirCleaner.h SuperUser.h
-Sensor.o : Coordinates.h
-SuperUser.o : User.h
-Test.o : FileManager.h DataSet.h AppService.h
+AirCleaner.o : domain/Coordinates.h
+AppService.o : domain/DataSet.h domain/Coordinates.cpp domain/Measure.h domain/Sensor.h
+DataSet.o : data/FileManager.h domain/Sensor.h domain/Measure.h domain/AirCleaner.h domain/User.h domain/Provider.h  domain/PrivIndiv.h
+FileManager.o : domain/Sensor.h domain/Coordinates.h domain/Measure.h domain/User.h domain/AirCleaner.h domain/Provider.h
+IHM.o : data/FileManager.h domain/DataSet.h services/AppService.h application/Test.h
+MemberGov.o : domain/SuperUser.h
+PrivIndiv.o : domain/Sensor.h domain/User.h
+Provider.o : domain/AirCleaner.h domain/SuperUser.h
+Sensor.o : domain/Coordinates.h
+SuperUser.o : domain/User.h
+Test.o : data/FileManager.h domain/DataSet.h services/AppService.h
