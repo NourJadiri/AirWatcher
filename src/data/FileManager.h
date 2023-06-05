@@ -15,12 +15,12 @@
 #include <vector>
 #include <unordered_map>
 #include <set>
-#include "domain/Sensor.h"
-#include "domain/Coordinates.h"
-#include "domain/Measure.h"
-#include "domain/User.h"
-#include "domain/AirCleaner.h"
-#include "domain/Provider.h"
+#include "../domain/Sensor.h"
+#include "../domain/Coordinates.h"
+#include "../domain/Measure.h"
+#include "../domain/User.h"
+#include "../domain/AirCleaner.h"
+#include "../domain/Provider.h"
 
 
 //------------------------------------------------------------- Constantes

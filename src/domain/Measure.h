@@ -46,7 +46,7 @@ public:
 
     void setValue(double aValue);
 
-    friend class MeasureComparator;
+    friend struct MeasureComparator;
 //-------------------------------------------- Constructeurs - destructeur
 
     Measure ( );

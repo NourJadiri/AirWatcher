@@ -14,9 +14,9 @@
 #include <map>
 
 //------------------------------------------------------ Include personnel
-#include "data/FileManager.h"
-#include "domain/DataSet.h"
-#include "services/AppService.h"
+#include "../data/FileManager.h"
+#include "../domain/DataSet.h"
+#include "../services/AppService.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Test>

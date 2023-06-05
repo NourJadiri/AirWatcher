@@ -14,10 +14,10 @@
 #include <string>
 #include <utility>
 
-#include "domain/DataSet.h"
-#include "domain/Coordinates.h"
-#include "domain/Measure.h"
-#include "domain/Sensor.h"
+#include "../domain/DataSet.h"
+#include "../domain/Coordinates.h"
+#include "../domain/Measure.h"
+#include "../domain/Sensor.h"
 
 //------------------------------------------------------------------------
 // Rôle de la classe <AppService>

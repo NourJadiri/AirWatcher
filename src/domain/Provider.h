@@ -15,7 +15,7 @@
 #include <vector>
 
 //------------------------------------------------------ Include personnel
-#include "domain/AirCleaner.h"
+#include "AirCleaner.h"
 #include "SuperUser.h"
 
 //------------------------------------------------------------------------

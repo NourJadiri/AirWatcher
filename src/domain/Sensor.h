@@ -15,7 +15,7 @@
 #include <vector>
 
 //------------------------------------------------------ Include personnel
-#include "domain/Coordinates.h"
+#include "Coordinates.h"
 #include "Measure.h"
 
 //------------------------------------------------------------------------

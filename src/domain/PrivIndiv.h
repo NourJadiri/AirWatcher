@@ -17,6 +17,8 @@
 //------------------------------------------------------ Include personnel
 #include "Sensor.h"
 #include "User.h"
+#include "../data/FileManager.h"
+
 
 //------------------------------------------------------------------------
 // Rôle de la classe <PrivIndiv>
