@@ -18,6 +18,7 @@
 #include <sstream>
 #include <algorithm>
 #include <set>
+#include <chrono>
 
 using namespace std;
 
@@ -29,6 +30,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 double AppService::produceStatsMoment(time_t day, const Coordinates& coord, double radius, const vector<Measure>& measure)
 {
+    // Début de la mesure du temps
+    auto startChrono = chrono::high_resolution_clock::now();
+
     // get all the reliable sensor around the circle of center coord and radius radius
     unordered_map<string, Sensor> sensors = getSensorsAround(coord, radius);
     if(sensors.empty()) return -1;
@@ -38,7 +42,18 @@ double AppService::produceStatsMoment(time_t day, const Coordinates& coord, doub
     if(measures.empty()) return -2;
 
     // compute the mean of the ATMO indices of the measurements above
-    return computeMeanATMOIdx(measures);
+    double res = computeMeanATMOIdx(measures);
+
+    // Fin de la mesure du temps
+    auto endChrono = chrono::high_resolution_clock::now();
+
+    // Calcul de la durée écoulée
+    auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+
+    // Affichage de la durée
+    cout << "Execution time of produceStatsMoment : " << duration.count() << " milliseconds" << endl;
+
+    return res;
 }
 
 double AppService::computeMeanATMOIdx(vector<Measure> listMeasures)
@@ -196,6 +211,9 @@ vector<Measure> AppService::getMeasuresAtMoment(const unordered_map<string, Sens
 
 pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanId, double radius, const vector<Measure>& measBeforeParam, const vector<Measure>& measAfterParam)
 {
+    // Début de la mesure du temps
+    auto startChrono = chrono::high_resolution_clock::now();
+
     unordered_map<string, AirCleaner> airCleanerIds = data->getAirCleanerList();
     AirCleaner airCl;
 
@@ -207,6 +225,14 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
 
         unordered_map<string, Sensor> listSensors = getSensorsAround(airCl.getCoord(), radius);
         if (listSensors.empty()) {
+            // Fin de la mesure du temps
+            auto endChrono = chrono::high_resolution_clock::now();
+
+            // Calcul de la durée écoulée
+            auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+
+            // Affichage de la durée
+            cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
             return make_pair(-2, vector<double>()); // Return error code -2 and empty vector
         }
 
@@ -217,6 +243,14 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
         vector<Measure> measAfter = (measAfterParam.empty()) ? getMeasuresAtMoment(listSensors, airCl.getDateStop()+43200) : measAfterParam;
 
         if (measAfter.empty() || measBefore.empty()){
+            // Fin de la mesure du temps
+            auto endChrono = chrono::high_resolution_clock::now();
+
+            // Calcul de la durée écoulée
+            auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+
+            // Affichage de la durée
+            cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
             return make_pair(-3, vector<double>()); // Return error code -3 and empty vector
         }
 
@@ -230,10 +264,28 @@ pair<int, vector<double>> AppService::obsImpactLvlImprov(const string& AirCleanI
         results.push_back(meanATMOafter);
         results.push_back(diffATMO);
 
+        // Fin de la mesure du temps
+        auto endChrono = chrono::high_resolution_clock::now();
+
+        // Calcul de la durée écoulée
+        auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+
+        // Affichage de la durée
+        cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
+
         return make_pair(0, results); // Return success code 0 and the results vector
 
     } else {
         // No air cleaner found with the given AirCleanId
+
+        // Fin de la mesure du temps
+        auto endChrono = chrono::high_resolution_clock::now();
+
+        // Calcul de la durée écoulée
+        auto duration = chrono::duration_cast<std::chrono::milliseconds>(endChrono - startChrono);
+
+        // Affichage de la durée
+        cout << "Execution time of obsImpactLvlImprov : " << duration.count() << " milliseconds" << endl;
         return make_pair(-1, vector<double>()); // Return error code -1 and empty vector
     }
 }

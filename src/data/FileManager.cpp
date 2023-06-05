@@ -280,12 +280,12 @@ map<string, int> FileManager::ParsePointsFile() {
 void FileManager::UpdatePoints(const string& id, int points) {
     const string filename = basePath + "points.csv";
 
-    cout << "Call to UpdatePoints (id : " << id << " ; points : " << points << ")" << endl;
+    //cout << "Call to UpdatePoints (id : " << id << " ; points : " << points << ")" << endl;
 
     // Read the existing file
     ifstream inputFile(filename);
     if (!inputFile) {
-        cerr << "Failed to open file: " << filename << endl;
+        //cerr << "Failed to open file: " << filename << endl;
         return;
     }
 
@@ -293,7 +293,7 @@ void FileManager::UpdatePoints(const string& id, int points) {
     const string tempFileName = basePath + "points_temp.csv";
     ofstream tempFile(tempFileName);
     if (!tempFile) {
-        cerr << "Failed to create temporary file." << endl;
+        //cerr << "Failed to create temporary file." << endl;
         inputFile.close();
         return;
     }
@@ -308,9 +308,9 @@ void FileManager::UpdatePoints(const string& id, int points) {
         string currentPoints;
 
         if (getline(iss, currentId, ';') && getline(iss, currentPoints, ';')) {
-            cout << "line: " << currentId << ";" << currentPoints << endl;
+            //cout << "line: " << currentId << ";" << currentPoints << endl;
             if (currentId == id) {
-                cout << "correspondence found" << endl;
+                //cout << "correspondence found" << endl;
                 // Update the points for the matching ID
                 tempFile << id << ';' << points << ';' << endl;
                 idFound = true;
@@ -333,15 +333,15 @@ void FileManager::UpdatePoints(const string& id, int points) {
     // Attempt to delete the file
     if (remove(filename.c_str()) != 0) {
         // Deletion failed
-        perror("Error deleting file");
+        //perror("Error deleting file");
     } else {
         // Deletion successful
-        printf("File deleted successfully\n");
+        //printf("File deleted successfully\n");
     }
 
     // Rename the temporary file to the original filename
     if (rename( tempFileName.c_str() , filename.c_str()) != 0) {
-        cerr << "Failed to rename the temporary file." << endl;
+        //cerr << "Failed to rename the temporary file." << endl;
     }
 }
 
