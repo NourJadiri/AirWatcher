@@ -112,8 +112,6 @@ unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> File
         }
     }
 
-    cout << measureMap.size() << endl;
-
     file.close();
 
     return measureMap;
