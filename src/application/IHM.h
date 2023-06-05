@@ -15,12 +15,6 @@
 #include "../services/AppService.h"
 #include "Test.h"
 
-//------------------------------------------------------------------------
-// Rôle du module <IHM>
-// Ce module permet le lancement du programme par le système lors de
-// l'exécution, à travers l'appel à une procédure test
-//------------------------------------------------------------------------
-
 //---------------------------------------------------- Fonctions publiques
 
 int main ( );
@@ -45,6 +39,6 @@ bool isDateAfterToday( const std::string& date );
 
 bool isValidDateFormat( const std::string& date );
 
-time_t convertToTimeT( const string& dateStr );
+time_t convertToTimeT( const std::string& dateStr );
 
 #endif // IHM_H

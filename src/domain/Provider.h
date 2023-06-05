@@ -18,13 +18,6 @@
 #include "AirCleaner.h"
 #include "SuperUser.h"
 
-//------------------------------------------------------------------------
-// Rôle de la classe <Provider>
-//
-//
-//
-//------------------------------------------------------------------------
-
 class Provider : public SuperUser
 {
 //----------------------------------------------------------------- PUBLIC
@@ -34,20 +27,20 @@ public:
 
     void printAirCleaners() const;
 
-    const string &getProviderId() const;
+    const std::string &getProviderId() const;
 
-    void setProviderId(const string &providerId);
+    void setProviderId(const std::string &providerId);
 
-    const vector<AirCleaner> &getProvidedAc() const;
+    const std::vector<AirCleaner> &getProvidedAc() const;
 
-    void setProvidedAc(const vector<AirCleaner> &providedAc);
+    void setProvidedAc(const std::vector<AirCleaner> &providedAc);
 
 //-------------------------------------------- Constructeurs - destructeur
     Provider();
 
-    explicit Provider(string providerID);
+    explicit Provider(std::string providerID);
 
-    Provider (const string & providerID, const vector<AirCleaner> & airCleaners);
+    Provider (const std::string & providerID, const std::vector<AirCleaner> & airCleaners);
 
     virtual ~Provider ( );
 
@@ -56,9 +49,9 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    string providerID;
+    std::string providerID;
 
-    vector<AirCleaner> providedAC;
+    std::vector<AirCleaner> providedAC;
 
 };
 

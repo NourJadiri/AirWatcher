@@ -10,14 +10,7 @@
 #define Attribute_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <cstring>
-
-//------------------------------------------------------------------------
-// Rôle de la classe <Attribute>
-//
-//
-//
-//------------------------------------------------------------------------
+#include <string>
 
 class Attribute {
     //----------------------------------------------------------------- PUBLIC
@@ -31,11 +24,11 @@ public:
 
     std::string getDescription();
 
-    void setType(string id);
+    void setType(std::string id);
 
-    void setUnit(string unite);
+    void setUnit(std::string unite);
 
-    void setDescription( string aDescription);
+    void setDescription( std::string aDescription);
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -43,7 +36,7 @@ public:
 
     Attribute ( );
 
-    Attribute ( string unit, string type, string description );
+    Attribute ( std::string unit, std::string type, std::string description );
 
     virtual ~Attribute ( );
 
@@ -53,11 +46,11 @@ public:
 private:
 
 //----------------------------------------------------- Attribut privés
-    string type;
+    std::string type;
 
-    string unit;
+    std::string unit;
 
-    string description;
+    std::string description;
 };
 
 

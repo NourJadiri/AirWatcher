@@ -13,21 +13,7 @@
 #include <cstring>
 #include <map>
 #include <ctime>
-
 #include "Coordinates.h"
-using namespace std;
-
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
-//------------------------------------------------------------------------
-// Rôle de la classe <AirCleaner>
-//
-//
-//
-//------------------------------------------------------------------------
 
 class AirCleaner
 {
@@ -36,9 +22,9 @@ class AirCleaner
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    const string & getAirCleanerID() const;
+    const std::string & getAirCleanerID() const;
 
-    void setAirCleanerID(string anID);
+    void setAirCleanerID(std::string anID);
 
     const Coordinates &getCoord() const;
 
@@ -56,13 +42,13 @@ public:
 
     AirCleaner() = default;
 
-    AirCleaner (string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput);
+    AirCleaner (std::string idInput, const Coordinates& coordInput, time_t dateStartInput, time_t dateStopInput);
 
     virtual ~AirCleaner ( ) = default;
 
 //------------------------------------------------------------------ PRIVE
 private:
-    string id;
+    std::string id;
     Coordinates coord;
     time_t dateStart{};
     time_t dateStop{};

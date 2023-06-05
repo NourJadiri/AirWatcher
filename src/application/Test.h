@@ -18,13 +18,6 @@
 #include "../domain/DataSet.h"
 #include "../services/AppService.h"
 
-//------------------------------------------------------------------------
-// Rôle de la classe <Test>
-//
-//
-//
-//------------------------------------------------------------------------
-
 class Test
 {
 //----------------------------------------------------------------- PUBLIC
@@ -48,7 +41,7 @@ public:
 
     time_t convertToTimeT(const std::string& dateStr);
 
-    string convertTimeToString(const time_t& time);
+    std::string convertTimeToString(const time_t& time);
 
     void testUpdatePoints();
 

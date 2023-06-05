@@ -63,21 +63,21 @@ class FileManager
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    unordered_map<string, Sensor> ParseSensorList();
+    std::unordered_map<std::string, Sensor> ParseSensorList();
 
-    unordered_map<string, vector<string>> ParseUserList();
+    std::unordered_map<std::string, std::vector<std::string>> ParseUserList();
 
-    unordered_map<string, AirCleaner> ParseAirCleanerList();
+    std::unordered_map<std::string, AirCleaner> ParseAirCleanerList();
 
-    unordered_map<string, vector<string>> ParseProviderList();
+    std::unordered_map<std::string, std::vector<std::string>> ParseProviderList();
 
-    map<string, int> ParsePointsFile();
+    std::map<std::string, int> ParsePointsFile();
 
-    unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> ParseMeasureList();
+    std::unordered_multimap<std::pair<std::string, time_t>, Measure, PairHash, PairEqual> ParseMeasureList();
 
-    void UpdatePoints(const string& id, int points);
+    void UpdatePoints(const std::string& id, int points);
 
-    time_t convertToTimeT(const string& dateString);
+    time_t convertToTimeT(const std::string& dateString);
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -87,7 +87,7 @@ public:
 
 private:
 
-    string basePath = "../src/data/csv/";
+    std::string basePath = "../src/data/csv/";
 
 };
 

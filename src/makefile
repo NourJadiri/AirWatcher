@@ -48,6 +48,6 @@ IHM.o : data/FileManager.h domain/DataSet.h services/AppService.h application/Te
 MemberGov.o : domain/SuperUser.h
 PrivIndiv.o : domain/Sensor.h domain/User.h data/FileManager.h
 Provider.o : domain/AirCleaner.h domain/SuperUser.h
-Sensor.o : domain/Coordinates.h
+Sensor.o : domain/Coordinates.h domain/Measure.h
 SuperUser.o : domain/User.h
 Test.o : data/FileManager.h domain/DataSet.h services/AppService.h

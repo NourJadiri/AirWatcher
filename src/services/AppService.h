@@ -35,19 +35,19 @@ public:
 
     //----------------------------------------------------- Méthodes publiques
 
-    double produceStatsMoment(time_t day, const Coordinates& coord, double radius, const vector<Measure>& measure = {});
+    double produceStatsMoment(time_t day, const Coordinates& coord, double radius, const std::vector<Measure>& measure = {});
 
     double computeMeanATMOIdx(std::vector<Measure> listMeasures);
 
-    unordered_map<string, Sensor> getSensorsAround(const Coordinates& coord, double radius, const unordered_map<string, Sensor>& sensorMap = {} );
+    std::unordered_map<std::string, Sensor> getSensorsAround(const Coordinates& coord, double radius, const std::unordered_map<std::string, Sensor>& sensorMap = {} );
 
-    vector<Measure> getMeasuresAtMoment(const unordered_map<string, Sensor>& sensorMap, time_t date);
+    std::vector<Measure> getMeasuresAtMoment(const std::unordered_map<std::string, Sensor>& sensorMap, time_t date);
 
-    int getATMOIdx(double value, const vector<pair<int, int>>& breakpoints);
+    int getATMOIdx(double value, const std::vector<std::pair<int, int>>& breakpoints);
 
-    pair<int, vector<double>> obsImpactLvlImprov(const std::string& AirCleanId, double radius, const vector<Measure>& measBefore = {}, const vector<Measure>& measAfter = {});
+    std::pair<int, std::vector<double>> obsImpactLvlImprov(const std::string& AirCleanId, double radius, const std::vector<Measure>& measBefore = {}, const std::vector<Measure>& measAfter = {});
 
-    string convertTimeToString(const time_t& time);
+    std::string convertTimeToString(const time_t& time);
 
     //-------------------------------------------- Constructeurs - destructeur
 

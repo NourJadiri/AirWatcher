@@ -37,11 +37,11 @@ public:
 
     void printProvidedSensors() const;
 
-    vector<Sensor> & getProvidedSensors();
+    std::vector<Sensor> & getProvidedSensors();
 
     int & getPoints();
 
-    void setProvidedSensors(vector<Sensor> provSens);
+    void setProvidedSensors(std::vector<Sensor> provSens);
 
     void setPoints(int aPoint);
 
@@ -50,9 +50,9 @@ public:
 
     PrivIndiv();
 
-    PrivIndiv ( const string &id, vector<Sensor> provSens );
+    PrivIndiv ( const std::string &id, std::vector<Sensor> provSens );
 
-    PrivIndiv ( const string &id, vector<Sensor> provSens, int points );
+    PrivIndiv ( const std::string &id, std::vector<Sensor> provSens, int points );
 
     virtual ~PrivIndiv ( );
 
@@ -61,7 +61,7 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    vector<Sensor> providedSensors;
+    std::vector<Sensor> providedSensors;
 
     int points{};
 

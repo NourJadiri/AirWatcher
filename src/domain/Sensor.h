@@ -31,7 +31,7 @@ class Sensor
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    const string &getId() const;
+    const std::string &getId() const;
 
     const Coordinates &getCoord() const;
 
@@ -39,24 +39,24 @@ public:
 
     void setCoord(const Coordinates &coord);
 
-    void setId(const string &id);
+    void setId(const std::string &id);
 
     void setReliable(bool reliable);
 
-    const string &getPrivIndivId() const;
+    const std::string &getPrivIndivId() const;
 
-    void setPrivIndivId(const string &privIndivId);
+    void setPrivIndivId(const std::string &privIndivId);
 
-    const vector<Measure> &getMeasure() const;
+    const std::vector<Measure> &getMeasure() const;
 
 //-------------------------------------------- Constructeurs - destructeur
   Sensor ( const Sensor & aSensor );
 
   Sensor ( );
 
-  Sensor(string id, const Coordinates& coord);
+  Sensor(std::string id, const Coordinates& coord);
 
-  Sensor(string aId, const Coordinates& someCoord, bool isReliable);
+  Sensor(std::string aId, const Coordinates& someCoord, bool isReliable);
 
   virtual ~Sensor ( );
 
@@ -65,11 +65,11 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    string id;
+    std::string id;
 
     Coordinates coord = Coordinates(.0, .0);
 
-    string privIndivId;
+    std::string privIndivId;
 
     bool reliable{};
 

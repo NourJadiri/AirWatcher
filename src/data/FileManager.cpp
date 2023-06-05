@@ -127,7 +127,7 @@ unordered_map<string, vector<string>> FileManager::ParseUserList()
 
     if (!file.is_open())
     {
-        cout << "Erreur when opening file " << filePath << endl;
+        cout << "Error when opening file " << filePath << endl;
         return {};
     }
     unordered_map<string, vector<string>> userList;
@@ -282,7 +282,7 @@ map<string, int> FileManager::ParsePointsFile() {
 void FileManager::UpdatePoints(const string& id, int points) {
     const string filename = basePath + "points.csv";
 
-    cout << "Appel de UpdatePoints (id : " << id << " ; points : " << points << ")" << endl;
+    cout << "Call to UpdatePoints (id : " << id << " ; points : " << points << ")" << endl;
 
     // Read the existing file
     ifstream inputFile(filename);
@@ -310,9 +310,9 @@ void FileManager::UpdatePoints(const string& id, int points) {
         string currentPoints;
 
         if (getline(iss, currentId, ';') && getline(iss, currentPoints, ';')) {
-            cout << "ligne : " << currentId << ";" << currentPoints << endl;
+            cout << "line: " << currentId << ";" << currentPoints << endl;
             if (currentId == id) {
-                cout << "correspondance tourvée " << endl;
+                cout << "correspondence found" << endl;
                 // Update the points for the matching ID
                 tempFile << id << ';' << points << ';' << endl;
                 idFound = true;

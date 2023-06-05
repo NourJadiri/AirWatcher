@@ -10,11 +10,12 @@
 #define DATASET_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <string>
+#include <cstring>
 #include <map>
 #include <vector>
 #include <unordered_map>
 #include <set>
+
 #include "Sensor.h"
 #include "Measure.h"
 #include "AirCleaner.h"
@@ -23,12 +24,6 @@
 #include "../data/FileManager.h"
 #include "PrivIndiv.h"
 
-//------------------------------------------------------------------------
-// Rôle de la classe <DataSet>
-//
-//
-//
-//------------------------------------------------------------------------
 
 class DataSet
 {
@@ -46,23 +41,23 @@ public:
 
     void initAirCleanerList();
 
-    const unordered_map<string, Sensor> &getSensorsList() const;
+    const std::unordered_map<std::string, Sensor> &getSensorsList() const;
 
-    const unordered_map<string, AirCleaner> &getAirCleanerList() const;
+    const std::unordered_map<std::string, AirCleaner> &getAirCleanerList() const;
 
-    void setSensorsList(const unordered_map<string, Sensor> &list);
+    void setSensorsList(const std::unordered_map<std::string, Sensor> &list);
 
-    unordered_map<string, PrivIndiv> &getUserList();
+    std::unordered_map<std::string, PrivIndiv> &getUserList();
 
-    void setUserList(const unordered_map<string, PrivIndiv> &list);
+    void setUserList(const std::unordered_map<std::string, PrivIndiv> &list);
 
-    const unordered_map<string, Provider> &getProviderList() const;
+    const std::unordered_map<std::string, Provider> &getProviderList() const;
 
-    void setProviderList(const unordered_map<string, Provider> &list);
+    void setProviderList(const std::unordered_map<std::string, Provider> &list);
 
-    const unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> &getMeasureList() const;
+    const std::unordered_multimap<std::pair<std::string, time_t>, Measure, PairHash, PairEqual> &getMeasureList() const;
 
-    void setMeasureList(const unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> &list);
+    void setMeasureList(const std::unordered_multimap<std::pair<std::string, time_t>, Measure, PairHash, PairEqual> &list);
 
     const FileManager &getFileManager() const;
 
@@ -79,15 +74,15 @@ public:
 private:
     FileManager fileManager;
 
-    unordered_map<string, Sensor> sensorsList;
+    std::unordered_map<std::string, Sensor> sensorsList;
 
-    unordered_map<string, PrivIndiv> userList;
+    std::unordered_map<std::string, PrivIndiv> userList;
 
-    unordered_map<string, Provider> providerList;
+    std::unordered_map<std::string, Provider> providerList;
 
-    unordered_map<string, AirCleaner> airCleanerList;
+    std::unordered_map<std::string, AirCleaner> airCleanerList;
 
-    unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> measureList;
+    std::unordered_multimap<std::pair<std::string, time_t>, Measure, PairHash, PairEqual> measureList;
 };
 
 #endif // DATASET_H

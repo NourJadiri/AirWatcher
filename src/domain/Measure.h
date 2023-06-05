@@ -14,15 +14,6 @@
 #include <map>
 #include <ctime>
 
-using namespace std;
-
-//------------------------------------------------------------------------
-// Rôle de la classe <Measure>
-//
-//
-//
-//------------------------------------------------------------------------
-
 
 class Measure
 {
@@ -30,19 +21,19 @@ class Measure
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    const string & getSensorId() const;
+    const std::string & getSensorId() const;
 
     const time_t & getDateMeas() const;
 
-    const string & getAttributeValue() const;
+    const std::string & getAttributeValue() const;
 
     double & getValue();
 
-    void setSensorId(string anId);
+    void setSensorId(std::string anId);
 
     void setDateMeas(time_t aDate);
 
-    void setAttributeType(string aType);
+    void setAttributeType(std::string aType);
 
     void setValue(double aValue);
 
@@ -51,7 +42,7 @@ public:
 
     Measure ( );
 
-    Measure ( string  sensorIdInput, const time_t& dateMeasInput, string  attributeTypeInput, const double& valueInput);
+    Measure ( std::string  sensorIdInput, const time_t& dateMeasInput, std::string  attributeTypeInput, const double& valueInput);
 
     virtual ~Measure ( );
 
@@ -60,11 +51,11 @@ public:
 protected:
 
     //----------------------------------------------------- Attributs protégés
-    string sensorId;
+    std::string sensorId;
 
     time_t dateMeas{};
 
-    string attributeType;
+    std::string attributeType;
 
     double value{};
 };
