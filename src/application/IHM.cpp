@@ -38,12 +38,17 @@ int main()
     test->testGetMeasuresAtMoment(dataSet);
     //test->testUpdatePoints();
 
-    // get le type d'utilisateur
-    int userType;
-    int typeOk = 0;
+    // get type user
+    int typeOk = 0, userType;
+
     while (typeOk == 0){
         cout << "Enter the number corresponding to your user type: \n\t1. Member of Government Agency \n\t2. Private individual \n\t3. Provider \n\t4. Admin \n\t5. Exit" << endl;
-        cin >> userType;
+        if (!(cin >> userType)) {
+            cout << endl << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         switch (userType)
         {
@@ -69,7 +74,7 @@ int main()
                 break;
 
             default:
-                cout << endl << "Invalid user type. Choose a number between 1 and 4 :)" << endl;
+                cout << endl << "Invalid user type. Choose a number between 1 and 4." << endl;
                 break;
         }
     }
@@ -80,12 +85,16 @@ int main()
 // fonctionnalités spécifiques à l'admin
 void handleAdminFunctionalities()
 {
-    int choiceOk = 0;
-    int choice;
+    int choiceOk = 0, choice;
 
     while (choiceOk == 0){
         cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Exit" << endl;
-        cin >> choice;
+        if (!(cin >> choice)) {
+            cout << endl << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         switch (choice)
         {
@@ -99,7 +108,7 @@ void handleAdminFunctionalities()
                 break;
 
             default:
-                cout << endl << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 2." << endl;
                 break;
         }
     }
@@ -108,12 +117,16 @@ void handleAdminFunctionalities()
 // fonctionnalités spécifiques aux PrivIndiv
 void handlePrivateIndividualFunctionalities()
 {
-    int choiceOk = 0;
-    int choice;
+    int choiceOk = 0, choice;
 
     while (choiceOk == 0){
         cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Exit" << endl;
-        cin >> choice;
+        if (!(cin >> choice)) {
+            cout << endl << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         switch (choice)
         {
@@ -127,7 +140,7 @@ void handlePrivateIndividualFunctionalities()
                 break;
 
             default:
-                cout << endl << "Invalid choice. Choose a number between 1 and 2 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 2." << endl;
                 break;
         }
     }
@@ -136,12 +149,16 @@ void handlePrivateIndividualFunctionalities()
 // fonctionnalités spécifiques aux membres de Government Agency
 void handleGovernmentAgencyFunctionalities()
 {
-    int choiceOk = 0;
-    int choice;
+    int choiceOk = 0, choice;
 
     while (choiceOk == 0){
         cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Observe the impact of an Air Cleaner \n\t3. Exit" << endl;
-        cin >> choice;
+        if (!(cin >> choice)) {
+            cout << endl << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         switch (choice)
         {
@@ -159,7 +176,7 @@ void handleGovernmentAgencyFunctionalities()
                 break;
 
             default:
-                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3." << endl;
                 break;
         }
     }
@@ -168,12 +185,16 @@ void handleGovernmentAgencyFunctionalities()
 // fonctionnalités spécifiques aux fournisseurs
 void handleProviderFunctionalities()
 {
-    int choiceOk = 0;
-    int choice;
+    int choiceOk = 0, choice;
 
     while (choiceOk == 0){
         cout << endl << "Choose the corresponding number to what you which to do: \n\t1. Produce statistics (mean of air quality) in a specified circular area \n\t2. Observe the impact of an Air Cleaner \n\t3. Exit" << endl;
-        cin >> choice;
+        if (!(cin >> choice)) {
+            cout << endl << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         switch (choice)
         {
@@ -191,7 +212,7 @@ void handleProviderFunctionalities()
                 break;
 
             default:
-                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3." << endl;
                 break;
         }
     }
@@ -199,13 +220,17 @@ void handleProviderFunctionalities()
 
 void produceStatistics()
 {
-    int choiceOk = 0;
-    int choice;
+    int choiceOk = 0, choice;
 
     while (choiceOk == 0){
         cout << endl << "You chose to produce statistics (get the mean of air quality) in a specified circular area." << endl;
         cout << "Choose the corresponding number to what you which to do: \n\t1. Compute the mean of air quality in a specified circular area at a given MOMENT \n\t2. Compute the mean of air quality in a specified circular area at a given PERIOD OF TIME (not implemented) \n\t3. Exit" << endl;
-        cin >> choice;
+        if (!(cin >> choice)) {
+            cout << endl << "Please enter numbers only." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         switch (choice)
         {
@@ -225,7 +250,7 @@ void produceStatistics()
                 break;
 
             default:
-                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3." << endl;
                 break;
         }
     }
@@ -336,13 +361,31 @@ void produceStatsMoment()
 
 void observeImpact()
 {
-    int choiceOk = 0;
-    int choice;
+    int choiceOk = 0, choice;
+    string choiceStr;
 
     while (choiceOk == 0){
         cout << endl << "You chose to observe the impact of an Air Cleaner." << endl;
         cout << "Choose the corresponding number to what you which to do: \n\t1. Get the radius of the cleaned zone (not implemented) \n\t2. Get the level of improvement in air quality \n\t3. Exit" << endl;
-        cin >> choice;
+        // Read input as string
+        cin >> choiceStr;
+
+        // Check if input is digits only
+        bool isNumber = true;
+        for (char c : choiceStr) {
+            if (!isdigit(c)) {
+                isNumber = false;
+                break;
+            }
+        }
+        if (!isNumber) {
+            cout << "Invalid user type. Choose a number between 1 and 3." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        // Convert input string into int
+        choice = stoi(choiceStr);
 
         switch (choice)
         {
@@ -362,7 +405,7 @@ void observeImpact()
                 break;
 
             default:
-                cout << endl << "Invalid choice. Choose a number between 1 and 3 :)" << endl;
+                cout << endl << "Invalid choice. Choose a number between 1 and 3." << endl;
                 break;
         }
     }
@@ -463,8 +506,12 @@ bool isValidDateFormat(const string& date)
     // Check if the year, month, and day components are valid integers
     try {
         stoi(date.substr(0, 4));
-        stoi(date.substr(5, 2));
-        stoi(date.substr(8, 2));
+        int month = stoi(date.substr(5, 2));
+        if (month == 0 || month > 12)
+            return false;
+        int day = stoi(date.substr(8, 2));
+        if (day == 0 || day > 31)
+            return false;
     } catch (const exception& e) {
         return false;
     }
