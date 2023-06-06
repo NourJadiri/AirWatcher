@@ -411,6 +411,47 @@ void Test::testUpdatePoints() {
     f.UpdatePoints("User100", 10); // Doit rajouter une ligne dans le fichier
 }
 
+void Test::testParseProviders() {
+
+    string path = "../src/data/test_data/";
+    string fullPath = path + "providers.csv";
+    stringstream buffer;
+
+    // On redirige le flux de sortie vers un buffer custom
+    streambuf* oldBuffer = cout.rdbuf(buffer.rdbuf());
+    DataSet dataSet = DataSet(path);
+
+    // Puis on restore l'ancien flux de sortie
+    cout.rdbuf(oldBuffer);
+
+    string output = buffer.str();
+
+    string expected = "Warning : the file ../src/data/test_data/providers.csv is empty\n";
+
+    cout << output;
+    assert(output == expected);
+
+    cout << "** Test 1 for ParseProvidersList() passed **" << endl << endl;
+
+    string newFullPath = path + "unreachable_providers.csv";
+    rename(fullPath.c_str(), newFullPath.c_str());
+
+    stringstream buffer2;
+    streambuf * oldBuffer2 = cerr.rdbuf(buffer2.rdbuf());
+    dataSet.initProviderList();
+
+    cerr.rdbuf(oldBuffer2);
+
+    output = buffer2.str();
+
+    expected = "Error when opening file ../src/data/test_data/providers.csv\n";
+
+    cout << output;
+    assert(output == expected);
+    cout << "** Test 2 for ParseProvidersList() passed **" << endl << endl;
+    rename(newFullPath.c_str(), fullPath.c_str());
+}
+
 
 //-------------------------------------------- Constructeurs - destructeur
 Test::Test ( ) = default;

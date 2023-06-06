@@ -33,7 +33,7 @@ unordered_map<string, Sensor> FileManager::ParseSensorList()
 
     if (!file.is_open())
     {
-        cout << "Error when opening file " << filePath << endl;
+        cerr << "Error when opening file " << filePath << endl;
         return {};
     }
 
@@ -76,7 +76,7 @@ unordered_multimap<std::pair<string, time_t>, Measure, PairHash, PairEqual> File
 
     if (!file)
     {
-        cout << "Error when opening file." << endl;
+        cerr << "Error when opening file " << filePath << endl;
         return measureMap; // empty list
     }
 
@@ -125,7 +125,7 @@ unordered_map<string, vector<string>> FileManager::ParseUserList()
 
     if (!file.is_open())
     {
-        cout << "Error when opening file " << filePath << endl;
+        cerr << "Error when opening file " << filePath << endl;
         return {};
     }
     unordered_map<string, vector<string>> userList;
@@ -170,7 +170,7 @@ unordered_map<string, AirCleaner> FileManager::ParseAirCleanerList()
     ifstream file(filePath);
 
     if (!file.is_open()) {
-        cerr << "Error when opening file." << endl;
+        cerr << "Error when opening file " << filePath << endl;
         return {};
     }
 
@@ -208,7 +208,7 @@ unordered_map<string, vector<string>> FileManager::ParseProviderList()
 
     ifstream file(filePath);
     if (!file.is_open()) {
-        cerr << "Error when opening file" << endl;
+        cerr << "Error when opening file " << filePath << endl;
         return providers;
     }
 
@@ -233,6 +233,9 @@ unordered_map<string, vector<string>> FileManager::ParseProviderList()
 
     file.close();
 
+    if(providers.empty()){
+        cout << "Warning : the file "<< filePath << " is empty" << endl;
+    }
     return providers;
 }
 
@@ -256,6 +259,10 @@ map<string, int> FileManager::ParsePointsFile() {
 
     const string fileName = basePath + "points.csv";
     ifstream file(fileName);
+
+    if(!file.is_open()){
+        return pointsMap;
+    }
     string line;
 
     while (getline(file, line)) {
@@ -347,8 +354,13 @@ void FileManager::UpdatePoints(const string& id, int points) {
 
 //-------------------------------------------- Constructeurs - destructeur
 
-FileManager::FileManager ( ) = default;
+FileManager::FileManager() {
+    basePath = "../src/data/csv/";
+}
 
+FileManager::FileManager ( const string & path ){
+    basePath = path;
+}
 
 FileManager::~FileManager( ) = default;
 

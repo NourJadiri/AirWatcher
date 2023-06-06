@@ -39,6 +39,8 @@ public:
 
     void testProduceStatsMoment(DataSet* dataSet);
 
+    void testParseProviders();
+
     time_t convertToTimeT(const std::string& dateStr);
 
     std::string convertTimeToString(const time_t& time);

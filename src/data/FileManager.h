@@ -81,13 +81,15 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    FileManager ( );
+    FileManager();
+
+    explicit FileManager ( const std::string & path );
 
     virtual ~FileManager ( );
 
 private:
 
-    std::string basePath = "../src/data/csv/";
+    std::string basePath;
 
 };
 

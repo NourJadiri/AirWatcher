@@ -37,6 +37,7 @@ int main()
     test->testGetSensorsAround(dataSet);
     test->testGetMeasuresAtMoment(dataSet);
     //test->testUpdatePoints();
+    test->testParseProviders();
 
     // get type user
     int typeOk = 0, userType;

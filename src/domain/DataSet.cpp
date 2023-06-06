@@ -146,5 +146,14 @@ DataSet::DataSet() {
     initProviderList();
 }
 
+DataSet::DataSet(const string &path) {
+    fileManager = FileManager(path);
+    initSensorList();
+    initUserList();
+    initMeasureList();
+    initAirCleanerList();
+    initProviderList();
+}
+
 DataSet::~DataSet() = default;
 

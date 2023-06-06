@@ -67,6 +67,8 @@ public:
 
     DataSet ( );
 
+    DataSet( const std::string & path );
+
     virtual ~DataSet ( );
 
 //------------------------------------------------------------------ PRIVE
