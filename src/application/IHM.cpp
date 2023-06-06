@@ -27,6 +27,8 @@ DataSet* dataSet = new DataSet();
 //---------------------------------------------------- Fonctions publiques
 int main()
 {
+    /// PLEASE REMOVE THIS BLOCK COMMENT TO RUN THE UNIT TESTS
+    /*
     Test *test = new Test();
     test->testGetMeasuresAtMoment(dataSet);
     test->testAddPointsToPrivIndiv(dataSet);
@@ -38,6 +40,7 @@ int main()
     test->testGetMeasuresAtMoment(dataSet);
     //test->testUpdatePoints();
     test->testParseProviders();
+     */
 
     // get type user
     int typeOk = 0, userType;
